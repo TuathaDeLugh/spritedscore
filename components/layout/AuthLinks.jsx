@@ -1,0 +1,45 @@
+"use client"
+import Link from 'next/link';
+import React from 'react'
+import { AiOutlineUser } from "react-icons/ai";
+
+export default function AuthLinks() {
+  let dropData = [
+    { name: 'Login', path: '/'  ,key:1},
+    { name: 'Register', path: '/' ,key:2},]
+    // dropData = [
+    // { name: 'Profile', path: '/'  ,key:1},
+    // { name: 'My review', path: '/' ,key:2},
+    // { name: 'WatchList', path: '/' ,key:3},
+    // { name: 'logout', path: '/' ,key:4},]
+     // dropData = [
+    //     { name: 'Admin Panal', path: '/' ,key:2},
+    //     { name: 'Profile', path: '/'  ,key:1},
+    //     { name: 'Manage review', path: '/' ,key:2},
+    //     { name: 'WatchList', path: '/' ,key:3},
+    //     { name: 'logout', path: '/' ,key:4},]
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  return (
+    <div className="relative">
+      <button onClick={handleOpen} className='border border-gray-500 rounded-full p-1'><AiOutlineUser size={20}/></button>
+      {open ? (
+        <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded backdrop-blur bg-white dark:bg-slate-800">
+          {dropData.map((link) => {
+              return (
+                <li key={link.key} className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-100 md:dark:hover:text-slate-200">
+
+                  <Link onClick={() => setNavbar(!navbar)} href={link.path} className='p-1'>{link.name}</Link>
+                </li>
+              )
+            })}
+        </ul>
+      ) : null}
+    </div>
+  );
+}
+
