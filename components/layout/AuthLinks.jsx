@@ -8,13 +8,13 @@ export default function AuthLinks() {
     { name: 'Login', path: '/'  ,key:1},
     { name: 'Register', path: '/' ,key:2},]
     // dropData = [
-    // { name: 'Profile', path: '/'  ,key:1},
-    // { name: 'My review', path: '/' ,key:2},
-    // { name: 'WatchList', path: '/' ,key:3},
+    // { name: 'Profile', path: '/user/profile'  ,key:1},
+    // { name: 'My review', path: '/user' ,key:2},
+    // { name: 'WatchList', path: '/user/watchlist' ,key:3},
     // { name: 'logout', path: '/' ,key:4},]
      // dropData = [
-    //     { name: 'Admin Panal', path: '/' ,key:2},
-    //     { name: 'Profile', path: '/'  ,key:1},
+    //     { name: 'Admin Panal', path: '/admin' ,key:2},
+    //     { name: 'Profile', path: '/user'  ,key:1},
     //     { name: 'Manage review', path: '/' ,key:2},
     //     { name: 'WatchList', path: '/' ,key:3},
     //     { name: 'logout', path: '/' ,key:4},]
@@ -33,7 +33,7 @@ export default function AuthLinks() {
               return (
                 <li key={link.key} className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-100 md:dark:hover:text-slate-200">
 
-                  <Link onClick={() => setNavbar(!navbar)} href={link.path} className='p-1'>{link.name}</Link>
+                  <Link onClick={() => setOpen(!open)} href={link.path} className='p-1'>{link.name}</Link>
                 </li>
               )
             })}

@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <>HELLO</>
+    <>
+    <div className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>Hello</div>
+  </>
   )
 }

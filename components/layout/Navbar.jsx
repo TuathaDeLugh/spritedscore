@@ -10,7 +10,7 @@ import AuthLinks from './AuthLinks';
 export default function Navbar() {
     let navData = [
         { name: 'Home', path: '/'  ,key:1},
-        { name: 'All Review', path: '/all' ,key:2},
+        { name: 'All Review', path: '/allreview' ,key:2},
         { name: 'About', path: '/about' ,key:3},
         { name: 'contact', path: '/contact' ,key:4},]
         const [navbar, setNavbar] = useState(false);

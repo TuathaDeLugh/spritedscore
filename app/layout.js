@@ -17,10 +17,9 @@ export default function RootLayout({ children }) {
 
         <Darkmode>
           <Navbar/>
-        <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen md:pt-20 pt-16">
-          <div className=' px-2 mx-auto max-w-[1500px]'>
+        <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen ">
+          
           {children}
-          </div>
           </main>
         </Darkmode>
           </body>
