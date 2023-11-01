@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
         <Darkmode>
           <Navbar/>
         <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen ">
-          
           {children}
           </main>
         </Darkmode>
