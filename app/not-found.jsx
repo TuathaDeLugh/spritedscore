@@ -5,7 +5,7 @@ import React from "react";
 function Error() {
   return (
     <>
-      <section className="relative z-10 bg-white dark:bg-gray-800 h-[100vh]">
+      <section className="relative z-10 bg-slate-100 dark:bg-gray-800 h-[100vh]">
         <div className="container mx-auto">
           <div className=" flex">
             <div className="w-full px-4 my-40">
