@@ -1,14 +1,18 @@
+"use client"
 import Image from 'next/image';
 import React from 'react'
-
+import { signIn } from 'next-auth/react'
+import { FcGoogle } from "react-icons/fc";
+import { BiLogoFacebook } from "react-icons/bi";
+import { AiFillGithub } from "react-icons/ai";
 export default function page() {
   return (
     <section className=" bg-slate-100 dark:bg-slate-800 py-20 lg:py-[120px] h-screen">
       <div className="container mx-auto">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
-            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-slate-900 px-10 py-16 text-center dark:bg-dark-2 sm:px-12 md:px-[60px]">
-              <div className="mb-10 text-center md:mb-12">
+            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-slate-900 px-10 py-16 sm:px-12 md:px-[60px]">
+              <div className="mb-10 md:mb-12">
                 <a
                   href="/#"
                   className="mx-auto flex"
@@ -18,7 +22,9 @@ export default function page() {
                 </a>
               </div>
               <form>
+
                 <InputBox type="email" name="email" placeholder="Email" />
+
                 <InputBox
                   type="password"
                   name="password"
@@ -32,42 +38,30 @@ export default function page() {
                   />
                 </div>
               </form>
-              <p className="mb-6 text-base text-secondary-color dark:text-dark-7">
-                Sign in Using 
+              <p className="mb-6 text-center text-base text-secondary-color dark:text-dark-7">
+                Continue With
               </p>
-              <ul className="-mx-2 mb-12 flex justify-between">
-                <li className="w-full px-2">
-                  <a
-                    href="/#"
-                    className="flex h-11 items-center justify-center rounded-md bg-[#4064AC] hover:bg-opacity-90"
+              <div className="-mx-2 mb-12 flex justify-around">
+                <button
+                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
+                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
                   >
-                    F
-                  </a>
-                </li>
-                <li className="w-full px-2">
-                  <a
-                    href="/#"
-                    className="flex h-11 items-center justify-center rounded-md bg-[#1C9CEA] hover:bg-opacity-90"
+                    <FcGoogle size={25}/>
+                  </button>
+                <button
+                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
+                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
                   >
-                    T
-                  </a>
-                </li>
-                <li className="w-full px-2">
-                  <a
-                    href="/#"
-                    className="flex h-11 items-center justify-center rounded-md bg-[#D64937] hover:bg-opacity-90"
+                    <BiLogoFacebook className='text-blue-500' size={25}/>
+                  </button>
+                  <button
+                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
+                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
                   >
-                    G
-                  </a>
-                </li>
-              </ul>
-              <a
-                href="/#"
-                className="mb-2 inline-block text-base text-dark hover:text-primary hover:underline dark:text-white"
-              >
-                Forget Password?
-              </a>
-              <p className="text-base text-body-color dark:text-dark-6">
+                    <AiFillGithub size={25}/>
+                  </button>
+              </div>
+              <p className="text-base text-center text-body-color dark:text-dark-6">
                 <span className="pr-0.5">Not a member yet?</span>
                 <a
                   href="/#"
@@ -86,6 +80,7 @@ export default function page() {
 const InputBox = ({ type, placeholder, name }) => {
     return (
       <div className="mb-6">
+        {/* <p className=' capitalize font-semibold px-2 py-1'>{name}</p> */}
         <input
           type={type}
           placeholder={placeholder}
