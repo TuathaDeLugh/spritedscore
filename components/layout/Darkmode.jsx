@@ -8,7 +8,7 @@ export default function Darkmode ({ children}) {
   const toggleDarkMode = () => {
     const newDarkModeStatus = !isDarkMode;
     setIsDarkMode(newDarkModeStatus);
-    Cookies.set('dark-mode', newDarkModeStatus, { expires: 365 }); // Save to cookie for 1 year
+    Cookies.set('dark-mode', newDarkModeStatus, { expires: 0.5 }); // Save to cookie for 12 hrs
   };
 
   useEffect(() => {
