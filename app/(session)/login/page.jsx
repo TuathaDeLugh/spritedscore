@@ -3,16 +3,15 @@ import Image from 'next/image';
 import React from 'react'
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
-import { BiLogoFacebook } from "react-icons/bi";
-import { AiFillGithub } from "react-icons/ai";
+import Link from 'next/link';
 export default function page() {
   return (
-    <section className=" bg-slate-100 dark:bg-slate-800 py-20 lg:py-[120px] h-screen">
-      <div className="container mx-auto">
+    <section className=" bg-slate-100 dark:bg-slate-800 py-20 lg:py-[120px] h-screen flex items-center">
+      <div className="container m-auto ">
         <div className="flex flex-wrap">
           <div className="w-full px-4">
-            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-slate-900 px-10 py-16 sm:px-12 md:px-[60px]">
-              <div className="mb-10 md:mb-12">
+            <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-slate-900 px-10 py-10 sm:px-12 md:px-[60px]">
+              <div className="mb-6 md:mb-8">
                 <a
                   href="/#"
                   className="mx-auto flex"
@@ -21,6 +20,7 @@ export default function page() {
                   <h2 className=" text-2xl md:text-4xl text-purple-700 font-bold dark:text-purple-400 m-auto">SPIRITED SCORE</h2>
                 </a>
               </div>
+              <h2 className="text-center text-2xl md:text-3xl font-semibold dark:text-purple-400 m-auto mb-6">log In to your Account</h2>
               <form>
 
                 <InputBox type="email" name="email" placeholder="Email" />
@@ -30,7 +30,7 @@ export default function page() {
                   name="password"
                   placeholder="Password"
                 />
-                <div className="mb-10">
+                <div className="mb-6">
                   <input
                     type="submit"
                     value="Sign In"
@@ -39,36 +39,24 @@ export default function page() {
                 </div>
               </form>
               <p className="mb-6 text-center text-base text-secondary-color dark:text-dark-7">
-                Continue With
+                OR
               </p>
-              <div className="-mx-2 mb-12 flex justify-around">
+              <div className="mb-6">
                 <button
                     onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
-                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
+                    className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 hover:text-white  px-5"
                   >
-                    <FcGoogle size={25}/>
-                  </button>
-                <button
-                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
-                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
-                  >
-                    <BiLogoFacebook className='text-blue-500' size={25}/>
-                  </button>
-                  <button
-                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
-                    className="flex h-11 items-center  justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 px-5"
-                  >
-                    <AiFillGithub size={25}/>
+                    <p>Continue With</p> <FcGoogle size={25}/>
                   </button>
               </div>
               <p className="text-base text-center text-body-color dark:text-dark-6">
                 <span className="pr-0.5">Not a member yet?</span>
-                <a
-                  href="/#"
+                <Link
+                  href="/register"
                   className="text-primary hover:underline"
                 >
                   Sign Up
-                </a>
+                </Link>
               </p>
             </div>
           </div>

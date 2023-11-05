@@ -59,7 +59,7 @@ export default function Navbar() {
               )
             })}
             <li className="text-l text-slate-800 dark:text-slate-300 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400">
-              <AuthLinks/>
+              <AuthLinks navclose={() => setNavbar(!navbar)}/>
             </li>
           </ul>
         </div>
