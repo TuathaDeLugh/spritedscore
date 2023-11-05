@@ -2,10 +2,10 @@ import { Schema, model, models } from 'mongoose'
 
 const userSchema = new Schema(
     {  
-        username: String,
+        username: { type: String, required: true, unique: true },
         name: String,
         avatar: String,
-        email: String,
+        email: { type: String, required: true, unique: true },
         password: String,
         role:String
 
