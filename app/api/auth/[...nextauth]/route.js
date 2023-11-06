@@ -28,7 +28,6 @@ export const authOptions = {
                   return null;
                 }
                 return user;
-               // return {user: res.data};
               } catch (error) {
                 console.log("Error: ", error);
               }
@@ -38,26 +37,28 @@ export const authOptions = {
         session: {
           strategy: "jwt",
         },
-        // callbacks: {
-        //     async session({ session, token }) {
-        //         if (token.role === 'admin') {
-        //             session.user.role = 'admin'
-        //             return session
-        //         }
-        //         session.user.username = token?.userid
-        //         session.additional_details = token.additional_details || false
+        callbacks: {
+            async session({ session, token }) {
+              session.user.username = token.username
+              session.user.image = token.avatar
+              session.user.role = token.role
+              session.additional_details = token.additional_details || false
     
-        //         return session
-        //     },
-        //     async jwt({ token, user}) {
-        //         if (user?.actype === 'admin') {
-        //             token.role = 'admin'
-        //             return token
-        //         }
+                return session
+            },
+            async jwt({ token, user}) {
+                if (user){
+                  token.username = user.username
+                  token.avatar = user.avatar
+                  token.role = user.role
+                }
+                
     
-        //         return token
-        //     },
-        // },
+                return token
+            },
+        },
+
+
         secret: process.env.NEXTAUTH_SECRET,
         pages: {
           signIn: "/",

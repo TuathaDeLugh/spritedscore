@@ -34,6 +34,7 @@ export default function Login() {
             (result).error == undefined
           ) {
             toast.success('loged in successful');
+            router.refresh();
             router.push('/')
           } else {
             toast.error('incorrect username or password')
