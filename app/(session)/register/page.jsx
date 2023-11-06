@@ -18,7 +18,7 @@ const initialValues = {
   confirmpassword: ""
 };
 
-export default function page() {
+export default function Register() {
   const [disabled, setDisabled] = useState(false);
   const router = useRouter();
 
