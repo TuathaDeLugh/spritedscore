@@ -1,10 +1,55 @@
 "use client"
 import Image from 'next/image';
+import { useFormik } from "formik";
 import React from 'react'
+import { toast } from 'react-toastify';
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from "next/navigation";
 import Link from 'next/link';
 export default function page() {
+
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+  const router = useRouter();
+
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      // validationSchema: loginSchema,
+      onSubmit: (async (values, action) => {
+
+        try {
+          const result = await signIn('credentials', {
+            redirect: false,
+            email: values.email,
+            password: values.password,
+          })
+          console.log(result)
+          if (
+            result &&
+            (result).status == 200 &&
+            (result).error == undefined
+          ) {
+            toast.success('loged in successful');
+            router.push('/')
+          } else {
+            toast.error('incorrect username or password')
+          }
+        } catch (error) {
+        //   alert('failed to login')
+          console.log('Login Failed:', error)
+        }
+
+        action.resetForm();
+
+      }
+      ),
+    });
+
+
   return (
     <section className=" bg-slate-100 dark:bg-slate-800 py-20 lg:py-[120px] h-screen flex items-center">
       <div className="container m-auto ">
@@ -21,14 +66,26 @@ export default function page() {
                 </a>
               </div>
               <h2 className="text-center text-2xl md:text-3xl font-semibold dark:text-purple-400 m-auto mb-6">log In to your Account</h2>
-              <form>
+              <form onSubmit={handleSubmit} autoComplete="off">
 
-                <InputBox type="email" name="email" placeholder="Email" />
+                <input 
+          className=" mb-6 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
+                type="text"
+                 name="email" 
+                 placeholder="Email"
+                 value={values.email}
+                 onChange={handleChange}
+                 onBlur={handleBlur}
+                  />
 
-                <InputBox
+                <input
+          className=" mb-6 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
                   type="password"
                   name="password"
                   placeholder="Password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
                 <div className="mb-6">
                   <input
@@ -65,16 +122,3 @@ export default function page() {
     </section>
   );
 };
-const InputBox = ({ type, placeholder, name }) => {
-    return (
-      <div className="mb-6">
-        {/* <p className=' capitalize font-semibold px-2 py-1'>{name}</p> */}
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          className="w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
-        />
-      </div>
-    );
-  };

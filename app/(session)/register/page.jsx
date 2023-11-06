@@ -7,13 +7,14 @@ import { signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import bcrypt from "bcryptjs";
 
 const initialValues = {
   name: "",
   username: "",
   avatar: "",
   email: "",
-  password: "",
+  pass: "",
   confirmpassword: ""
 };
 
@@ -22,21 +23,30 @@ export default function page() {
   const router = useRouter();
 
   const postapi = async (ogvalues) => {
+    const hashedpassword = await bcrypt.hash(values.pass, 10);
+    const data = {
+      name: ogvalues.name,
+      username: ogvalues.username,
+      email: ogvalues.email,
+      avatar: ogvalues.avatar,
+      password: hashedpassword 
+     }
     await fetch(`/api/user`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(ogvalues),
+      body: JSON.stringify(data),
     });
     router.refresh();
-    router.push("/register");
+    router.push("/login");
   }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues,
     // validationSchema: emailSchema,
     onSubmit: (async (values, action) => {
-     // setDisabled(true);
+      
+     setDisabled(true);
       toast.promise((postapi(values)), {
         pending: "Creating Account",
         success: "Account Created Successfully",
@@ -105,9 +115,9 @@ export default function page() {
           className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
 
                   type="password"
-                  name="password"
+                  name="pass"
                   placeholder="Password"
-                  value={values.password}
+                  value={values.pass}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
