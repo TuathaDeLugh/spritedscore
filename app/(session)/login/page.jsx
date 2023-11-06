@@ -7,7 +7,7 @@ import { signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
-export default function page() {
+export default function Login() {
 
   const initialValues = {
     email: "",
