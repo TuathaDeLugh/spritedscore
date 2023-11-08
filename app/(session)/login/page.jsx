@@ -117,6 +117,7 @@ export default function Login() {
                     <p>Continue With</p> <FcGoogle size={25}/>
                   </button>
               </div>
+              
               <p className="text-base text-center text-body-color dark:text-dark-6">
                 <span className="pr-0.5">Not a member yet?</span>
                 <Link

@@ -67,7 +67,7 @@ export default function Gusername() {
                   <h2 className=" text-2xl md:text-4xl text-purple-700 font-bold dark:text-purple-400 m-auto">SPIRITED SCORE</h2>
                 </a>
               </div>
-              <h2 className="text-center text-2xl font-semibold dark:text-purple-400 m-auto mb-6">Enter Unique username</h2>
+              <h2 className="p-2 border rounded-lg border-slate-400  text-sm bg-red-400/50  m-auto mb-6">No Account Found With This Email. Please Enter Unique username & login again </h2>
               <form onSubmit={handleSubmit} autoComplete="off">
                 
 

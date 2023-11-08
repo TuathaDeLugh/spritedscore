@@ -4,6 +4,7 @@ import { signOut } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { useSession } from "next-auth/react"
 import React from 'react'
+import Image from 'next/image';
 
 function AuthLinks({ navinfo }) {
 
@@ -34,9 +35,18 @@ function AuthLinks({ navinfo }) {
     }
     return (
         <div className="relative">
-            <button onClick={handleOpen} className='border border-gray-500 rounded-full p-1'><AiOutlineUser size={20} /></button>
+            <button onClick={handleOpen} className='border border-gray-500 rounded-full p-1'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={21} width={21} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={20}/>)}</button>
             {open ? (
                 <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded backdrop-blur bg-white/50 dark:bg-slate-900/50">
+                    {session && session.user && session.user.username ?(
+                        <>
+                        <li className="text-l text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left">
+                    <p className='p-1'>{session.user.username}</p>
+                    </li>
+                    <hr className='border-1 dark:border-slate-600'/>
+                        </>
+                    ):null
+                    }
                     {dropdata.map((link) => {
                         return (
                             <li key={link.key} onClick={navinfo}
@@ -48,7 +58,7 @@ function AuthLinks({ navinfo }) {
 
                         )
                     })}
-                    {session ? (
+                    {session && session.user && session.user.username ? (
                         <li
                             className="text-l rounded-lg text-red-400 border border-red-400 p-1 m-2 text-center hover:bg-red-400   hover:text-slate-50 md:dark:hover:text-slate-200"
 

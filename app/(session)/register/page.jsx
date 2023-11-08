@@ -28,7 +28,6 @@ export default function Register() {
       name: ogvalues.name,
       username: ogvalues.username,
       email: ogvalues.email,
-      avatar: ogvalues.avatar,
       password: hashedpassword 
      }
     await fetch(`/api/user`, {
@@ -99,15 +98,6 @@ export default function Register() {
                 name="email" 
                 placeholder="Email"
                   value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur} />
-                <input 
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
-
-                type="text" 
-                name="avatar" 
-                placeholder="Avatar"
-                  value={values.avatar}
                   onChange={handleChange}
                   onBlur={handleBlur} />
 
