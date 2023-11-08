@@ -4,9 +4,10 @@ import Cookies from 'js-cookie';
 import { FiSun,FiMoon } from "react-icons/fi";
 import { Inter } from 'next/font/google'
 
+const inter = Inter({ subsets: ['latin'] })
+
 export default function Darkmode ({ children}) {
-  const inter = Inter({ subsets: ['latin'] })
-  
+
     const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
