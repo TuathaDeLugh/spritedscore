@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <SessionProvider>
           <Toast/>
           <Navbar/>
-        <main>
+        <main className='min-h-screen'>
           {children}
           </main>
           </SessionProvider>
