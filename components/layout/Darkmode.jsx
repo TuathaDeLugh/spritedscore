@@ -2,7 +2,11 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { FiSun,FiMoon } from "react-icons/fi";
+import { Inter } from 'next/font/google'
+
 export default function Darkmode ({ children}) {
+  const inter = Inter({ subsets: ['latin'] })
+  
     const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -34,6 +38,8 @@ export default function Darkmode ({ children}) {
   }, [isDarkMode]);
 
   return (
+    <html lang="en">
+      <body className={inter.className}>
     <div className={isDarkMode ? 'dark' : ''}>
       {children}
         <div className='z-50 text-white fixed bottom-10 right-0 px-1 border border-slate-300 dark:border-slate-700 shadow-sm shadow-slate-600 backdrop-blur p-1 rounded-l-full'>
@@ -42,5 +48,7 @@ export default function Darkmode ({ children}) {
           </button>
           </div>
     </div>
+      </body>
+      </html>
   );
 };

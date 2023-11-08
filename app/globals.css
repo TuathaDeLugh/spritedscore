@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
     html{
         background-color: white;
         color: black;
@@ -14,4 +14,4 @@
             background-color: rgba(31,41,55);
             color: white;
         }
-        }
+        } */

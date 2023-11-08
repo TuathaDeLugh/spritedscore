@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google'
+
 import './globals.css'
 import Darkmode from '@/components/layout/Darkmode'
 import Navbar from '@/components/layout/Navbar'
 import SessionProvider from '@/components/logic/SessionProvider'
 import Toast from '@/components/layout/Toast'
 
-const inter = Inter({ subsets: ['latin'] })
+
 
 export const metadata = {
   title: 'Spirited Score',
@@ -14,8 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    
         <Darkmode>
         <SessionProvider>
           <Toast/>
@@ -25,7 +24,5 @@ export default function RootLayout({ children }) {
           </main>
           </SessionProvider>
         </Darkmode>
-          </body>
-    </html>
   )
 }
