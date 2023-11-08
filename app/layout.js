@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
         <SessionProvider>
           <Toast/>
           <Navbar/>
-        <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen ">
+        <main>
           {children}
           </main>
           </SessionProvider>
