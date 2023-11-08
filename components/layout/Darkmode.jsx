@@ -38,6 +38,30 @@ export default function Darkmode ({ children}) {
     }
   }, [isDarkMode]);
 
+  //   localStorage.setItem('dark-mode', JSON.stringify(newDarkModeStatus)); // Save to localStorage
+  // };
+
+  // useEffect(() => {
+  //   // Check if dark mode preference is set in localStorage
+  //   const localStorageDarkMode = localStorage.getItem('dark-mode');
+
+  //   // If localStorageDarkMode is not set, check user's system preference
+  //   if (localStorageDarkMode === null) {
+  //     const systemDarkMode =
+  //       window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  //     setIsDarkMode(systemDarkMode);
+  //   } else {
+  //     setIsDarkMode(JSON.parse(localStorageDarkMode));
+  //   }
+  // }, []); // Empty dependency array ensures this runs only once, similar to componentDidMount
+
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.documentElement.classList.add('dark');
+  //   } else {
+  //     document.documentElement.classList.remove('dark');
+  //   }
+  // }, [isDarkMode]);
   return (
     <html lang="en" className={isDarkMode ? 'dark' : ''}>
       <body className={inter.className && `bg-white dark:bg-gray-800 text-black dark:text-white`}>
