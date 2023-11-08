@@ -38,11 +38,23 @@ export const authOptions = {
           strategy: "jwt",
         },
         callbacks: {
+          async signIn({ user, account }) {
+            await connectdb();
+            user.provider = account?.provider
+            const dbuser = await User.findOne({ email: user.email })
+            if (!dbuser){
+              return true
+            } 
+            user.username = dbuser.username 
+            user.avatar = dbuser.avatar
+            user.role = dbuser.role
+      
+            return true
+          },
             async session({ session, token }) {
               session.user.username = token.username
               session.user.avatar = token.avatar
               session.user.role = token.role
-              session.additional_details = token.additional_details || false
     
                 return session
             },

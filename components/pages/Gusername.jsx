@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from "next/navigation";
 import { UsernameSchema } from '@/yupschema';
 import { useSession } from "next-auth/react"
+import { signOut } from "next-auth/react";
 
 const initialValues = {
   username: "",
@@ -31,8 +32,9 @@ export default function Gusername() {
         },
         body: JSON.stringify(data),
     });
-      router.refresh();
-      router.push("/Googlelogin");
+    signOut({ callbackUrl: '/login' })
+      // router.refresh();
+      // router.push("/login");
     }
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
       initialValues,
@@ -41,7 +43,7 @@ export default function Gusername() {
         
         toast.promise((postapi(values)), {
           pending: "Creating Account",
-          success: "Account Created Successfully",
+          success: "Account Created Successfully now you can login",
           error: " Failed to create Account"
         });
         action.resetForm();
