@@ -16,15 +16,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Darkmode>
         <SessionProvider>
           <Toast/>
-        <Darkmode>
           <Navbar/>
         <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen ">
           {children}
           </main>
-        </Darkmode>
           </SessionProvider>
+        </Darkmode>
           </body>
     </html>
   )
