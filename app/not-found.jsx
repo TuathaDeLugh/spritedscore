@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 
-function Error() {
+export default function Error() {
   return (
     <>
       <section className="relative z-10 bg-slate-100 dark:bg-gray-800 h-[100vh] flex items-center">
@@ -39,5 +39,3 @@ function Error() {
     </>
   );
 };
-
-export default Error;
