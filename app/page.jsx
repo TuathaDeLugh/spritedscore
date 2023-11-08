@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import { authOptions } from './api/auth/[...nextauth]/route'
+import Progress from '@/components/layout/Progress'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -10,7 +11,8 @@ export default async function Home() {
     {session ? (
           <> name = {session.user.name}<br/>
       username = {session.user.username}<br/>
-      avatar = {session.user.image}<br/>
+      image = {session.user.image}<br/>
+      avatar = {session.user.avatar}<br/>
       email = {session.user.email}<br/>
       role = {session.user.role}
       </>

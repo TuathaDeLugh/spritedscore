@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Darkmode from '@/components/layout/Darkmode'
 import Navbar from '@/components/layout/Navbar'
+import SessionProvider from '@/components/logic/SessionProvider'
 import Toast from '@/components/layout/Toast'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -15,14 +16,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <SessionProvider>
           <Toast/>
-
         <Darkmode>
           <Navbar/>
         <main className=" bg-white dark:bg-gray-800 text-black dark:text-white min-h-screen ">
           {children}
           </main>
         </Darkmode>
+          </SessionProvider>
           </body>
     </html>
   )

@@ -1,14 +1,15 @@
 "use client"
 import Image from 'next/image';
 import { useFormik } from "formik";
-import React from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import { loginSchema } from '@/yupschema';
 export default function Login() {
-
+  const [disabled, setDisabled] = useState(false);
   const initialValues = {
     email: "",
     password: "",
@@ -18,7 +19,7 @@ export default function Login() {
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
-      // validationSchema: loginSchema,
+      validationSchema: loginSchema,
       onSubmit: (async (values, action) => {
 
         try {
@@ -33,7 +34,7 @@ export default function Login() {
             (result).status == 200 &&
             (result).error == undefined
           ) {
-            toast.success('loged in successful');
+            // toast.success('loged in successful');
             router.refresh();
             router.push('/')
           } else {
@@ -68,19 +69,24 @@ export default function Login() {
               </div>
               <h2 className="text-center text-2xl md:text-3xl font-semibold dark:text-purple-400 m-auto mb-6">log In to your Account</h2>
               <form onSubmit={handleSubmit} autoComplete="off">
+                
 
                 <input 
-          className=" mb-6 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
-                type="text"
-                 name="email" 
-                 placeholder="Email"
-                 value={values.email}
-                 onChange={handleChange}
-                 onBlur={handleBlur}
-                  />
+            className= {`${errors.email&& touched.email ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+          type="text"
+          name="email" 
+          placeholder="Email"
+          value={values.email}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          />
+                {errors.email && touched.email ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.email}</p>
+                  ) : (<div className='mb-6' />)}
+                  
 
                 <input
-          className=" mb-6 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
+            className={`${errors.password && touched.password ? "border-red-400 dark:border-red-600  placeholder-red-600/50" : "border-stroke"} w-full rounded-md border bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -88,11 +94,15 @@ export default function Login() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {errors.password && touched.password ? (
+                <p className=" text-red-600 text-sm mb-2">* {errors.password}</p>
+              ) : (<div className='mb-6' />)}
                 <div className="mb-6">
                   <input
+                  disabled={disabled}
                     type="submit"
                     value="Sign In"
-                    className="w-full bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70"
+                    className={`w-full bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70`}
                   />
                 </div>
               </form>
@@ -101,7 +111,7 @@ export default function Login() {
               </p>
               <div className="mb-6">
                 <button
-                    onClick={() => signIn('google', { callbackUrl: '/googleSignup' })}
+                    onClick={() => signIn('google', { callbackUrl: '/Googlelogin' })}
                     className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 hover:text-white  px-5"
                   >
                     <p>Continue With</p> <FcGoogle size={25}/>

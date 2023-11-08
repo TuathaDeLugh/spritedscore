@@ -7,10 +7,10 @@ import GoogleProvider from 'next-auth/providers/google'
 
 export const authOptions = {
 	providers: [
-		// GoogleProvider({
-		// 	clientId: process.env.GOOGLE_ID,
-		// 	clientSecret: process.env.GOOGLE_SECRET,
-		// }),
+		GoogleProvider({
+			clientId: process.env.GOOGLE_ID,
+			clientSecret: process.env.GOOGLE_SECRET,
+		}),
         CredentialsProvider({
             name: "credentials",      
             async authorize(credentials) {
@@ -40,7 +40,7 @@ export const authOptions = {
         callbacks: {
             async session({ session, token }) {
               session.user.username = token.username
-              session.user.image = token.avatar
+              session.user.avatar = token.avatar
               session.user.role = token.role
               session.additional_details = token.additional_details || false
     
