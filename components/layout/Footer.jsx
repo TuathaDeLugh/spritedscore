@@ -5,7 +5,7 @@ import React from "react";
 function Footer ()  {
   return (
     <>
-      <footer className=" relative z-10 pb-10 pt-20 bg-slate-50 dark:bg-slate-800  ">
+      <footer className=" border-t border-slate-200 dark:border-slate-600 relative z-10 pb-10 pt-20 bg-slate-50 dark:bg-slate-800  ">
         <div className="container max-w-[1500px] mx-auto">
           <div className=" flex flex-wrap justify-around">
             <div className="w-full px-4 sm:w-10/ lg:w-4/12">
@@ -113,7 +113,7 @@ export default Footer;
 const LinkGroup = ({ children, header }) => {
   return (
     <>
-      <div className="w-1/3  px-4 lg:w-2/12 text-center sm:text-left">
+      <div className="w-1/3  px-4 lg:w-2/12 ">
         <div className="mb-10 w-full">
           <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
             {header}
