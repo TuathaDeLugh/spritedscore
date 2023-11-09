@@ -23,3 +23,10 @@ export const loginSchema =  Yup.object({
     .required("Please confirm password")
     .oneOf([Yup.ref('pass'), null], 'Confirm Password does not match with password'),
   })
+
+  export const emailSchema = Yup.object({
+    fullname: Yup.string().min(2).max(25).required("Please enter your name"),
+    email: Yup.string().email().required("Please enter your email"),
+    subject: Yup.string().min(3).required("Please enter subject"),
+    details: Yup.string().min(10).required("Please enter detail"),
+  });
