@@ -1,5 +1,5 @@
-import connectdb from "@/database/connection";
 import Email from "@/models/mail";
+import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
