@@ -66,7 +66,7 @@ export default function Darkmode ({ children}) {
     <html lang="en" className={isDarkMode ? 'dark' : ''}>
       <body className={inter.className && `bg-white dark:bg-gray-800 text-black dark:text-white`}>
       {children}
-        <div className='z-50 text-white fixed bottom-10 right-0 px-1 border border-slate-300 dark:border-slate-700 shadow-sm shadow-slate-600 backdrop-blur p-1 rounded-l-full'>
+        <div className='z-50 text-white fixed bottom-10 right-0 px-1 border border-slate-300 dark:border-slate-700  backdrop-blur p-1 rounded-l-full'>
       <button onClick={toggleDarkMode} className=' rounded-full p-2 bg-purple-600'>
           {isDarkMode ? <FiSun size={25}/> : <FiMoon size={25}/>}
           </button>
