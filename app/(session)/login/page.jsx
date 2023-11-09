@@ -69,10 +69,8 @@ export default function Login() {
               </div>
               <h2 className="text-center text-2xl md:text-3xl font-semibold dark:text-purple-400 m-auto mb-6">log In to your Account</h2>
               <form onSubmit={handleSubmit} autoComplete="off">
-                
-
                 <input 
-            className= {`${errors.email&& touched.email ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+            className= {`${errors.email&& touched.email ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base  outline-none  focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
           type="text"
           name="email" 
           placeholder="Email"
@@ -86,7 +84,7 @@ export default function Login() {
                   
 
                 <input
-            className={`${errors.password && touched.password ? "border-red-400 dark:border-red-600  placeholder-red-600/50" : "border-stroke"} w-full rounded-md border bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+            className={`${errors.password && touched.password ? "border-red-400 dark:border-red-600  placeholder-red-600/50" : "border-stroke"} w-full rounded-md border bg-transparent px-5 py-3 text-base  outline-none  focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
                   type="password"
                   name="password"
                   placeholder="Password"
@@ -118,7 +116,7 @@ export default function Login() {
                   </button>
               </div>
               
-              <p className="text-base text-center text-body-color dark:text-dark-6">
+              <p className="text-base text-center  dark:text-dark-6">
                 <span className="pr-0.5">Not a member yet?</span>
                 <Link
                   href="/register"
