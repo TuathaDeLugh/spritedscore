@@ -12,8 +12,6 @@ export default async function Home() {
     {session ? (
           <> name = {session.user.name}<br/>
       username = {session.user.username}<br/>
-      image = {session.user.image}<br/>
-      avatar = {session.user.avatar}<br/>
       email = {session.user.email}<br/>
       role = {session.user.role}
       </>
