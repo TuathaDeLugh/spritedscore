@@ -113,7 +113,7 @@ export default Footer;
 const LinkGroup = ({ children, header }) => {
   return (
     <>
-      <div className="w-full sm:w-1/3  px-4 lg:w-2/12">
+      <div className="w-1/3  px-4 lg:w-2/12 text-center sm:text-left">
         <div className="mb-10 w-full">
           <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
             {header}
