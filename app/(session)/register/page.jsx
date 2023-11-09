@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import bcrypt from "bcryptjs";
+import { SignupSchema } from '@/yupschema';
 
 const initialValues = {
   name: "",
@@ -42,7 +43,7 @@ export default function Register() {
   }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues,
-    // validationSchema: emailSchema,
+    validationSchema: SignupSchema,
     onSubmit: (async (values, action) => {
       
      setDisabled(true);
@@ -74,25 +75,29 @@ export default function Register() {
               <h2 className="text-center text-2xl font-semibold dark:text-purple-400 m-auto mb-6">Create An Account</h2>
               <form className=' overflow-y-auto' onSubmit={handleSubmit} autoComplete="off">
                 <input 
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
-
+            className= {`${errors.name&& touched.name ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
                 type="text" 
                 name="name" 
                 placeholder="Name"
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur} />
+                  {errors.name && touched.name ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.name}</p>
+                  ) : (<div className='mb-6' />)}
                 <input 
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
-
+            className= {`${errors.username && touched.username ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
                 type="text" 
                 name="username" 
                 placeholder="Username"
                   value={values.username}
                   onChange={handleChange}
                   onBlur={handleBlur} />
+                  {errors.username && touched.username ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.username}</p>
+                  ) : (<div className='mb-6' />)}
                 <input
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
+            className= {`${errors.email&& touched.email ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
 
                 type="text" 
                 name="email" 
@@ -100,9 +105,13 @@ export default function Register() {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur} />
+                  {errors.email && touched.email ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.email}</p>
+                  ) : (<div className='mb-6' />)}
 
                 <input
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
+                            className= {`${errors.pass && touched.pass ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+
 
                   type="password"
                   name="pass"
@@ -111,8 +120,11 @@ export default function Register() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {errors.pass && touched.pass ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.pass}</p>
+                  ) : (<div className='mb-6' />)}
                 <input
-          className="mb-4 w-full rounded-md border border-stroke bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white"
+                            className= {`${errors.confirmpassword && touched.confirmpassword ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
 
                   type="password"
                   name="confirmpassword"
@@ -121,6 +133,9 @@ export default function Register() {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                {errors.confirmpassword && touched.confirmpassword ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.confirmpassword}</p>
+                  ) : (<div className='mb-6' />)}
                 <div className="mb-3">
                   <input
                     disabled={disabled}
