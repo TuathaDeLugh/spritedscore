@@ -43,7 +43,7 @@ export default function Register() {
   }
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues,
-    validationSchema: SignupSchema,
+   validationSchema: SignupSchema,
     onSubmit: (async (values, action) => {
       
      setDisabled(true);

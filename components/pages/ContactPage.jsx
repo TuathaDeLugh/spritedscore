@@ -6,13 +6,13 @@ import { toast } from 'react-toastify';
 import { emailSchema } from '@/yupschema';
 
 
-function ContactPage() {
+function ContactPage({name,email}) {
   
 
 
     const initialValues = {
-      fullname: "",
-      email: "",
+      fullname: name,
+      email: email,
       subject: "",
       details: "",
     };
@@ -52,12 +52,12 @@ function ContactPage() {
 
   return (
     <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-      <div className="relative rounded-lg bg-slate-50 p-8 shadow-lg dark:bg-slate-800 sm:p-12">
+      <div className="relative rounded-lg bg-slate-50 p-8 shadow-lg dark:bg-slate-800 sm:p-12 border dark:border-slate-600">
       <form onSubmit={handleSubmit} autocomplete="off">
           <div className='mb-6'>
 
             <input
-              className={`${errors.fullname && touched.fullname  ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 `}
+              className={`${errors.fullname && touched.fullname  ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
               placeholder='Your Name'
               name='fullname'
               value={values.fullname}
@@ -71,7 +71,7 @@ function ContactPage() {
           <div className='mb-6'>
 
             <input
-              className={`${errors.email && touched.email ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 `}
+              className={`${errors.email && touched.email ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
               placeholder='Email'
               type="text"
               name='email'
@@ -86,7 +86,7 @@ function ContactPage() {
           <div className='mb-6'>
 
             <input
-              className={`${errors.subject && touched.subject ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 `}
+              className={`${errors.subject && touched.subject ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
               placeholder='Subject'
               name='subject'
               value={values.subject}

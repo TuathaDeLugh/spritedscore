@@ -1,8 +1,12 @@
 import ContactPage from '@/components/pages/ContactPage';
 import React from 'react'
 import { BsHouseDoor,BsTelephone,BsEnvelopeAt } from "react-icons/bs";
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-function Contact() {
+
+async function Contact() {
+  const session = await getServerSession(authOptions)
   return (
     <section className="mx-auto max-w-[1500px]  m-t-[65px] relative z-10 overflow-hidden py-20 lg:py-[120px] min-h-screen flex items-center">
       <div className="container mx-auto">
@@ -63,8 +67,15 @@ function Contact() {
               </div>
             </div>
           </div>
-          <ContactPage/>
-        </div>
+            {session ? (
+
+              <ContactPage name={session.user.name} email={session.user.email}/>
+            ) : (
+              <ContactPage/>
+
+            )
+            }
+            </div>
       </div>
     </section>
   );
