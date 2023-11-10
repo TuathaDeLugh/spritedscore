@@ -35,7 +35,7 @@ export default function AllReviews() {
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">All Anime</h1>
             
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
         {backgroundImage.map((image) => {
                 return(
                     
