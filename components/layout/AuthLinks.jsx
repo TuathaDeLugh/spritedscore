@@ -37,7 +37,7 @@ function AuthLinks({ navinfo }) {
         <div className="relative">
             <button onClick={handleOpen} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={21} width={21} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={20}/>)}</button>
             {open ? (
-                <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded backdrop-blur bg-white/50 dark:bg-slate-900/50">
+                <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
                     {session && session.user && session.user.username ?(
                         <>
                         <li className="text-l text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left">
