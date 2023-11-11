@@ -1,6 +1,6 @@
 import ContactPage from '@/components/pages/ContactPage';
 import React from 'react'
-import { BsHouseDoor,BsTelephone,BsEnvelopeAt } from "react-icons/bs";
+import { BsHouseDoor,BsBrush,BsEnvelopeAt } from "react-icons/bs";
 import { getServerSession } from 'next-auth'
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
@@ -19,10 +19,8 @@ async function Contact() {
               <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                 GET IN TOUCH WITH US
               </h2>
-              <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eius tempor incididunt ut labore e dolore magna aliqua. Ut
-                enim adiqua minim veniam quis nostrud exercitation ullamco
+              <p className="mb-9 text-base leading-relaxed text-justify">
+               Connect with us! Whether you have burning questions, insightful suggestions, or just want to share your anime journey, our Contact Us page is your direct path to reaching the Spirited Score team. Your thoughts matter, and we're here to engage in the vibrant conversation of the anime community.
               </p>
               <div className="mb-8 flex w-full max-w-[370px]">
                 <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -32,22 +30,22 @@ async function Contact() {
                   <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
                     Our Location
                   </h4>
-                  <p className="text-base text-body-color dark:text-dark-6">
-                    40, Surat
+                  <p className="text-base ">
+                    India
                   </p>
                 </div>
               </div>
 
               <div className="mb-8 flex w-full max-w-[370px]">
                 <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
-                  <BsTelephone size={40}/>
+                  <BsBrush size={40}/>
                 </div>
                 <div className="w-full">
                   <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
-                    Phone Number
+                    Developer/Managed by
                   </h4>
-                  <p className="text-base text-body-color dark:text-dark-6">
-                    (+91) 999 855 855 4
+                  <p className="text-base ">
+                    Sailor
                   </p>
                 </div>
               </div>
@@ -60,7 +58,7 @@ async function Contact() {
                   <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
                     Email Address
                   </h4>
-                  <p className="text-base text-body-color dark:text-dark-6">
+                  <p className="text-base ">
                     umangsailor@hotmail.com
                   </p>
                 </div>
