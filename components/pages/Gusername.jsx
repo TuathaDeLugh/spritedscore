@@ -63,7 +63,7 @@ export default function Gusername() {
                   href="/#"
                   className="mx-auto flex"
                 >
-                  <Image src="/logo.png" height={60} width={70}/>
+                  <Image src="/logo.png" height={60} width={70} alt='logo'/>
                   <h2 className=" text-2xl md:text-4xl text-purple-700 font-bold dark:text-purple-400 m-auto">SPIRITED SCORE</h2>
                 </a>
               </div>

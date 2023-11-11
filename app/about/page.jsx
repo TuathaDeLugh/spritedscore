@@ -645,7 +645,7 @@ export default function page() {
                 Embark on an Anime Odyssey with Spirited Score: Your Gateway to In-Depth Reviews and Community Connection
               </h2>
               <p className="mb-5 text-base text-justify">
-                Spirited Score is not just an anime review platform, it's a community of dedicated anime aficionados who share a profound passion for the diverse and enchanting world of Japanese animation. Our team consists of seasoned critics, industry insiders, and enthusiastic fans, united by the belief that anime deserves thoughtful and nuanced exploration.
+                Spirited Score is not just an anime review platform, it is a community of dedicated anime aficionados who share a profound passion for the diverse and enchanting world of Japanese animation. Our team consists of seasoned critics, industry insiders, and enthusiastic fans, united by the belief that anime deserves thoughtful and nuanced exploration.
               </p>
               <h4 className="mb-5 text-xl font-bold  sm:text-[28px]/[40px]">
                 Why Choose Us:
