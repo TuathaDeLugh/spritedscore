@@ -654,7 +654,7 @@ export default function page() {
                 {
                   chooseus.map((data) => {
                     return (
-                      <li className="mb-8 text-base text-justify">
+                      <li className="mb-8 text-base text-justify" key={data.heading}>
                         <span className='text-lg text-purple-600 dark:text-purple-400 font-semibold mr-3'>
                           {data.heading}
                         </span>
