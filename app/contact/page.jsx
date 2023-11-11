@@ -20,7 +20,7 @@ async function Contact() {
                 GET IN TOUCH WITH US
               </h2>
               <p className="mb-9 text-base leading-relaxed text-justify">
-               Connect with us! Whether you have burning questions, insightful suggestions, or just want to share your anime journey, our Contact Us page is your direct path to reaching the Spirited Score team. Your thoughts matter, and we're here to engage in the vibrant conversation of the anime community.
+               Connect with us! Whether you have burning questions, insightful suggestions, or just want to share your anime journey, our Contact Us page is your direct path to reaching the Spirited Score team. Your thoughts matter, and we are here to engage in the vibrant conversation of the anime community.
               </p>
               <div className="mb-8 flex w-full max-w-[370px]">
                 <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">

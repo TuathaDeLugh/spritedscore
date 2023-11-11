@@ -40,7 +40,7 @@ export default function AllReviews() {
                 All Reviews
               </span>
               <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
-              Unlock the essence of every anime with Spirited Score's insightful reviews
+              Unlock the essence of every anime with Spirited Score&apos;s insightful reviews
               </h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
