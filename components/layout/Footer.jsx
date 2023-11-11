@@ -20,30 +20,29 @@ function Footer ()  {
             <h2 className="text-2xl text-purple-700 font-bold dark:text-purple-400">SPIRITED SCORE</h2>
 
                 </Link>
-                <p className="mb-7 text-base text-body-color dark:text-dark-6">
-                  Sed ut perspiciatis undmnis is iste natus error sit amet
-                  voluptatem totam rem aperiam.
+                <p className="mb-7 text-base text-justify  ">
+                Dive into the captivating world of anime with Spirited Score, your ultimate destination for insightful and engaging anime reviews. Discover in-depth analyses of your favorite series, uncover hidden gems, and explore the vibrant realm of Japanese animation.
                 </p>
               </div>
             </div>
 
-            <LinkGroup header="Links group">
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
+            <LinkGroup header="Links">
+              <NavLink link="/" label="Home" />
+              <NavLink link="/allreview" label="All Reviews" />
+              <NavLink link="/contact" label="Contact Us" />
+              <NavLink link="/about" label="About Us" />
             </LinkGroup>
-            <LinkGroup header="Links group">
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="     link" />
+            <LinkGroup header="Search by">
+              <NavLink link="/#" label="Action" />
+              <NavLink link="/#" label="Romance" />
+              <NavLink link="/#" label="Fentacy" />
+              <NavLink link="/#" label="Si-fi" />
             </LinkGroup>
-            <LinkGroup header="Links group">
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="link" />
-              <NavLink link="/#" label="     link" />
-              <NavLink link="/#" label="link" />
+            <LinkGroup header="Social">
+              <NavLink link="/#" label="Discord" />
+              <NavLink link="/#" label="Facebook" />
+              <NavLink link="/#" label="Instagram" />
+              <NavLink link="/#" label="Twitter (X)" />
             </LinkGroup>
           </div>
         </div>
@@ -113,9 +112,9 @@ export default Footer;
 const LinkGroup = ({ children, header }) => {
   return (
     <>
-      <div className="w-1/3  px-4 lg:w-2/12 ">
+      <div className="w-full text-center md:text-left md:w-1/3 px-4 lg:w-2/12 ">
         <div className="mb-10 w-full">
-          <h4 className="mb-9 text-lg font-semibold text-dark dark:text-white">
+          <h4 className="mb-9 text-lg font-semibold text-purple-600 dark:text-purple-400">
             {header}
           </h4>
           <ul className="space-y-3">{children}</ul>
@@ -128,12 +127,12 @@ const LinkGroup = ({ children, header }) => {
 const NavLink = ({ link, label }) => {
   return (
     <li>
-      <a
+      <Link
         href={link}
-        className="inline-block text-base leading-tight text-body-color hover:text-purple-800  dark:hover:text-purple-400 "
+        className="inline-block text-base leading-tight  hover:text-purple-800  dark:hover:text-purple-400 "
       >
         {label}
-      </a>
+      </Link>
     </li>
   );
 };

@@ -2,7 +2,6 @@ import Image from 'next/image'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]/route'
 import Slider from '@/components/layout/Slider'
-import AllReviews from '@/components/pages/AllReviews'
 
 export default async function Home() {
   const session = await getServerSession(authOptions)
@@ -19,7 +18,7 @@ export default async function Home() {
       </>
   ):(<>Not Loged In</>)
 }
-<AllReviews/>
+
     </div>
   </>
   )
