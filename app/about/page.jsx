@@ -34,7 +34,7 @@ export default function page() {
               <div className="w-full px-3 sm:px-4 xl:w-1/2">
                 <div className="py-3 sm:py-4">
                   <Image height={450} width={450}
-                    src="/itachi.jpg"
+                    src="/Itachi.jpg"
                     alt=""
                     className="w-full rounded-2xl"
                   />
@@ -50,7 +50,7 @@ export default function page() {
               <div className="w-full px-3 sm:px-4 xl:w-1/2">
               <div className="py-3 sm:py-4">
                 <Image height={450} width={450}
-                    src="/goku.jpg"
+                    src="/Goku.jpg"
                     alt=""
                     className="w-full rounded-2xl"
                   />
