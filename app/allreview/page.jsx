@@ -39,7 +39,7 @@ export default function AllReviews() {
             <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
                 All Reviews
               </span>
-              <h2 className="mb-6 text-[32px] font-semibold capitalize text-dark lg:text-[4xl]">
+              <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
               Unlock the essence of every anime with Spirited Score's insightful reviews
               </h2>
 

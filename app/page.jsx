@@ -12,7 +12,7 @@ export default async function Home() {
     <div class="flex flex-col items-center w-full lg:flex-row lg:w-1/2">
 
         <div class="lg:mx-2 lg:order-2">
-        <h2 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Dive into the captivating world of anime with  <span class="text-purple-600 dark:text-purple-400">Spirited Score</span></h2>
+        <h2 class="text-3xl font-bold text-gray-800 dark:text-white lg:text-4xl">Dive into the captivating world of anime with  <span class="text-purple-600 dark:text-purple-400">Spirited Score</span></h2>
 
              <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base text-justify">
              Immerse yourself in the dynamic universe of anime through Spirited Score, where our dedicated team of discerning critics crafts detailed reviews that go beyond the surface. With a focus on narrative intricacies, character development, and artistic nuances, we dissect each series to offer comprehensive insights. Whether you're a seasoned otaku or a newcomer to the anime realm, Spirited Score is your trusted companion, guiding you through the diverse landscape of this captivating art form. Uncover the essence of every show, explore the cultural richness, and embark on a journey of discovery with our meticulously curated reviews and recommendations.
