@@ -21,8 +21,8 @@ function AuthLinks({ navinfo }) {
     if (session && session.user && session.user.role === "user") {
 
         dropdata = [
-            { name: 'Profile', path: '/user/profile', key: 1 },
-            { name: 'My review', path: '/user', key: 2 },
+            { name: 'Profile', path: '/user', key: 1 },
+            { name: 'My review', path: '/user/review', key: 2 },
             { name: 'WatchList', path: '/user/watchlist', key: 3 }]
     }
     if (session && session.user && session.user.role === "admin") {
