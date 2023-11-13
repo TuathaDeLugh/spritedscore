@@ -34,6 +34,10 @@ const reviewSchema = new Schema({
     type: String,
     required: true,
   },
+  trailer: {
+    type: String,
+    required: true,
+  },
   detail: {
     type: String,
     required: true,

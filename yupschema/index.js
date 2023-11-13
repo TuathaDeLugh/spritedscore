@@ -30,3 +30,12 @@ export const loginSchema =  Yup.object({
     subject: Yup.string().min(3).required("Please enter subject"),
     details: Yup.string().min(10).required("Please enter detail"),
   });
+
+  export const AddReviewSchema = Yup.object({
+    title: Yup.string().required('Title is required'),
+    category: Yup.array().required('Category is required').min(1, 'Select at least one category'),
+    image: Yup.string().required('Image is required'),
+    rating: Yup.number().required('Rating is required').min(0, 'Rating must be at least 0').max(10, 'Rating must be at most 10'),
+    trailer: Yup.string().url('Invalid Trailer URL').required("Trailer link is required"),
+    detail: Yup.string().required('Details are required')
+  })

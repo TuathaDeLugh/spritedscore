@@ -6,7 +6,7 @@ export async function POST(request)
 {
     
     try{
-       const{title,category,characters,image,rating,detail,creator} = await request.json();
+       const{title,category,characters,image,rating,trailer,detail,creator} = await request.json();
         await connectdb();
         // await Review.create(
             // {
@@ -24,7 +24,7 @@ export async function POST(request)
             //       { _id: "1", useravatar: "User Avatar", username: "Username", comment: "Comment" },
             //     ]
             //   });
-        await Review.create({title,category,characters,image,rating,detail,creator});
+        await Review.create({title,category,characters,image,rating,trailer,detail,creator});
         
 
         return NextResponse.json(
