@@ -1,16 +1,17 @@
 "use client"
 import React from 'react';
 import { useFormik } from 'formik';
+import { AiFillDelete } from "react-icons/ai";
 
-const ReviewForm = (createdby,avatar) => {
-  const  { values, errors, touched, handleBlur, handleChange, handleSubmit,setValues }  = useFormik({
+const ReviewForm = (createdby, avatar) => {
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues } = useFormik({
     initialValues: {
       title: '',
       category: '',
       image: '',
       rating: '',
       detail: '',
-      creator:createdby,avatar,
+      creator: createdby, avatar,
       characters: [],
       comments: [],
     },
@@ -41,197 +42,170 @@ const ReviewForm = (createdby,avatar) => {
     }));
   };
 
-  const addComment = () => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      comments: [
-        ...prevValues.comments,
-        {
-          id: Math.floor(Math.random() * 1000000), // Generate a random number as an ID
-          useravatar: '',
-          username: '',
-          comment: '',
-        },
-      ],
-    }));
-  };
-
-  const deleteComment = (index) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      comments: prevValues.comments.filter((_, i) => i !== index),
-    }));
-  };
-
+  const categoryOptions = ['Category1', 'Category2', 'Category3', 'Category4']; // Add your category options here
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-8 p-4 bg-white shadow-md rounded">
-      <label htmlFor="title" className="block text-sm font-medium text-gray-600 mb-2">Title:</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        value={values.title}
-        onChange={handleChange}
-        required
-        className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
+    <div className="w-full">
+      <div className="relative rounded-lg bg-slate-50 p-8 shadow-lg dark:bg-slate-800 sm:p-12 border dark:border-slate-600">
+        <form onSubmit={handleSubmit}>
+          <div className='mb-6'>
 
-      <label htmlFor="category" className="block text-sm font-medium text-gray-600 mb-2">Category:</label>
-      <input
-        type="text"
-        id="category"
-        name="category"
-        value={values.category}
-        onChange={handleChange}
-        required
-        className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
+            <input
+              className={`${errors.fullname && touched.fullname ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+              type="text"
+              id="title"
+              placeholder='Title'
+              name="title"
+              value={values.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-      <label htmlFor="image" className="block text-sm font-medium text-gray-600 mb-2">Image URL:</label>
-      <input
-        type="text"
-        id="image"
-        name="image"
-        value={values.image}
-        onChange={handleChange}
-        required
-        className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
+          <div className='flex flex-wrap justify-between gap-3 mb-6  bg-white rounded border dark:border-gray-600  dark:bg-slate-800 border-stroke px-[14px] py-3'>
+            <label htmlFor="category" className="block font-medium text-gray-600 dark:text-gray-200 mr-2">Category:</label>
 
-      <label htmlFor="rating" className="block text-sm font-medium text-gray-600 mb-2">Rating:</label>
-      <input
-        type="text"
-        id="rating"
-        name="rating"
-        value={values.rating}
-        onChange={handleChange}
-        required
-        className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
+            {categoryOptions.map((option) => (
+              <div key={option} className="flex items-center ">
+                <input
+                  type="checkbox"
+                  id={option}
+                  name="category"
+                  value={option}
+                  checked={values.category.includes(option)}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                <label htmlFor={option}>{option}</label>
+              </div>
+            ))}
+          </div>
 
-      <label htmlFor="detail" className="block text-sm font-medium text-gray-600 mb-2">Review:</label>
-      <textarea
-        id="detail"
-        name="detail"
-        rows="4"
-        value={values.detail}
-        onChange={handleChange}
-        required
-        className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      ></textarea>
 
-      
+          <div className='md:flex gap-4 w-full mb-6'>
+              <div className=' mb-6 md:mb-0 w-full md:w-6/12'>
 
-      {/* Characters */}
-      <label htmlFor="characters" className="block text-sm font-medium text-gray-600 mb-2">Characters:</label>
-      {values.characters.map((character, index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="hidden"
-            name={`characters[${index}].id`}
-            placeholder="Character ID"
-            value={character.id}
-            readOnly
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name={`characters[${index}].name`}
-            placeholder="Character Name"
-            value={character.name}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name={`characters[${index}].role`}
-            placeholder="Character Role"
-            value={character.role}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
+            <input
+              className={`${errors.fullname && touched.fullname ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+              type="file"
+              id="image"
+              placeholder='Image'
+              name="image"
+              value={values.image}
+              onChange={handleChange}
+              />
+              </div>
+
+            <div className="flex flex-wrap items-center justify-between w-full md:w-6/12 bg-white rounded border dark:border-gray-600  dark:bg-slate-800 border-stroke px-[14px] py-3 text-base">
+            <label className="block text-sm font-medium text-gray-600 dark:text-gray-200 mr-2"> Rating: </label>
+            <div className='flex grow md:justify-evenly'>
+
+            {[...Array(10).keys()].map((rating) => (
+              <div key={rating} className="mr-2">
+                <input
+                  type="radio"
+                  id={`rating-${rating}`}
+                  name="rating"
+                  value={rating}
+                  checked={values.rating === rating.toString()}
+                  onChange={handleChange}
+                  className="hidden"
+                  />
+                <label
+                  htmlFor={`rating-${rating}`}
+                  className={`cursor-pointer text-xl ${values.rating >= rating.toString() ? 'text-yellow-500' : 'text-gray-300'
+                }`}
+                >
+                  &#9733;
+                </label>
+              </div>
+            ))}
+            </div>
+          </div>
+          </div>
+          {/* Characters */}
+          <div className='mb-6'>
+
+          {values.characters.map((character, index) => (
+            <div key={index} className="mb-4 md:flex gap-4">
+              <div className='md:flex mb-6 md:mb-0 md:w-1/2'>
+              
+              <input
+                type="hidden"
+                name={`characters[${index}].id`}
+                placeholder="Character ID"
+                value={character.id}
+                readOnly/>
+              <input
+                type="text"
+                name={`characters[${index}].name`}
+                placeholder="Character Name"
+                value={character.name}
+                onChange={handleChange}
+                required
+                className="dark:border-gray-600 w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none"
+                />
+              </div>
+              <div className='flex  md:w-1/2'>
+
+              <input
+                type="text"
+                name={`characters[${index}].role`}
+                placeholder="Character Role"
+                value={character.role}
+                onChange={handleChange}
+                required
+                className="dark:border-gray-600 w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none"
+                />
+              <button
+                type="button"
+                onClick={() => deleteCharacter(index)}
+                className="bg-red-500 text-white  p-2 rounded ml-4 my-1 hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
+                >
+                <AiFillDelete size={20}/>
+              </button>
+                </div>
+            </div>
+          ))}
           <button
             type="button"
-            onClick={() => deleteCharacter(index)}
-            className="bg-red-500 text-white px-4 py-2 rounded ml-2 hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
+            onClick={addCharacter}
+            className="text-purple-500 border border-purple-500 bg-transparent px-4 py-2 rounded hover:bg-purple-600 hover:text-white focus:outline-none focus:shadow-outline-blue"
           >
-            Delete Character
+            Add Character
           </button>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={addCharacter}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-      >
-        Add Character
-      </button>
-      {/* Comments */}
-      <label htmlFor="comments" className="block text-sm font-medium text-gray-600 mb-2">Comments:</label>
-      {values.comments.map((comment, index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="hidden"
-            name={`comments[${index}].id`}
-            placeholder="Comment ID"
-            value={comment.id}
-            readOnly
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name={`comments[${index}].useravatar`}
-            placeholder="User Avatar"
-            value={comment.useravatar}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name={`comments[${index}].username`}
-            placeholder="Username"
-            value={comment.username}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <input
-            type="text"
-            name={`comments[${index}].comment`}
-            placeholder="Comment Text"
-            value={comment.comment}
-            onChange={handleChange}
-            required
-            className="w-full px-3 py-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-          />
-          <button
-            type="button"
-            onClick={() => deleteComment(index)}
-            className="bg-red-500 text-white px-4 py-2 rounded ml-2 hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
-          >
-            Delete Comment
-          </button>
-        </div>
-      ))}
-      <button
-        type="button"
-        onClick={addComment}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-      >
-        Add Comment
-      </button>
+          </div>
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-600 focus:outline-none focus:shadow-outline-green active:bg-green-800"
-      >
-        Submit Review
-      </button>
-    </form>
+
+          <div className='mb-6'>
+
+            <textarea
+              className={`${errors.detail && touched.detail ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full resize-none rounded border border-stroke px-[14px] py-3 text-base  outline-none bg-white dark:bg-slate-800 `}
+              rows="18"
+              name='details'
+              value={values.detail}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder='Details'
+            ></textarea>
+            {errors.detail && touched.detail ? (
+              <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.detail}</p>
+            ) : null}
+          </div>
+
+
+
+          
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="bg-green-500 text-white px-4 py-2 rounded mt-4 hover:bg-green-600 focus:outline-none focus:shadow-outline-green active:bg-green-800"
+          >
+            Submit Review
+          </button>
+        </form>
+      </div>
+    </div>
   );
 };
 

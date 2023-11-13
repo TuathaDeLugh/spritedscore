@@ -9,7 +9,15 @@ export default async function page() {
     const avatar = session.user.avatar;
   return (
     <section class="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
+      <div class="container px-6 py-5 mx-auto">
+        <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
+          New Review
+        </span>
+        <h2 className="mb-6 text-[32px] font-bold text-dark lg:text-[4xl]">
+          Will Create By : {session.user.username} 
+        </h2>
       <ReviewForm createdby={name} avatar={avatar}/>
+      </div>
     </section>
   )
 }

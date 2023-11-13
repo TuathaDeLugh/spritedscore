@@ -5,10 +5,11 @@ const reviewSchema = new Schema({
     type: String,
     required: true,
   },
-  category: {
-    type: String,
-    required: true,
+  category: { 
+    type: [String], 
+    required: true 
   },
+
   characters: [
     {
       _id: {
