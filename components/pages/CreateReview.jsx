@@ -63,6 +63,7 @@ const ReviewForm = (createdby, avatar) => {
 
           <div className='flex flex-wrap justify-between gap-3 mb-6  bg-white rounded border dark:border-gray-600  dark:bg-slate-800 border-stroke px-[14px] py-3'>
             <label htmlFor="category" className="block font-medium text-gray-600 dark:text-gray-200 mr-2">Category:</label>
+            <div className='flex grow md:justify-evenly gap-3  flex-wrap'>
 
             {categoryOptions.map((option) => (
               <div key={option} className="flex items-center ">
@@ -74,10 +75,11 @@ const ReviewForm = (createdby, avatar) => {
                   checked={values.category.includes(option)}
                   onChange={handleChange}
                   className="mr-2"
-                />
+                  />
                 <label htmlFor={option}>{option}</label>
               </div>
             ))}
+            </div>
           </div>
 
 
@@ -97,10 +99,10 @@ const ReviewForm = (createdby, avatar) => {
 
             <div className="flex flex-wrap items-center justify-between w-full md:w-6/12 bg-white rounded border dark:border-gray-600  dark:bg-slate-800 border-stroke px-[14px] py-3 text-base">
             <label className="block text-sm font-medium text-gray-600 dark:text-gray-200 mr-2"> Rating: </label>
-            <div className='flex grow md:justify-evenly'>
+            <div className='flex grow justify-evenly'>
 
             {[...Array(10).keys()].map((rating) => (
-              <div key={rating} className="mr-2">
+              <div key={rating} className="mr-1">
                 <input
                   type="radio"
                   id={`rating-${rating}`}
@@ -181,7 +183,7 @@ const ReviewForm = (createdby, avatar) => {
             <textarea
               className={`${errors.detail && touched.detail ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full resize-none rounded border border-stroke px-[14px] py-3 text-base  outline-none bg-white dark:bg-slate-800 `}
               rows="18"
-              name='details'
+              name='detail'
               value={values.detail}
               onChange={handleChange}
               onBlur={handleBlur}
