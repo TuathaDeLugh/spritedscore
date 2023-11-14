@@ -10,7 +10,7 @@ export default async function AllReviews() {
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [isFilterOpen, setFilterOpen] = useState(false);
     const reviews = await getAllReviews();
-
+    console.log(reviews);
     const handleCategoryChange = (category) => {
         setSelectedCategories((prevSelected) =>
             prevSelected.includes(category)
