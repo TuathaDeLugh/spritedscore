@@ -37,7 +37,7 @@ const ReviewForm = (createdby, avatar) => {
       toast.promise((postapi(values)),
         {
           panding: "Sending Message To Umang Sailor",
-          success: "Message Sent Successfully",
+          success: "Review Created Successfully",
           error: " Failed To Send"
         });
       action.resetForm();

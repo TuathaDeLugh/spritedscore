@@ -2,16 +2,14 @@ import Link from 'next/link';
 import React, { Suspense } from 'react'
 import { HiPencilAlt } from "react-icons/hi";
 import { AiOutlineEye } from "react-icons/ai";
+import getUserReview from '@/controller/userreview';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
 
-export default function page() {
-  const reviews = [
-    {
-      _id:123,
-      title:"hello",
-      info:"hello"
-
-    }
-  ]
+export default async function page() {
+  const session = await getServerSession(authOptions)
+  const reviews = await getUserReview(session.user.username);
+  console.log(reviews);
   let i = 1;
   return (
     <section class="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
@@ -87,7 +85,7 @@ export default function page() {
                         "hidden sm:table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
-                      {review.info}
+                      {review.rating}/10
                     </td>
                     <td
                       className={
@@ -98,7 +96,6 @@ export default function page() {
                       <Link href={`/admin/review/edit-review/${review._id}`} title="Edit" >
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
-                      {/* <DelProjBtn id={review._id}/> */}
                         <p className='px-2'></p>
                       <Link href={`/admin/review/${review._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
