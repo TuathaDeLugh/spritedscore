@@ -1,5 +1,5 @@
 import FatchAllreview from '@/components/pages/FatchAllreview';
-import ReviewDropDown from '@/components/reviewDropDown';
+// import ReviewDropDown from '@/components/reviewDropDown';
 
 
 export default async function AllReviews() {
@@ -14,7 +14,7 @@ export default async function AllReviews() {
         </span>
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] flex justify-between">
         Unlock The Essence Of Every Anime With Spirited Score&apos;s Insightful Reviews
-                    <ReviewDropDown/>
+                    {/* <ReviewDropDown/> */}
         </h2>
                    <FatchAllreview/>
             </div>
