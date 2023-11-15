@@ -12,8 +12,8 @@ export default async function page() {
   console.log(reviews);
   let i = 1;
   return (
-    <section class="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
-      <div class="container px-6 py-5 mx-auto">
+    <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
+      <div className="container px-6 py-5 mx-auto">
         <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
           My reviews
         </span>
