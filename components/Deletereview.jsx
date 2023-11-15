@@ -16,8 +16,8 @@ export default function DelReviewBtn({ id }) {
         method: "DELETE",
       });
       toast.success('Review Deleted');
-      router.refresh();
       router.push("/user/review"); 
+      router.refresh();
     }
   }
   return (

@@ -5,22 +5,16 @@ import { AiFillDelete } from "react-icons/ai";
 import { AddReviewSchema } from '@/yupschema';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "firebase/storage";
+import { storage } from '@/util/firebase';
 
 const ReviewForm = (createdby, avatar) => {
   const router = useRouter();
-  const postapi = async (ogvalues) => {
-    await fetch(`/api/review`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(ogvalues),
-    });
-    router.push("/user/review");
-    router.refresh();
-
-  }
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues } = useFormik({
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues,setFieldValue} = useFormik({
     initialValues: {
       title: '',
       category: '',
@@ -33,20 +27,42 @@ const ReviewForm = (createdby, avatar) => {
     },
     validationSchema: AddReviewSchema,
     onSubmit: (async (values, action) => {
-
-      toast.promise((postapi(values)),
-        {
-          panding: "Sending Message To Umang Sailor",
-          success: "Review Created Successfully",
-          error: " Failed To Send"
-        });
-      action.resetForm();
-
-      // Log the form values or send them to your server
       console.log(values);
-   }
-      ),
-    });
+      router.push("/user/review");
+      const postapi = async () => {
+        const imageRef = ref(storage, `images/${values.image.name}`);
+        const snapshot = await uploadBytes(imageRef, values.image);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        const projectdata = {
+          title: values.title,
+      category: values.category,
+      image: downloadURL,
+      rating: values.rating,
+      trailer: values.trailer,
+      detail: values.detail,
+      creator: values.creator,
+      characters: values.characters,
+         
+        };
+        await fetch(`/api/review`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(projectdata),
+        });
+        router.refresh();
+      }
+
+      toast.promise(postapi(), {
+        panding: "Review adding to database",
+        success: "Review Added Successfully",
+        error: "Failed To Add"
+      });
+
+      action.resetForm();
+    })
+  });
 
   const addCharacter = () => {
     setValues((prevValues) => ({
@@ -123,12 +139,14 @@ const ReviewForm = (createdby, avatar) => {
 
               <input
                 className={`${errors.image && touched.image ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
-                type="text"
+                type="file"
+                accept="image/png, .jpg, jpeg, .svg"
                 id="image"
                 placeholder='Image'
                 name="image"
-                value={values.image}
-                onChange={handleChange}
+                onChange={(e) => {
+                  setFieldValue('image', e.currentTarget.files[0])
+                }}
               />
               {errors.image && touched.image ? (
                 <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.image}</p>

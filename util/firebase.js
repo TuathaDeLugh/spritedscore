@@ -8,13 +8,13 @@ const firebaseConfig = {
   // messagingSenderId:  process.env.messagingSenderId,
   // appId:  process.env.appid,
   // measurementId: process.env.measurementId
-  apiKey: "AIzaSyCFvztaOw03GLYYKzPDXpIKtNHVLKxUCgg",
-  authDomain: "fir-con-8961c.firebaseapp.com",
-  projectId: "fir-con-8961c",
-  storageBucket: "fir-con-8961c.appspot.com",
-  messagingSenderId: "456775386119",
-  appId: "1:456775386119:web:e87f8225e3f3eee64416a2",
-  measurementId: "G-4D718J3RET"
+  apiKey: "AIzaSyBW23z7F5gprdEAQpZEOxOTEeBZdKIUrBQ",
+  authDomain: "spirited-score-review.firebaseapp.com",
+  projectId: "spirited-score-review",
+  storageBucket: "spirited-score-review.appspot.com",
+  messagingSenderId: "132254638223",
+  appId: "1:132254638223:web:06d337c43e2d024c0490fa",
+  measurementId: "G-G6TF5CRG1M"
 };
 
 const app = initializeApp(firebaseConfig);
