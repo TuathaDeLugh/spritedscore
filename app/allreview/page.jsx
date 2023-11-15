@@ -13,7 +13,7 @@ export default async function AllReviews() {
           All reviews
         </span>
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] flex justify-between">
-        Unlock The Essence Of Every Anime With Spirited Score's Insightful Reviews
+        Unlock The Essence Of Every Anime With Spirited Score&apos;s Insightful Reviews
                     <ReviewDropDown/>
         </h2>
                    <FatchAllreview/>
