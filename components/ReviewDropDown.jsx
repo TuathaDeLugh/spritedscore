@@ -7,7 +7,7 @@ export default function ReviewDropDown() {
     
   return (
     <div className="relative">
-        <CiFilter />
+        <CiFilter size={25}/>
     </div>
   )
 }

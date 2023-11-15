@@ -33,7 +33,7 @@ export default async function Home() {
       email = {session.user.email}<br/>
       role = {session.user.role}
       </>
-  ):(<>Not Loged In</>)
+  ):(<>No Bitch Loged In</>)
 }
 
     </div>

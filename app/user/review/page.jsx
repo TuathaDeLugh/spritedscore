@@ -5,6 +5,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import getUserReview from '@/controller/userreview';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
+import DelReviewBtn from '@/components/Deletereview';
 
 export default async function page() {
   const session = await getServerSession(authOptions)
@@ -97,9 +98,10 @@ export default async function page() {
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
                         <p className='px-2'></p>
-                      <Link href={`/admin/review/${review._id}`} title="View " >
+                      {/* <Link href={`/admin/review/${review._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
-                      </Link>
+                      </Link> */}
+                      <DelReviewBtn id={review._id}/>
                       </div>
                     </td>
                     </Suspense>
