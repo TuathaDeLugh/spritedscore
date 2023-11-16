@@ -36,6 +36,6 @@ export const loginSchema =  Yup.object({
     category: Yup.array().required('Category is required').min(1, 'Select at least one category'),
     image: Yup.string().required('Image is required'),
     rating: Yup.number().required('Rating is required').min(0, 'Rating must be at least 0').max(10, 'Rating must be at most 10'),
-    trailer: Yup.string().url('Invalid Trailer URL').required("Trailer link is required"),
+    trailer: Yup.string().required("Trailer link is required").matches( ('/'),'Please enter valid URL You can put / if Trailer not avaliable')||url('Invalid Trailer URL'),
     detail: Yup.string().required('Details are required')
   })

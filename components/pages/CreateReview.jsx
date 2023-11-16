@@ -37,7 +37,7 @@ const ReviewForm = (createdby, avatar) => {
           title: values.title,
       category: values.category,
       image: downloadURL,
-      rating: values.rating,
+      rating: (parseInt(values.rating)+1),
       trailer: values.trailer,
       detail: values.detail,
       creator: values.creator,
@@ -55,7 +55,7 @@ const ReviewForm = (createdby, avatar) => {
       }
 
       toast.promise(postapi(), {
-        panding: "Review adding to database",
+        pending: "Review adding to database",
         success: "Review Added Successfully",
         error: "Failed To Add"
       });
@@ -165,13 +165,13 @@ const ReviewForm = (createdby, avatar) => {
                         id={`rating-${rating}`}
                         name="rating"
                         value={rating}
-                        checked={values.rating === rating.toString()}
+                        checked={values.rating === (rating).toString()}
                         onChange={handleChange}
                         className="hidden"
                       />
                       <label
                         htmlFor={`rating-${rating}`}
-                        className={`cursor-pointer text-xl ${values.rating >= rating.toString() ? 'text-yellow-500' : 'text-gray-300'
+                        className={`cursor-pointer text-xl ${values.rating >= (rating).toString() ? 'text-yellow-500' : 'text-gray-300'
                           }`}
                       >
                         &#9733;

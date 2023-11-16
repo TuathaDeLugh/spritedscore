@@ -19,7 +19,7 @@ export default async function page() {
           My reviews
         </span>
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
-          Reviews created : 100
+          Reviews created : {reviews.length}
         </h2>
         <div className='flex gap-2 w-full mx-2'>
       <Link href={"/user/review/add"} className='bg-purple-600 hover:opacity-80 my-5 font-bold text-white py-3 px-6 rounded'>Add review</Link>

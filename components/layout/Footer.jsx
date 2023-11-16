@@ -33,10 +33,10 @@ function Footer ()  {
               <NavLink link="/about" label="About Us" />
             </LinkGroup>
             <LinkGroup header="Search by">
-              <NavLink link="/#" label="Action" />
-              <NavLink link="/#" label="Romance" />
-              <NavLink link="/#" label="Fentacy" />
-              <NavLink link="/#" label="Si-fi" />
+              <NavLink link="/allreview/filter/Action" label="Action" />
+              <NavLink link="/allreview/filter/Romance" label="Romance" />
+              <NavLink link="/allreview/filter/Fantasy" label="Fantacy" />
+              <NavLink link="/allreview/filter/Sci-fi" label="Si-fi" />
             </LinkGroup>
             <LinkGroup header="Social">
               <NavLink link="/#" label="Discord" />
