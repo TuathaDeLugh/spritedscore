@@ -85,7 +85,10 @@ const ReviewForm = (createdby, avatar) => {
     }));
   };
 
-  const categoryOptions = ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice of life', 'shonan', 'Seinen', 'Suspense', 'super natural']; // Add your category options here
+  
+  const categoryOptions =
+  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
+  // Add your category options here
   return (
     <div className="w-full">
       <div className="relative rounded-lg bg-slate-50 p-8 shadow-lg dark:bg-slate-800 sm:p-12 border dark:border-slate-600">

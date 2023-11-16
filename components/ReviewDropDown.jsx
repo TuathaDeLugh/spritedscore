@@ -9,7 +9,7 @@ export default function ReviewDropDown() {
       setOpen(!open);
   };
   let ddata =
-  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice of life', 'shonan', 'Seinen', 'Suspense', 'super natural'];
+  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
 
 
     
@@ -17,7 +17,7 @@ export default function ReviewDropDown() {
          <div className="relative">
             <button onClick={handleOpen} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'><CiFilter size={25}/></button>
             {open ? (
-                <ul className="mt-6 z-10 relative md:absolute md:-right-7 list-none m-1 border overflow-y-auto max-h-96 dark:border-slate-700 w-full md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
+                <ul className="mt-6 z-10 absolute right-0 list-none m-1 border overflow-y-auto max-h-60 md:max-h-96 dark:border-slate-700 w-ma md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
                     
                     {ddata.map((link) => {
                         return (
