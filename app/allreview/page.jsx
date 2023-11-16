@@ -1,9 +1,10 @@
 import FatchAllreview from '@/components/pages/FatchAllreview';
 import React, { Suspense} from 'react';
 import ReviewDropDown from '@/components/ReviewDropDown';
-
+import SkelReview from '@/components/layout/SkelReview';
 
 export default function AllReviews() {
+    const reviews = [1,2,3,4,5,6]
     
     return (
         <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
@@ -24,7 +25,9 @@ export default function AllReviews() {
         
         
             </div>
-            <Suspense fallback={<>loading</>}>
+            
+
+            <Suspense fallback={<SkelReview/>}>
                    <FatchAllreview/>
             </Suspense>
             </div>

@@ -1,6 +1,7 @@
 import React, { Suspense} from 'react';
 import ReviewDropDown from '@/components/ReviewDropDown';
 import FatchReviewCat from '@/components/pages/FatchReviewCat';
+import SkelReview from '@/components/layout/SkelReview';
 
 
 export default function FilteredReviews({ params: { category } }) {
@@ -24,7 +25,7 @@ export default function FilteredReviews({ params: { category } }) {
         
         
             </div>
-            <Suspense fallback={<>loading</>}>
+            <Suspense fallback={<SkelReview/>}>
                    <FatchReviewCat category={category}/>
             </Suspense>
             </div>
