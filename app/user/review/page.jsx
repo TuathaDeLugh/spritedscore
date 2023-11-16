@@ -94,7 +94,7 @@ export default async function page() {
                       }
                     >
                       <div className=' flex'>
-                      <Link href={`/admin/review/edit-review/${review._id}`} title="Edit" >
+                      <Link href={`/user/review/edit/${review._id}`} title="Edit" >
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
                         <p className='px-2'></p>
