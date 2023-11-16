@@ -65,7 +65,7 @@ function AuthLinks({ navinfo }) {
                         >
 
 
-                            <button onClick={() => signOut({ callbackUrl: '/' })}>
+                            <button onClick={() => signOut()}>
                                 Log Out
                             </button>
                         </li>
