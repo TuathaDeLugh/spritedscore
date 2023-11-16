@@ -1,6 +1,6 @@
 import FatchAllreview from '@/components/pages/FatchAllreview';
 import React, { Suspense} from 'react';
-import ReviewDropDown from '@/components/reviewDropDown';
+import ReviewDropDown from '@/components/ReviewDropDown';
 
 
 export default function AllReviews() {
