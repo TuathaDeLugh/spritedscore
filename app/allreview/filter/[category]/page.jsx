@@ -1,5 +1,5 @@
 import React, { Suspense} from 'react';
-import ReviewDropDown from '@/components/reviewDropDown';
+import ReviewDropDown from '@/components/ReviewDropDown';
 import FatchReviewCat from '@/components/pages/FatchReviewCat';
 
 
