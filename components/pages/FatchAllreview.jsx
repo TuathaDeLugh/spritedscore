@@ -7,9 +7,9 @@ export default async function FatchAllreview() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
     {
-        reviews ? (<>{
+        
 
-            reviews.map((review) => {
+            reviews?.map((review) => {
                 return (
                     <Link
                         href={`/allreview/${review._id}`}
@@ -28,9 +28,7 @@ export default async function FatchAllreview() {
                     </Link>
                 );
             })
-        }</>) : (
-            <p>No data available.</p>
-        )}
+        }
 </div>
   )
 }
