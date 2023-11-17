@@ -28,7 +28,7 @@ async function page({ params: { id } }) {
               {
                 review.category?.map((category) => {
                   return (
-                    <span className='px-2'>{category}</span>
+                    <span key={category} className='px-2'>{category}</span>
 
                   );
                 })
@@ -48,7 +48,7 @@ async function page({ params: { id } }) {
                     review.characters?.map((character) => {
 
                       return (
-                        <tr className='  border-b dark:border-slate-500'>
+                        <tr key={character.name} className='border-b dark:border-slate-500'>
 
                           <td className='py-1 px-2'>{character.name}</td>
                           <td className='py-1 px-2'>{character.role}</td>
