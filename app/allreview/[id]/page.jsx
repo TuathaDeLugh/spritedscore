@@ -1,3 +1,4 @@
+import CommentForm from '@/components/CommentForm'
 import getSingleReview from '@/controller/sainglereview'
 import Image from 'next/image'
 import React from 'react'
@@ -36,58 +37,75 @@ async function page({ params: { id } }) {
             </div>
             <div className='mt-5 w-full'>
               <span className=' text-purple-500 dark:text-purple-400  font-medium'>Charectors : </span>
-                  {
-                    (review.characters.length>0) ? (
-                    <table className='w-full rounded-lg mt-3 '>
-                <tr className='text-purple-500 dark:text-purple-400 bg-slate-300 dark:bg-slate-600 border-b dark:border-slate-500'>
-                  <td className='py-1 px-2'>Name</td>
-                  <td className='py-1 px-2'>Status</td>
-                </tr>
-                <tbody>
-                  {
-                    review.characters?.map((character) => {
+              {
+                (review.characters.length > 0) ? (
+                  <table className='w-full rounded-lg mt-3 '>
+                    <tr className='text-purple-500 dark:text-purple-400 bg-slate-300 dark:bg-slate-600 border-b dark:border-slate-500'>
+                      <td className='py-1 px-2'>Name</td>
+                      <td className='py-1 px-2'>Status</td>
+                    </tr>
+                    <tbody>
+                      {
+                        review.characters?.map((character) => {
 
-                      return (
-                        <tr key={character.name} className='border-b dark:border-slate-500'>
+                          return (
+                            <tr key={character.name} className='border-b dark:border-slate-500'>
 
-                          <td className='py-1 px-2'>{character.name}</td>
-                          <td className='py-1 px-2'>{character.role}</td>
+                              <td className='py-1 px-2'>{character.name}</td>
+                              <td className='py-1 px-2'>{character.role}</td>
 
-                        </tr>
+                            </tr>
 
-                      );
-                    })
-                  }
-                </tbody>
-              </table>
-                    )
-                    : <p>Charectors not provided by creator</p>
-                  }
-              
+                          );
+                        })
+                      }
+                    </tbody>
+                  </table>
+                )
+                  : <p>Charectors not provided by creator</p>
+              }
+
             </div>
           </div>
         </div>
         <div className='flex justify-between flex-wrap mt-5 '>
           <div className='w-full lg:w-[77%]'>
-          <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">Review :</p>   
-          <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5' disabled>
-          {review.detail}
-          </textarea>
+            <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">Review :</p>
+            <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5' disabled>
+              {review.detail}
+            </textarea>
           </div>
           <div className="w-full lg:w-[20%]">
-          <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">comments:</p> 
+            <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">comments:</p>
+              <CommentForm reviewid={review._id}/>
+            <div>
+              
+              {
+                (review.comments.length > 0) ? (
+                  <div>
 
-                 <div>
-                    <div className=' mt-5'>
-                      <form className='flex justify-between'>
-                        <input type="text" className='w-[80%] bg-transparent border rounded-full px-3 py-1 border-gray-400 focus:outline-none focus:ring focus:ring-violet-300' placeholder='Comment' required name="comment" id="" />
-                        <button type="submit" value="Submit" className='rounded-full p-2 bg-purple-400 '>🪄</button>
-                      </form>
-                    </div>
-                  comments
-                 </div>
+                    {
+                      review.comments?.map((comment) => {
+
+                        return (
+                          <div key={comment.name} className='border-b dark:border-slate-500'>
+
+                            <div className='py-1 px-2'>{character.name}</div>
+                            <div className='py-1 px-2'>{character.role}</div>
+
+                          </div>
+
+                        );
+                      })
+                    }
+                  </div>
+
+                )
+                  : <p className='mt-5'>No comments avaliable become the first</p>
+              }
+            </div>
           </div>
-          </div>
+        </div>
       </div>
     </section>
   )
