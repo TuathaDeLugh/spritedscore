@@ -1,15 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 const firebaseConfig = {
-  // apiKey:  process.env.apiKey,
-  // authDomain:  process.env.authDomain,
-  // projectId: process.env.projectId,
-  // storageBucket: process.env.storageBucket,
-  // messagingSenderId:  process.env.messagingSenderId,
-  // appId:  process.env.appid,
-  // measurementId: process.env.measurementId
-  apiKey: "AIzaSyBW23z7F5gprdEAQpZEOxOTEeBZdKIUrBQ",
-  authDomain: "spirited-score-review.firebaseapp.com",
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: "spirited-score-review",
   storageBucket: "spirited-score-review.appspot.com",
   messagingSenderId: "132254638223",

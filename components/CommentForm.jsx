@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 
-export default function CommentForm({ params: { reviewid } }) {
+export default function CommentForm({ reviewid }) {
   return (
     <div className=' mt-5'>
                 <form className='flex justify-between'>
