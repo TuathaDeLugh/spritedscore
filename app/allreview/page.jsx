@@ -1,6 +1,6 @@
 import FatchAllreview from '@/components/pages/FatchAllreview';
 import React, { Suspense} from 'react';
-import ReviewDropDown from '@/components/ReviewDropDown';
+// import ReviewDropDown from '@/components/ReviewDropDown';
 import SkelReview from '@/components/layout/SkelReview';
 
 export default function AllReviews() {
@@ -18,7 +18,7 @@ export default function AllReviews() {
         Unlock The Essence Of Every Anime With Spirited Score&apos;s Insightful Reviews
         </h2>
 
-                    <ReviewDropDown/>
+                    {/* <ReviewDropDown/> */}
 
         
         
