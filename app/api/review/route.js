@@ -18,7 +18,7 @@ export async function POST(request)
 
 export async function GET (){
     await connectdb();
-    const reviews  = await Review.find();
+    const reviews  = await Review.find().sort({ title: 1 });
     return NextResponse.json({data:reviews});
 }
 

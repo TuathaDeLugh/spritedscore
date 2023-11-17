@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
     const { category } = params;
     await connectdb();
-    const reviews = await Review.find({ category });
+    const reviews = await Review.find({ category }).sort({ title: 1 });
     return NextResponse.json({ data:reviews }, { status: 200 });
 
 }
