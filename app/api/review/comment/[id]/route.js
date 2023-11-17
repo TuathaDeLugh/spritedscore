@@ -28,7 +28,8 @@ export async function POST(request, { params }) {
 
 export async function DELETE(request, { params }) {
         try {
-                const { id, commentId } = params;
+                const { id,} = params;
+                const commentId = request.nextUrl.searchParams.get('commentId');
                 await connectdb();
                 const foundReview = await Review.findById(id).exec();
                 if (!foundReview) {
