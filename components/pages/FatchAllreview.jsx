@@ -15,7 +15,7 @@ export default async function FatchAllreview() {
                         href={`/allreview/${review._id}`}
                         key={review._id}
                         className="flex items-end overflow-hidden bg-cover rounded-lg h-96 border border-slate-200 dark:border-slate-600 hover:scale-105  hover:border-purple-500 dark:hover:border-purple-400  ease-in-out duration-300"
-                        style={{ backgroundImage: `url(${review.image})`, backgroundPosition: "center center"}}
+                        style={{ backgroundImage: `url(${review.image.link})`, backgroundPosition: "center center"}}
                     >
                         <div className="w-full px-4 py-4 overflow-hidden rounded-b-lg backdrop-blur-sm bg-white/60 dark:bg-gray-800/60">
                             <h2 className="mt-4 text-xl font-semibold text-gray-800 capitalize dark:text-white">

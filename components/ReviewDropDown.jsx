@@ -18,7 +18,12 @@ export default function ReviewDropDown() {
             <button onClick={handleOpen} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'><CiFilter size={25}/></button>
             {open ? (
                 <ul className="mt-6 z-10 absolute right-0 list-none m-1 border overflow-y-auto max-h-60 md:max-h-96 dark:border-slate-700 w-ma md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
-                    
+                    <li key={"all"}
+                            className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-50 md:dark:hover:text-slate-200">
+
+                                <Link onClick={() => setOpen(!open)} href={`/allreview`} className='p-1 w-full'>
+                                    {"All"}</Link>
+                            </li>
                     {ddata.map((link) => {
                         return (
                             <li key={link}

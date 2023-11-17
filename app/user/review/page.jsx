@@ -101,7 +101,7 @@ export default async function page() {
                       {/* <Link href={`/admin/review/${review._id}`} title="View " >
                         <AiOutlineEye className='text-green-600' size={25} />
                       </Link> */}
-                      <DelReviewBtn id={review._id}/>
+                      <DelReviewBtn id={review._id} name={review.image.name}/>
                       </div>
                     </td>
                     </Suspense>

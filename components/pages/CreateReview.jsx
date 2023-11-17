@@ -36,7 +36,10 @@ const ReviewForm = (createdby, avatar) => {
         const projectdata = {
           title: values.title,
       category: values.category,
-      image: downloadURL,
+      image: {
+        name:values.image.name
+        ,link:downloadURL
+      },
       rating: (parseInt(values.rating)+1),
       trailer: values.trailer,
       detail: values.detail,
@@ -116,7 +119,7 @@ const ReviewForm = (createdby, avatar) => {
               <div className='flex grow md:justify-start flex-wrap md:w-[80%]'>
 
                 {categoryOptions.map((option) => (
-                  <div key={option} className="flex items-center w-1/2 md:w-[25%] lg:w-[14%] mb-2">
+                  <div key={option} className="flex items-center w-1/2 md:w-[30%] lg:w-[14%] mb-2">
                     <input
                       type="checkbox"
                       id={option}
