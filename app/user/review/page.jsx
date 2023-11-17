@@ -10,7 +10,7 @@ import DelReviewBtn from '@/components/Deletereview';
 export default async function page() {
   const session = await getServerSession(authOptions)
   const reviews = await getUserReview(session.user.username);
-  console.log(reviews);
+  // console.log(reviews);
   let i = 1;
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
