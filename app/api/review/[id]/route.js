@@ -17,3 +17,4 @@ export async function GET(request, { params }) {
     return NextResponse.json({ data:reviews }, { status: 200 });
 
 }
+

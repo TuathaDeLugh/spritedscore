@@ -19,7 +19,7 @@ async function page({ params: { id } }) {
         <div className='flex justify-between flex-wrap lg:border-b dark:border-slate-400 pb-10'>
 
           <Image alt={review.image.name} className='mx-2 rounded-lg border max-h-[40rem] object-cover w-full lg:w-[77%]' src={review.image.link} width={900} height={900} />
-          <div className=' text-lg w-full md:w-[20%]'>
+          <div className=' text-lg w-full lg:w-[20%]'>
             <p className="mt-2  tracking-wider">
               <span className=' text-purple-500 dark:text-purple-400  font-medium'> Rating : </span>  &#9733; {review.rating}/10
             </p>
@@ -76,9 +76,14 @@ async function page({ params: { id } }) {
           </div>
           <div className="w-full lg:w-[20%]">
           <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">comments:</p> 
-                  Comment Post Box
-                 <div>
 
+                 <div>
+                    <div className=' mt-5'>
+                      <form className='flex justify-between'>
+                        <input type="text" className='w-[80%] bg-transparent border rounded-full px-3 py-1 border-gray-400 focus:outline-none focus:ring focus:ring-violet-300' placeholder='Comment' required name="comment" id="" />
+                        <button type="submit" value="Submit" className='rounded-full p-2 bg-purple-400 '>🪄</button>
+                      </form>
+                    </div>
                   comments
                  </div>
           </div>
