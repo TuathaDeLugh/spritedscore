@@ -12,7 +12,7 @@ export default function AllReviews() {
             <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
             All reviews
         </span>
-        {/* <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between">
 
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] ">
         Unlock The Essence Of Every Anime With Spirited Score&apos;s Insightful Reviews
@@ -29,7 +29,7 @@ export default function AllReviews() {
 
             <Suspense fallback={<SkelReview/>}>
                    <FatchAllreview/>
-            </Suspense> */}
+            </Suspense>
             </div>
         </section>
     );
