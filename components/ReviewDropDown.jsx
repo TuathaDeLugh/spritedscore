@@ -21,7 +21,7 @@ export default function ReviewDropDown() {
                     <li key={"all"}
                             className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-50 md:dark:hover:text-slate-200">
 
-                                <Link onClick={() => setOpen(!open)} href={`/allreview`} className='p-1 w-full'>
+                                <Link onClick={() => setOpen(!open)} href={`/allreview`} className='inline-block px-1 w-full'>
                                     {"All"}</Link>
                             </li>
                     {ddata.map((link) => {
@@ -29,7 +29,7 @@ export default function ReviewDropDown() {
                             <li key={link}
                             className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-50 md:dark:hover:text-slate-200">
 
-                                <Link onClick={() => setOpen(!open)} href={`/allreview/filter/${link}`} className='p-1 w-full'>
+                                <Link onClick={() => setOpen(!open)} href={`/allreview/filter/${link}`} className='inline-block px-1 w-full'>
                                     {link}</Link>
                             </li>
 

@@ -55,7 +55,7 @@ export default function Navbar() {
               return (
                 <li key={link.key} className="text-l text-slate-800 dark:text-slate-300 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400  md:hover:text-purple-700 md:dark:hover:text-purple-400 md:hover:bg-transparent">
 
-                  <Link onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
+                  <Link className='inline-block w-full' onClick={() => setNavbar(!navbar)} href={link.path}>{link.name}</Link>
                 </li>
               )
             })}

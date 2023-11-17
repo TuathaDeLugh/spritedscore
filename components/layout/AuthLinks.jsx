@@ -52,7 +52,7 @@ function AuthLinks({ navinfo }) {
                             <li key={link.key} onClick={navinfo}
                                 className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-50 md:dark:hover:text-slate-200">
 
-                                <Link onClick={() => setOpen(!open)} href={link.path} className='p-1 w-full'>
+                                <Link onClick={() => setOpen(!open)} href={link.path} className='inline-block px-1 w-full'>
                                     {link.name}</Link>
                             </li>
 
