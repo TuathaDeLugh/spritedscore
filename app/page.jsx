@@ -1,9 +1,6 @@
 import Image from 'next/image'
-import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
 
 export default async function Home() {
-  const session = await getServerSession(authOptions)
   return (
     <>
 
@@ -27,16 +24,6 @@ export default async function Home() {
         alt="Anime Photo"/>
     </div>
 </div>
-    {session ? (
-          <> name = {session.user.name}<br/>
-      username = {session.user.username}<br/>
-      email = {session.user.email}<br/>
-      role = {session.user.role}<br/>
-      id = {session.user.id}
-      </>
-  ): null
-}
-
     </div>
   </>
   )

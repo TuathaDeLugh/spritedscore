@@ -20,7 +20,7 @@ export default function DelCommentBtn({ revid , commid }) {
   if (confirmed) {
     toast.promise(delapi(), {
       pending: "Deleting Comment",
-      success: "Comment Successfully",
+      success: "Comment Deleted Successfully",
       error: "Failed To Delete"
     });
     }

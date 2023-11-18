@@ -74,7 +74,6 @@ const reviewSchema = new Schema({
       },
       useravatar: {
         type: String,
-        required: true,
       },
       username: {
         type: String,
