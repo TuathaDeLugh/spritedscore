@@ -45,8 +45,7 @@ const reviewSchema = new Schema({
     required: true,
   },
   episodes: {
-    type: String,
-    required: true,
+    type: String
   },
   detail: {
     type: String,
