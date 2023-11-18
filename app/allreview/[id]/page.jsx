@@ -25,7 +25,7 @@ async function page({ params: { id } }) {
         </div>
         <div className='flex justify-between flex-wrap lg:border-b dark:border-slate-400 pb-10'>
 
-          <Image alt={review.image.name} className='mx-2 rounded-lg border max-h-[40rem] object-cover w-full lg:w-[70%] xl:w-[77%]' src={review.image.link} width={900} height={900} />
+          <Image alt={review.image.name} className='mx-2 rounded-lg border max-h-[40rem] object-cover w-full lg:w-[70%] xl:w-[77%]' src={review.image.link} width={900} height={600} />
           <div className=' text-lg w-full lg:w-[25%] xl:w-[20%]'>
             <p className="mt-2  tracking-wider">
               <span className=' text-purple-500 dark:text-purple-400  font-medium'> Rating : </span>  &#9733; {review.rating}/10
