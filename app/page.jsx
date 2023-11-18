@@ -31,7 +31,8 @@ export default async function Home() {
           <> name = {session.user.name}<br/>
       username = {session.user.username}<br/>
       email = {session.user.email}<br/>
-      role = {session.user.role}
+      role = {session.user.role}<br/>
+      id = {session.user.id}
       </>
   ): null
 }

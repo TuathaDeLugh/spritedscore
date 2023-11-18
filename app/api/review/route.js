@@ -6,9 +6,9 @@ export async function POST(request)
 {
     
     try{
-       const{title,category,characters,image,rating,trailer,detail,creator} = await request.json();
+       const{title,category,characters,image,rating,trailer,episodes,detail,creator} = await request.json();
         await connectdb();
-        await Review.create({title,category,characters,image,rating,trailer,detail,creator});
+        await Review.create({title,category,characters,image,rating,trailer,episodes,detail,creator});
         return NextResponse.json({message: "Review Created",}, {status:200});
    }
     catch(error){

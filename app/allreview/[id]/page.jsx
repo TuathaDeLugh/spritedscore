@@ -1,11 +1,15 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import DelCommentBtn from '@/components/DelCommentBtn'
 import CommentForm from '@/components/pages/CommentForm'
 import getSingleReview from '@/controller/sainglereview'
+import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { AiOutlineUser } from "react-icons/ai";
 
 async function page({ params: { id } }) {
+  const session = await getServerSession(authOptions)
   const review = await getSingleReview(id)
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
@@ -94,18 +98,22 @@ async function page({ params: { id } }) {
 
               {
                 (review.comments.length > 0) ? (
-                  <div className='mt-5 max-h-[50vh] lg:max-h-screen'>
+                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh]'>
 
                     {
                       review.comments?.map((comment) => {
 
                         return (
-                          <div key={comment.name} className=' mt-4 border-b dark:border-slate-500'>
+                          <div key={comment.name} className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3'>
 
-                            <div className='py-1 px-2 flex'>
-                              {comment.useravatar ? (<img src={comment.useravatar} alt={comment.createdby} className='ml-3 mr-1 w-7 h-7 rounded-full' />) : <AiOutlineUser size={20} className="ml-3 mr-1 w-7 h-7 rounded-full" />} {comment.username}</div>
+                            <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
+                              <div className='flex items-center'>{comment.useravatar ? (<img src={comment.useravatar} alt={comment.createdby} className='border dark:border-slate-400 mr-1 w-7 h-7 rounded-full' />) : <AiOutlineUser size={20} className="border dark:border-slate-400 mr-1 w-7 h-7 rounded-full" />} {comment.username}</div>
+                              {
+                               session &&( (comment._id==session.user?.id)||(comment._id==review.creator.creatorid) )? (<div><DelCommentBtn revid={review._id} commid={comment._id}/>
+                              </div>) : null }
+                              
+                            </div>
                             <div className='py-1 px-2'>{comment.comment}</div>
-
                           </div>
 
                         );

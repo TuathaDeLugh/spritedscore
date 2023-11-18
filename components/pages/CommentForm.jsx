@@ -31,15 +31,15 @@ export default function CommentForm({ reviewid }) {
     initialValues,
     onSubmit: (async (values, action) => {
       const data =  {
-        _id:(Math.floor(Math.random() * 1000000)),
+        _id:session.user.id,
         username:session.user.username,
         useravatar:session.user.avatar,
         comment:values.comment
       }
       toast.promise((postapi(data)), {
-        pending: "Sending Message To Umang Sailor",
-        success: "Message Sent Successfully",
-        error: " Failed To Send"
+        pending: "Adding Comment",
+        success: "Comment Added",
+        error: "Failed To Add"
       });
       action.resetForm();
 

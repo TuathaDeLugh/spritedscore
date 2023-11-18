@@ -9,7 +9,7 @@ import DelReviewBtn from '@/components/Deletereview';
 
 export default async function page() {
   const session = await getServerSession(authOptions)
-  const reviews = await getUserReview(session.user.username);
+  const reviews = await getUserReview(session.user.id);
   // console.log(reviews);
   let i = 1;
   return (

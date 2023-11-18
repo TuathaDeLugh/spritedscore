@@ -12,17 +12,18 @@ import {
 } from "firebase/storage";
 import { storage } from '@/util/firebase';
 
-const ReviewForm = (createdby, avatar) => {
+const ReviewForm = (creatordata) => {
   const router = useRouter();
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues,setFieldValue} = useFormik({
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setValues, setFieldValue } = useFormik({
     initialValues: {
       title: '',
       category: '',
       image: '',
       rating: '',
       trailer: '',
+      episodes: '',
       detail: '',
-      creator: createdby, avatar,
+      creator: creatordata,
       characters: [],
     },
     validationSchema: AddReviewSchema,
@@ -35,17 +36,18 @@ const ReviewForm = (createdby, avatar) => {
         const downloadURL = await getDownloadURL(snapshot.ref);
         const projectdata = {
           title: values.title,
-      category: values.category,
-      image: {
-        name:values.image.name
-        ,link:downloadURL
-      },
-      rating: (parseInt(values.rating)+1),
-      trailer: values.trailer,
-      detail: values.detail,
-      creator: values.creator,
-      characters: values.characters,
-         
+          category: values.category,
+          image: {
+            name: values.image.name
+            , link: downloadURL
+          },
+          rating: (parseInt(values.rating) + 1),
+          trailer: values.trailer,
+          episodes: (values.episodes).toString(),
+          detail: values.detail,
+          creator: values.creator,
+          characters: values.characters,
+
         };
         await fetch(`/api/review`, {
           method: "POST",
@@ -88,9 +90,9 @@ const ReviewForm = (createdby, avatar) => {
     }));
   };
 
-  
+
   const categoryOptions =
-  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
+    ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
   // Add your category options here
   return (
     <div className="w-full">
@@ -192,21 +194,40 @@ const ReviewForm = (createdby, avatar) => {
             </div>
 
           </div>
-          <div className='mb-6'>
+          <div className='md:flex gap-4 w-full mb-6'>
+            <div className=' mb-6 md:mb-0 w-full md:w-6/12'>
 
-            <input
-              className={`${errors.trailer && touched.trailer ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
-              type="text"
-              id="trailer"
-              placeholder='Trailer Link'
-              name="trailer"
-              value={values.trailer}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.trailer && touched.trailer ? (
-              <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.trailer}</p>
-            ) : null}
+              <input
+                className={`${errors.trailer && touched.trailer ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+                type="text"
+                id="trailer"
+                placeholder='Trailer Link'
+                name="trailer"
+                value={values.trailer}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.trailer && touched.trailer ? (
+                <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.trailer}</p>
+              ) : null}
+            </div>
+            <div className=' mb-6 md:mb-0 w-full md:w-6/12'>
+
+              <input
+                className={`${errors.episodes && touched.episodes ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+                type="number"
+                id="episodes"
+                min={1}
+                placeholder='No. of Episodes'
+                name="episodes"
+                value={values.episodes}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.episodes && touched.episodes ? (
+                <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.episodes}</p>
+              ) : null}
+            </div>
           </div>
           {/* Characters */}
           <div className='mb-6'>

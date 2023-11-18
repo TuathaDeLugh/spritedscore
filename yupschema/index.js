@@ -37,5 +37,15 @@ export const loginSchema =  Yup.object({
     image: Yup.string().required('Image is required'),
     rating: Yup.number().required('Rating is required').min(0, 'Rating must be at least 0').max(10, 'Rating must be at most 10'),
     trailer: Yup.string().required("Trailer link is required").matches( ('/'),'Please enter valid URL You can put / if Trailer not avaliable')||url('Invalid Trailer URL'),
+    episodes: Yup.string().required('Episodes are required').min(1, 'Episodes must be at least 1'),
+    detail: Yup.string().required('Details are required')
+  })
+
+  export const EditReviewSchema = Yup.object({
+    title: Yup.string().required('Title is required'),
+    category: Yup.array().required('Category is required').min(1, 'Select at least one category'),
+    rating: Yup.number().required('Rating is required').min(0, 'Rating must be at least 0').max(10, 'Rating must be at most 10'),
+    trailer: Yup.string().required("Trailer link is required").matches( ('/'),'Please enter valid URL You can put / if Trailer not avaliable')||url('Invalid Trailer URL'),
+    episodes: Yup.string().required('Episodes are required').min(1, 'Episodes must be at least 1'),
     detail: Yup.string().required('Details are required')
   })

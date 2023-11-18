@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
 import { storage } from '@/util/firebase';
+import { EditReviewSchema } from '@/yupschema';
 
 function EditReviewForm ({review}) {
   const router = useRouter();
@@ -15,11 +16,12 @@ function EditReviewForm ({review}) {
       category: review.category,
       rating: (parseInt(review.rating)-1),
       trailer: review.trailer,
+      episodes:review.episodes,
       detail: review.detail,
       creator: review.creator,
       characters: review.characters,
     },
-    // validationSchema: EditReviewSchema,
+    validationSchema: EditReviewSchema,
     onSubmit: (async (values, action) => {
         const putapi = async () => {
             router.push("/user/review");
@@ -57,6 +59,7 @@ function EditReviewForm ({review}) {
       },
       rating: (parseInt(values.rating)+1),
       trailer: values.trailer,
+      episodes:values.episodes,
       detail: values.detail,
       creator: values.creator,
       characters: values.characters,
@@ -208,7 +211,8 @@ function EditReviewForm ({review}) {
             </div>
 
           </div>
-          <div className='mb-6'>
+          <div className='md:flex gap-4 w-full mb-6'>
+            <div className=' mb-6 md:mb-0 w-full md:w-6/12'>
 
             <input
               className={`${errors.trailer && touched.trailer ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
@@ -223,6 +227,24 @@ function EditReviewForm ({review}) {
             {errors.trailer && touched.trailer ? (
               <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.trailer}</p>
             ) : null}
+          </div>
+          <div className=' mb-6 md:mb-0 w-full md:w-6/12'>
+
+            <input
+              className={`${errors.episodes && touched.episodes ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+              type="number"
+              min={1}
+              id="episodes"
+              placeholder='No. of Episodes'
+              name="episodes"
+              value={values.episodes}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errors.episodes && touched.episodes ? (
+              <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.episodes}</p>
+            ) : null}
+          </div>
           </div>
           {/* Characters */}
           <div className='mb-6'>

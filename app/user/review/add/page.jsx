@@ -7,6 +7,7 @@ export default async function page() {
   const session = await getServerSession(authOptions)
     const name = session.user.username;
     const avatar = session.user.avatar;
+    const userid = session.user.id;
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
       <div className="container px-6 py-5 mx-auto">
@@ -16,7 +17,7 @@ export default async function page() {
         <h2 className="mb-6 text-[32px] font-bold text-dark lg:text-[4xl]">
           Will Create By : {session.user.username} 
         </h2>
-      <ReviewForm createdby={name} avatar={avatar}/>
+      <ReviewForm createdby={name} avatar={avatar} userid={userid}/>
       </div>
     </section>
   )

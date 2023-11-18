@@ -3,20 +3,15 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import {toast } from 'react-toastify';
 import { MdOutlineDelete } from "react-icons/md";
-import { ref, deleteObject } from "firebase/storage";
-import { storage } from '@/util/firebase';
 
 
-
-export default function DelReviewBtn({ id , name }) {
-  const router = useRouter();
+export default function DelCommentBtn({ revid , commid }) {
+  
+    const router = useRouter();
 
   async function handleDelete() {
-    const delapi = async () => {
-    router.push("/user/review"); 
-    const imagedel = ref(storage, `images/${name}`);
-    await deleteObject(imagedel);
-    await fetch(`/api/review?id=${id}`, {
+    const delapi = async () => { 
+    await fetch(`/api/review/comment/${revid}?commentId=${commid}`, {
       method: "DELETE",
     });
     router.refresh();
@@ -24,9 +19,9 @@ export default function DelReviewBtn({ id , name }) {
   const confirmed = confirm("Are you sure?");
   if (confirmed) {
     toast.promise(delapi(), {
-      pending: "Review deleting from database",
-      success: "Review deleted Successfully",
-      error: "Failed To delete"
+      pending: "Deleting Comment",
+      success: "Comment Successfully",
+      error: "Failed To Delete"
     });
     }
   }

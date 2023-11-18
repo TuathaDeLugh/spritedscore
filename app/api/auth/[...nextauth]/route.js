@@ -45,28 +45,33 @@ export const authOptions = {
             if (!dbuser){
               return true
             } 
+            // This data push to token it must be same ad db other wise not work
             user.username = dbuser.username 
             user.avatar = dbuser.avatar
             user.role = dbuser.role
+            user._id = dbuser._id
       
             return true
           },
+          async jwt({ token, user}) {
+              if (user){
+                // if user login using with db then user obj get data from database  
+                token.username = user.username
+                token.avatar = user.avatar
+                token.role = user.role
+                token.userid = user._id
+              }
+              
+  
+              return token
+          },
             async session({ session, token }) {
-              session.user.username = token.username
-              session.user.avatar = token.avatar
-              session.user.role = token.role
+              session.user.username = token?.username
+              session.user.avatar = token?.avatar
+              session.user.role = token?.role
+              session.user.id = token?.userid
     
                 return session
-            },
-            async jwt({ token, user}) {
-                if (user){
-                  token.username = user.username
-                  token.avatar = user.avatar
-                  token.role = user.role
-                }
-                
-    
-                return token
             },
         },
 

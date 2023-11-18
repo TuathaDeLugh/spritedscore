@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function PUT(request,{params}){
     const { id } = params;
-    const { title,category,characters,image,rating,trailer,detail,creator}  = await request.json();
+    const { title,category,characters,image,rating,trailer,episodes,detail,creator}  = await request.json();
     await connectdb();
-    await Review.findByIdAndUpdate(id, { title,category,characters,image,rating,trailer,detail,creator });
+    await Review.findByIdAndUpdate(id, { title,category,characters,image,rating,trailer,episodes,detail,creator });
     return NextResponse.json({message:"Review Updated"},{status:200});
 } 
 

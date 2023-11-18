@@ -44,11 +44,19 @@ const reviewSchema = new Schema({
     type: String,
     required: true,
   },
+  episodes: {
+    type: String,
+    required: true,
+  },
   detail: {
     type: String,
     required: true,
   },
   creator: {
+    userid:{
+      type: String,
+      required: true,
+    },
     createdby: {
       type: String,
       required: true,
@@ -63,6 +71,7 @@ const reviewSchema = new Schema({
       _id: {
         type: String,
         required: true,
+        unique: true
       },
       useravatar: {
         type: String,
