@@ -44,6 +44,9 @@ async function page({ params: { id } }) {
 
               </div>
             </div>
+            <p className="mt-5  tracking-wider">
+              <span className=' text-purple-500 dark:text-purple-400  font-medium'> Episodes : </span> {review.episodes}
+            </p>
             <div className='mt-5 w-full'>
               <span className=' text-purple-500 dark:text-purple-400  font-medium'>Charectors : </span>
               {

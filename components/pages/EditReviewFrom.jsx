@@ -31,6 +31,7 @@ function EditReviewForm ({review}) {
             category: values.category,
             rating: (parseInt(values.rating)+1),
             trailer: values.trailer,
+            episodes:values.episodes,
             detail: values.detail,
             creator: values.creator,
             characters: values.characters,
@@ -232,8 +233,7 @@ function EditReviewForm ({review}) {
 
             <input
               className={`${errors.episodes && touched.episodes ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full rounded border border-stroke px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
-              type="number"
-              min={1}
+              type="text"
               id="episodes"
               placeholder='No. of Episodes'
               name="episodes"
