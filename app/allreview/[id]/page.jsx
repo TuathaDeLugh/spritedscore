@@ -130,7 +130,7 @@ async function page({ params: { id } }) {
             </div>
           </div>
         </div>
-        <span className="mb-4 flex items-center text-base font-semibold  text-purple-700 dark:text-purple-400 ">
+        <span className="mt-4 flex items-center text-base font-semibold  text-purple-700 dark:text-purple-400 ">
           Review Posted by : {review.creator.avatar ? (<img src={review.creator.avatar} alt={review.creator.createdby} className='ml-3 mr-1 w-7 h-7 rounded-full' />) : <AiOutlineUser size={20} className="ml-3 mr-1 w-7 h-7 rounded-full" />} {review.creator.createdby}
         </span>
       </div>
