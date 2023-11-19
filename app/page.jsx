@@ -45,8 +45,8 @@ const categorylink = [
 export default async function Home() {
 	return (
 		<div className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
-			<div className='container flex flex-col justify-between px-6 md:px-0 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center'>
-				<div className='flex flex-col items-center w-full lg:flex-row lg:w-1/2'>
+			<div className='container flex flex-col justify-between px-6 md:px-0 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center gap-6'>
+				<div className='flex flex-col items-center flex-1 lg:flex-row'>
 					<div className='lg:mx-2 lg:order-2'>
 						<h2 className='text-3xl font-bold text-gray-800 dark:text-white lg:text-4xl'>
 							Dive into the captivating world of anime with{' '}
@@ -71,7 +71,7 @@ export default async function Home() {
 					</div>
 				</div>
 
-				<div className='flex items-center justify-center w-full h-96 lg:w-1/2'>
+				<div className='flex items-center justify-between lg:justify-end flex-1 h-96 '>
 					<Image
 						height={400}
 						width={400}
