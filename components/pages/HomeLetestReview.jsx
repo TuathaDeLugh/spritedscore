@@ -16,7 +16,7 @@ export default async function HomeLetestReview() {
         reviews?.map((review) => {
             return (
 
-        <div className="flex overflow-hidden bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600">
+        <div key={review._id} className="flex overflow-hidden bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600">
     <div className="w-1/2 bg-cover" style={{ backgroundImage: `url(${review.image.link})`, backgroundPosition: "center center"}}></div>
 
     <div className="w-1/2 px-4 py-8 md:px-4 flex-wrap flex flex-col">
