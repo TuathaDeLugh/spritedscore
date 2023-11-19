@@ -14,17 +14,17 @@ export default async function HomeLetestReview() {
 				return (
 					<div
 						key={review._id}
-						className='flex overflow-hidden bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600'
+						className='flex flex-wrap overflow-hidden bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600'
 					>
 						<div
-							className='w-1/2 bg-cover'
+							className='h-60 w-full md:w-1/2 bg-cover'
 							style={{
 								backgroundImage: `url(${review.image.link})`,
 								backgroundPosition: 'center center',
 							}}
 						></div>
 
-    <div className="w-1/2 px-4 py-8 md:px-4 flex-wrap flex flex-col">
+    <div className="w-full md:w-1/2 px-4 py-8 md:px-4 flex-wrap flex flex-col">
         <h1 className="text-2xl font-bold text-purple-500 dark:text-purple-400 mb-5">{review.title}</h1>
 
         <div className="flex mt-2 item-center flex-wrap mb-3">
@@ -42,7 +42,7 @@ export default async function HomeLetestReview() {
 
         </div>
 
-        <div className="mt-2  flex items-center gap-1 mb-3">
+        <div className="mt-2 flex-wrap flex items-center gap-1 mb-3">
             <span className="block text-lg font-semibold text-purple-700 dark:text-purple-400">
             Episodes :
         </span>{review.episodes}</div>
