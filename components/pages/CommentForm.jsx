@@ -49,7 +49,7 @@ export default function CommentForm({ reviewid }) {
   if(session){
     return (
       <div className=' mt-5'>
-                <form className='flex justify-between' onSubmit={handleSubmit} autocomplete="off">
+                <form className='flex justify-between' onSubmit={handleSubmit} autoComplete="off">
                   <input type="text" className='w-[80%] bg-transparent border rounded-full px-3 py-1 border-gray-400 focus:outline-none focus:ring focus:ring-violet-300' placeholder='Comment' required name="comment"
                   value={values.comment}
                   onChange={handleChange} id="" />

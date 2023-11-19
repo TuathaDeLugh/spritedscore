@@ -52,26 +52,29 @@ async function page({ params: { id } }) {
               {
                 (review.characters.length > 0) ? (
                   <table className='w-full rounded-lg mt-3 '>
-                    <tr className='text-purple-500 dark:text-purple-400 bg-slate-300 dark:bg-slate-600 border-b dark:border-slate-500'>
-                      <td className='py-1 px-2'>Name</td>
-                      <td className='py-1 px-2'>Status</td>
-                    </tr>
+                    <thead>
 
-                    {
-                      review.characters?.map((character) => {
+                      <tr className='text-purple-500 dark:text-purple-400 bg-slate-300 dark:bg-slate-600 border-b dark:border-slate-500'>
+                        <td className='py-1 px-2'>Name</td>
+                        <td className='py-1 px-2'>Status</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        review.characters?.map((character) => {
 
-                        return (
-                          <tr key={character.name} className='border-b dark:border-slate-500'>
+                          return (
+                            <tr key={character.name} className='border-b dark:border-slate-500'>
 
-                            <td className='py-1 px-2'>{character.name}</td>
-                            <td className='py-1 px-2'>{character.role}</td>
+                              <td className='py-1 px-2'>{character.name}</td>
+                              <td className='py-1 px-2'>{character.role}</td>
 
-                          </tr>
+                            </tr>
 
-                        );
-                      })
-                    }
-
+                          );
+                        })
+                      }
+                    </tbody>
                   </table>
                 )
                   : <p>Charectors not provided by creator</p>
@@ -89,8 +92,8 @@ async function page({ params: { id } }) {
           <div className='w-full lg:w-[70%] xl:w-[77%]'>
 
             <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">Review :</p>
-            <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5' disabled>
-              {review.detail}
+            <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5' value={review.detail} disabled>
+
             </textarea>
 
           </div>
@@ -112,9 +115,9 @@ async function page({ params: { id } }) {
                             <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                               <div className='flex items-center'>{comment.useravatar ? (<img src={comment.useravatar} alt={comment.createdby} className='border dark:border-slate-400 mr-1 w-7 h-7 rounded-full' />) : <AiOutlineUser size={20} className="border dark:border-slate-400 mr-1 w-7 h-7 rounded-full" />} {comment.username}</div>
                               {
-                               session &&( (comment._id==session.user?.id)||(comment._id==review.creator.creatorid) )? (<div><DelCommentBtn revid={review._id} commid={comment._id}/>
-                              </div>) : null }
-                              
+                                session && ((comment._id == session.user?.id) || (comment._id == review.creator.creatorid)) ? (<div><DelCommentBtn revid={review._id} commid={comment._id} />
+                                </div>) : null}
+
                             </div>
                             <div className='py-1 px-2'>{comment.comment}</div>
                           </div>

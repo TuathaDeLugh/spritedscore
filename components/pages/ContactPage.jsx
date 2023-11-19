@@ -53,7 +53,7 @@ function ContactPage({name,email}) {
   return (
     <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
       <div className="relative rounded-lg bg-slate-50 p-8 shadow-lg dark:bg-slate-800 sm:p-12 border dark:border-slate-600">
-      <form onSubmit={handleSubmit} autocomplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
           <div className='mb-6'>
 
             <input
