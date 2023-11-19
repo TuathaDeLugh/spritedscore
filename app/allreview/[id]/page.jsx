@@ -104,7 +104,7 @@ async function page({ params: { id } }) {
 
               {
                 (review.comments.length > 0) ? (
-                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh]'>
+                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh] overflow-y-auto'>
 
                     {
                       review.comments?.map((comment) => {
