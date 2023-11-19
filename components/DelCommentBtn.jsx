@@ -26,8 +26,8 @@ export default function DelCommentBtn({ revid , commid }) {
     }
   }
   return (
-    <button onClick={handleDelete}>
-      <MdOutlineDelete size={25} className='text-red-600' title="delete"/>
+    <button onClick={handleDelete} className="bg-red-400 text-white p-1 rounded-lg">
+      <MdOutlineDelete size={20} title="delete"/>
     </button>
   );
 }

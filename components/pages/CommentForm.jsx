@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { toast } from 'react-toastify';
+import { IoAddSharp } from "react-icons/io5";
 
 export default function CommentForm({ reviewid }) {
   const router = useRouter();
@@ -53,7 +54,7 @@ export default function CommentForm({ reviewid }) {
                   <input type="text" className='w-[80%] bg-transparent border rounded-full px-3 py-1 border-gray-400 focus:outline-none focus:ring focus:ring-violet-300' placeholder='Comment' required name="comment"
                   value={values.comment}
                   onChange={handleChange} id="" />
-                  <button type="submit" value="Submit" className='rounded-full p-2 bg-purple-400 '>🪄</button>
+                  <button type="submit" value="Submit" className='rounded-full p-2 bg-purple-400 text-white '><IoAddSharp size={25}/></button>
                 </form>
     </div>
   )

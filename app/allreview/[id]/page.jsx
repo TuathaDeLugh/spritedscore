@@ -1,5 +1,6 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import DelCommentBtn from '@/components/DelCommentBtn'
+import Goback from '@/components/Goback'
 import CommentForm from '@/components/pages/CommentForm'
 import getSingleReview from '@/controller/sainglereview'
 import { getServerSession } from 'next-auth'
@@ -14,9 +15,12 @@ async function page({ params: { id } }) {
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
       <div className="container px-6 py-5 mx-auto">
-        <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
+        <div className='mb-4 flex items-center'>
+        <Goback/>
+        <span className=" block text-base font-semibold  text-purple-700 dark:text-purple-400 ">
           Anime Review
         </span>
+        </div>
         <div className="flex items-center justify-between">
 
           <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] ">
