@@ -95,12 +95,13 @@ export default async function Home() {
 					)
 				})}
 			</div>
-			<div className='container px-6 md:px-0 py-3 mx-auto flex flex-wrap'>
+			<div className='container px-6 md:px-0 py-3 mx-auto flex flex-wrap max-h-min'>
 				<div className='w-full md:w-2/3 md:pr-5'>
 					<HomeLetestReview />
 				</div>
-				<div className=' md:border-l dark:border-gray-500 md:pl-5 w-full md:w-1/3'>
-					<HomePopulerReview />
+				<div className='md:border-l dark:border-gray-500 md:pl-5 w-full md:w-1/3'>
+				
+      				<HomePopulerReview />
 				</div>
 			</div>
 		</div>

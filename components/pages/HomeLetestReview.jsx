@@ -24,7 +24,7 @@ export default async function HomeLetestReview() {
 							}}
 						></div>
 
-    <div className="w-full md:w-1/2 px-4 py-8 md:px-4 flex-wrap flex flex-col">
+    <div className="w-full md:w-1/2 px-4 py-8  flex-wrap flex flex-col">
         <h1 className="text-2xl font-bold text-purple-500 dark:text-purple-400 mb-5">{review.title}</h1>
 
         <div className="flex mt-2 item-center flex-wrap mb-3">
@@ -34,7 +34,7 @@ export default async function HomeLetestReview() {
                 {
                   review.category?.map((category) => {
                     return (
-                      <span key={category} className='px-2'>{category}</span>
+                      <span key={category} className='block px-2 text-lg'>{category}</span>
 
                     );
                   })

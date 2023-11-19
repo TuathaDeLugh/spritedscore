@@ -92,7 +92,7 @@ const ReviewForm = (creatordata) => {
 
 
   const categoryOptions =
-    ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
+    ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy','Harem', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
   // Add your category options here
   return (
     <div className="w-full">

@@ -9,7 +9,7 @@ export default function ReviewDropDown() {
       setOpen(!open);
   };
   let ddata =
-  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
+  ['Action', 'Advanture', 'Comedy', 'Drama', 'Ecchi', 'Fantasy','Harem', 'Horror', 'Isekai', 'Mystery', 'Romance', 'Sci-fi', 'Sport', 'slice_of_life', 'shonan', 'Seinen', 'Suspense', 'super_natural'];
 
 
     
