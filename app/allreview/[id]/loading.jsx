@@ -92,7 +92,7 @@ export default function LoadingReview() {
                       review.comments?.map((comment) => {
 
                         return (
-                          <div  className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3'>
+                          <div key={comment}  className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3'>
 
                             <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                               <div className='flex items-center'><div className="border bg-slate-400 dark:bg-slate-700 dark:border-slate-400 mr-1 w-7 h-7 rounded-full" />
