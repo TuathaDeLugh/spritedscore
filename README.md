@@ -1,6 +1,6 @@
 <h1 align="center" id="title">Spirited Score</h1>
 
-<p align="center"><img src="https://raw.githubusercontent.com/TuathaDeLugh/trynew/master/public/readme.png" alt="project-image"></p>
+<p align="center"><img src="https://firebasestorage.googleapis.com/v0/b/spirited-score-review.appspot.com/o/images%2FSpiritedScore.png?alt=media&token=b4859f35-05f7-4fb7-9b57-1e5c8af31853" alt="project-image"></p>
 
 
 <p id="data">Anime Review Website Built With Next.js 14</p>
