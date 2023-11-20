@@ -12,6 +12,7 @@ import { AiOutlineUser } from "react-icons/ai";
 async function page({ params: { id } }) {
   const session = await getServerSession(authOptions)
   const review = await getSingleReview(id)
+  console.log(review)
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
       <div className="container px-6 py-5 mx-auto">
@@ -119,7 +120,7 @@ async function page({ params: { id } }) {
                             <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                               <div className='flex items-center'>{comment.useravatar ? (<img src={comment.useravatar} alt={comment.createdby} className='border dark:border-slate-400 mr-1 w-7 h-7 rounded-full' />) : <AiOutlineUser size={20} className="border dark:border-slate-400 mr-1 w-7 h-7 rounded-full" />} {comment.username}</div>
                               {
-                                session && ((comment._id == session.user?.id) || (comment._id == review.creator.creatorid)) ? (<div><DelCommentBtn revid={review._id} commid={comment._id} />
+                                session && ( (review.creator.userid == session.user?.id) || (comment._id == session.user?.id) || (session.user.role == "admin")) ? (<div><DelCommentBtn revid={review._id} commid={comment._id} />
                                 </div>) : null}
 
                             </div>
