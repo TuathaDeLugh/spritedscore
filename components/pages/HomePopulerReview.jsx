@@ -14,11 +14,11 @@ export default async function HomePopulerReview() {
 				return (
 
 			<Link href={`/allreview/${review._id}`} key={review._id}
-  class="inline-block grow w-40 rounded-lg bg-slate-50 shadow hover:border-purple-500 dark:hover:border-purple-400 dark:shadow-gray-600 dark:bg-slate-800 border dark:border-gray-600">
+  class="inline-block mb-3 grow w-40 rounded-lg bg-slate-50 shadow hover:border-purple-500 dark:hover:border-purple-400 dark:shadow-gray-600 dark:bg-slate-800 border dark:border-gray-600">
  
 <div className="relative rounded-t-lg">
   <img
-    className="w-full rounded-t-lg h-32 object-cover object-center"
+     className="w-full rounded-t-lg h-24 object-cover object-center"
     src={review.image.link}
     alt={`Category: ${review.image.name}`}
   />
