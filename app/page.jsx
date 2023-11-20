@@ -33,7 +33,7 @@ const categorylink = [
 		color: 'bg-violet-700/70',
 	},
 	{
-		link: 'Shonan',
+		link: 'shonan',
 		color: 'bg-emerald-700/70',
 	},
 	{
