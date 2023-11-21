@@ -5,6 +5,7 @@ export default async function getLetestReview() {
       {
         cache: "no-store",
       });
+      
       const reviews = await response.json();
       return reviews.data;
     } catch (error) {
