@@ -97,7 +97,7 @@ async function page({ params: { id } }) {
           <div className='w-full lg:w-[70%] xl:w-[77%]'>
 
             <p className="mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium">Review :</p>
-            <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5' value={review.detail} disabled>
+            <textarea className='bg-transparent w-full  resize-none h-screen text-justify mt-5 pr-2' value={review.detail} disabled>
 
             </textarea>
 
