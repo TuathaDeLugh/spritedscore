@@ -9,7 +9,7 @@ export default async function HomePopulerReview() {
 			<span className='mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400'>
 				Popular reviews by category
 			</span>
-			<div className="overflow-auto gap-5 pr-5 flex flex-wrap justify-between">
+			<div className="overflow-auto md:max-h-screen gap-5 md:pr-5 flex flex-wrap justify-between">
 			{reviews?.map(review => {
 				return (
 

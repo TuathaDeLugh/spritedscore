@@ -9,12 +9,12 @@ export default async function HomeLetestReview() {
 			<span className='mb-4 block text-base font-semibold text-purple-700 dark:text-purple-400'>
 				Latest Reviwews
 			</span>
-
+        <div className='md:max-h-screen overflow-y-auto md:pr-2'>
 			{reviews?.map(review => {
 				return (
 					<div
 						key={review._id}
-						className='flex flex-wrap overflow-hidden bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600'
+						className='flex flex-wrap  overflow-auto bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600'
 					>
 						<div
 							className='h-60 md:h-auto w-full md:w-1/2 bg-cover'
@@ -55,6 +55,7 @@ export default async function HomeLetestReview() {
     </div>
 </div>
             )})}
+            </div>
         </>
   )
 }
