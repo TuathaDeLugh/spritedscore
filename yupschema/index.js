@@ -49,3 +49,10 @@ export const loginSchema =  Yup.object({
     episodes: Yup.string().required('Episodes are required').min(1, 'Episodes must be at least 1'),
     detail: Yup.string().required('Details are required')
   })
+
+
+  export const ProfileSchema = Yup.object({
+    name: Yup.string().min(2).max(25).required("Please enter Full Name"),
+    username: Yup.string().min(2).max(25).required("Please enter username"),
+    email: Yup.string().email().required("Please enter email"),
+  })

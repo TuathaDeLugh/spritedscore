@@ -1,11 +1,25 @@
-import React from 'react'
+import getSingleUser from '@/controller/singleuser';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { use } from 'react'
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
+import EditProfile from '@/components/pages/EditProfile';
 
-export default function Profile() {
+export default async function Profile() {
+  const session = await getServerSession(authOptions)
+  const userdata = await getSingleUser(session.user.id)
   return (
-    <div className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
-			<div className='container flex flex-col justify-between px-6 md:px-0 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center gap-6'>
-               This is profile page
-                </div>
-                </div>
+    <div className='px-2 mx-auto max-w-[1500px] pt-20 min-h-screen'>
+      <div className="max-w-md mx-auto p-6 bg-white dark:bg-slate-700 border dark:border-slate-500 rounded-md shadow-md">
+      <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
+          Profile
+        </span>
+        <h2 className="mb-6 text-[32px] font-bold text-dark lg:text-[4xl]">
+          {userdata.username}
+        </h2>
+        <EditProfile userdata={userdata}/>
+    </div>
+    </div>
   )
 }

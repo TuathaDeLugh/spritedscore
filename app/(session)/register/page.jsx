@@ -29,7 +29,8 @@ export default function Register() {
       name: ogvalues.name,
       username: ogvalues.username,
       email: ogvalues.email,
-      password: hashedpassword 
+      password: hashedpassword,
+      provider:"email"
      }
     await fetch(`/api/user`, {
       method: "POST",

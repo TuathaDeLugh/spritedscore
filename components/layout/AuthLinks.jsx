@@ -11,9 +11,7 @@ function AuthLinks({ navinfo }) {
     const [open, setOpen] = React.useState(false);
     const { data: session } = useSession()
 
-    const handleOpen = () => {
-        setOpen(!open);
-    };
+
     let dropdata =
         [
             { name: 'Login', path: '/login', key: 1 },
@@ -35,7 +33,7 @@ function AuthLinks({ navinfo }) {
     }
     return (
         <div className="relative">
-            <button onClick={handleOpen} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={21} width={21} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={20}/>)}</button>
+            <button onClick={() => setOpen(!open)} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={21} width={21} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={20}/>)}</button>
             {open ? (
                 <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
                     {session && session.user && session.user.username ?(

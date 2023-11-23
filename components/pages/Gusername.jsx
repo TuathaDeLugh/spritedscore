@@ -23,6 +23,7 @@ export default function Gusername() {
         name: session.user.name,
         username: ogvalues.username,
         email: session.user.email,
+        provider:"google",
         avatar: session.user.image,
        }
       await fetch(`/api/user`, {

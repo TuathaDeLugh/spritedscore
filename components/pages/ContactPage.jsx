@@ -40,7 +40,7 @@ function ContactPage({name,email}) {
       onSubmit: (async (values, action) => {
         setDisabled(true);
         toast.promise((postapi(values)), {
-          pending: "Sending Message To Umang Sailor",
+          pending: "Sending Message",
           success: "Message Sent Successfully",
           error: " Failed To Send"
         });
