@@ -9,7 +9,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://spiritedscore.vercel.app/](https://umangsailor-try.vercel.app/)
+[https://spiritedscore.vercel.app/](https://spiritedscore.vercel.app/)
 
 <h2>🧐 Features</h2>
 
