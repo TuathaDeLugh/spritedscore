@@ -63,7 +63,8 @@ export default function EditProfile({ userdata }) {
         >
         {disabled ? "wana update?" : "cancel"}
       </button>
-      <Link href={""} className='hover:underline hover:text-purple-500'>Change Password</Link>
+      {userdata.provider === "google" ?  null : (
+      <Link href={""} className='hover:underline hover:text-purple-500'>Change Password</Link>)}
         </div>
   {
     disabled ? (
@@ -137,7 +138,8 @@ export default function EditProfile({ userdata }) {
 
       <p className="px-3 text-gray-600 dark:text-gray-300 text-base w-2/6">Email</p>
         <input
-          className={` w-4/6 rounded  px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none`}
+          disabled={userdata.provider=="google"? true : false}
+          className={` w-4/6 rounded  px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none disabled:opacity-50`}
           placeholder={userdata.email}
           name='email'
           value={values.email}
@@ -145,7 +147,7 @@ export default function EditProfile({ userdata }) {
           onBlur={handleBlur}
         />
       </ div>
-
+      {userdata.provider === "google" ? (<p className=" text-red-600 dark:text-red-500 text-sm">You can't update email because you logged in using Google</p>) : null}
 
         {errors.email && touched.email ? (
           <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.email}</p>
