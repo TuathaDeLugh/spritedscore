@@ -24,7 +24,7 @@ function EditReviewForm ({review}) {
     validationSchema: EditReviewSchema,
     onSubmit: (async (values, action) => {
         const putapi = async () => {
-            router.push("/user/review");
+            router.back();
         if(values.image == null){
             const projectdata = {
             title: values.title,

@@ -1,7 +1,15 @@
+import AdminNav from '@/components/layout/AdminSlider'
 import React from 'react'
 
 export default function layout({ children }) {
-  return (
-    <div>{ children }</div>
+  return (<>
+  <section className='mt-[63px] md:mt-[70px]'>
+      <AdminNav/>
+  </section>
+    <section className="mx-auto pl-16 max-w-[1500px]  ">
+            <div className="container  px-6 py-5 mx-auto">
+      { children }</div>
+      </section>
+  </>
   )
 }

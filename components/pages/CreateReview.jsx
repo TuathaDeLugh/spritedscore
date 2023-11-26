@@ -29,7 +29,7 @@ const ReviewForm = (creatordata) => {
     validationSchema: AddReviewSchema,
     onSubmit: (async (values, action) => {
       console.log(values);
-      router.push("/user/review");
+      router.back();
       const postapi = async () => {
         const imageRef = ref(storage, `images/${values.image.name}`);
         const snapshot = await uploadBytes(imageRef, values.image);
