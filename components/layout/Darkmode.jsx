@@ -1,77 +1,108 @@
 "use client"
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { FiSun,FiMoon } from "react-icons/fi";
-import { Inter } from 'next/font/google'
+import { FiSun, FiMoon } from 'react-icons/fi';
+import { Inter } from 'next/font/google';
+import { MdComputer } from "react-icons/md";
+import Footer from './Footer';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export default function Darkmode ({ children}) {
+const DarkModeFooter = ({ currentMode, onChangeMode }) => {
+  return (
+    <div className='flex items-center text-white right-0 px-1 gap-2'>
+      <p className='text-black font-semibold dark:text-white'>Mode</p>
+      <button
+        onClick={() => onChangeMode('light')}
+        className={`rounded-full p-2 ${currentMode === 'light' ? 'hidden' : ' block bg-purple-500/70'}`}
+      > 
+        <FiSun size={20}/>
+      </button>
+      <button
+        onClick={() => onChangeMode('dark')}
+        className={`rounded-full p-2 ${currentMode === 'dark' ? 'hidden' : ' block bg-purple-500/70'}`}
+      > <FiMoon size={20}/>
+        
+      </button>
+      <button
+        onClick={() => onChangeMode('system')}
+        className={`rounded-full p-2 bg-purple-500/70 `}
+      >
+        <MdComputer size={20}/>
+      </button>
+    </div>
+  );
+};
 
-    const [isDarkMode, setIsDarkMode] = useState(false);
+const Darkmode = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState(null);
 
-  const toggleDarkMode = () => {
-    const newDarkModeStatus = !isDarkMode;
-    setIsDarkMode(newDarkModeStatus);
-    Cookies.set('dark-mode', newDarkModeStatus);
+  const toggleDarkMode = (mode) => {
+    if (mode === 'system') {
+      Cookies.remove('dark-mode');
+
+      const systemDarkMode =
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDarkMode(systemDarkMode ? 'dark' : 'light');
+    } else {
+      setIsDarkMode(mode);
+      Cookies.set('dark-mode', mode);
+      localStorage.setItem('dark-mode', mode);
+    }
   };
 
   useEffect(() => {
-    // Check if dark mode preference is set in the cookie
+  
     const cookieDarkMode = Cookies.get('dark-mode');
-    
-    // If cookieDarkMode is not set, check user's system preference
+
     if (cookieDarkMode === undefined) {
+      setIsDarkMode('system');
+
       const systemDarkMode =
         window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(systemDarkMode);
+      if (systemDarkMode) {
+        toggleDarkMode('dark');
+      } else {
+        toggleDarkMode('light');
+      }
     } else {
-      setIsDarkMode(cookieDarkMode === 'true');
+      setIsDarkMode(cookieDarkMode);
     }
   }, []);
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+    if (isDarkMode !== null) {
+      if (isDarkMode === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, [isDarkMode]);
 
-  //   localStorage.setItem('dark-mode', JSON.stringify(newDarkModeStatus)); // Save to localStorage
-  // };
+  useEffect(() => {
+    const updateDarkMode = (e) => {
+      setIsDarkMode(e.matches ? 'dark' : 'light');
+    };
 
-  // useEffect(() => {
-  //   // Check if dark mode preference is set in localStorage
-  //   const localStorageDarkMode = localStorage.getItem('dark-mode');
+    const systemDarkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    systemDarkModeQuery.addEventListener('change', updateDarkMode);
 
-  //   // If localStorageDarkMode is not set, check user's system preference
-  //   if (localStorageDarkMode === null) {
-  //     const systemDarkMode =
-  //       window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  //     setIsDarkMode(systemDarkMode);
-  //   } else {
-  //     setIsDarkMode(JSON.parse(localStorageDarkMode));
-  //   }
-  // }, []); // Empty dependency array ensures this runs only once, similar to componentDidMount
+    return () => {
+      systemDarkModeQuery.removeEventListener('change', updateDarkMode);
+    };
+  }, []);
 
-  // useEffect(() => {
-  //   if (isDarkMode) {
-  //     document.documentElement.classList.add('dark');
-  //   } else {
-  //     document.documentElement.classList.remove('dark');
-  //   }
-  // }, [isDarkMode]);
   return (
     <html lang="en" className={isDarkMode ? 'dark' : ''}>
       <body className={inter.className && `bg-white dark:bg-gray-800 text-black dark:text-white`}>
-      {children}
-        <div className='z-50 text-white fixed bottom-10 right-0 px-1 border border-slate-300 dark:border-slate-700  backdrop-blur p-1 rounded-l-full'>
-      <button onClick={toggleDarkMode} className=' rounded-full p-2 bg-purple-600'>
-          {isDarkMode ? <FiSun size={25}/> : <FiMoon size={25}/>}
-          </button>
-          </div>
+        {children}
+        <Footer>
+        <DarkModeFooter currentMode={isDarkMode} onChangeMode={toggleDarkMode} />
+        </Footer>
       </body>
-      </html>
+    </html>
   );
 };
+
+export default Darkmode;
