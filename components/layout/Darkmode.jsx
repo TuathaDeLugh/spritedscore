@@ -46,8 +46,7 @@ const Darkmode = ({ children }) => {
       setIsDarkMode(systemDarkMode ? 'dark' : 'light');
     } else {
       setIsDarkMode(mode);
-      Cookies.set('dark-mode', mode);
-      localStorage.setItem('dark-mode', mode);
+      Cookies.set('dark-mode', mode, { expires: 365 });
     }
   };
 
