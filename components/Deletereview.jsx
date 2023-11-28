@@ -13,7 +13,6 @@ export default function DelReviewBtn({ id , name }) {
 
   async function handleDelete() {
     const delapi = async () => {
-    router.back();
     const imagedel = ref(storage, `images/${name}`);
     await deleteObject(imagedel);
     await fetch(`/api/review?id=${id}`, {

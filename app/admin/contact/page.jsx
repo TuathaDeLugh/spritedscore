@@ -1,3 +1,4 @@
+import DelmailBtn from '@/components/Delmail';
 import { EmailCount } from '@/components/logic/AdminCount'
 import getEmails from '@/controller/email';
 import Link from 'next/link';
@@ -14,12 +15,12 @@ export default async function AdminContact() {
   <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
     Total Request : <EmailCount/>
   </h2>
-  <div className="block mt-10 w-full overflow-x-auto">
+  <div className="block mt-10 w-full overflow-x-auto rounded">
         {
       emails ? (
           <table className="items-center w-full bg-transparent -collapse">
             <thead>
-              <tr className=' border-x bg-slate-200'>
+              <tr className=' bg-slate-200 dark:bg-slate-600'>
                 <th
                   className={
                     "pl-6 table-cell pr-1   py-3 text-xs md:text-sm uppercase   font-semibold text-left "
@@ -67,7 +68,7 @@ export default async function AdminContact() {
             <tbody>
               {emails?.map((email) => {
                 return (
-                  <tr key={email._id} className='border border-l-0 border-r-0'>
+                  <tr key={email._id} className='border-y dark:border-slate-500'>
                     <Suspense fallback={<p>Loading</p>}>
                     <td
                       className={
@@ -109,10 +110,9 @@ export default async function AdminContact() {
                       <div className='md:flex'>
 
                       <Link href={`/admin/contact/${email._id}`} title="View " >
-                        <AiOutlineEye className='text-green-600' size={25} />
+                        <AiOutlineEye className='text-green-600 md:mr-3' size={25} />
                       </Link>
-                      <p className='hidden md:block px-2'></p>
-                      {/* <DelmailBtn id={email._id} /> */}
+                      <DelmailBtn id={email._id} />
                       </div>
                     </td>
                     </Suspense>
