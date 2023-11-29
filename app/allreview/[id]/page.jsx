@@ -1,8 +1,12 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import DelCommentBtn from '@/components/DelCommentBtn'
 import Goback from '@/components/Goback'
+import RemoveFromWatchListBtn from '@/components/RemoveFromWatchListBtn'
+import WatchListBtn from '@/components/WatchListBtn'
 import CommentForm from '@/components/pages/CommentForm'
 import getSingleReview from '@/controller/sainglereview'
+import getSingleUser from '@/controller/singleuser'
+import user from '@/models/user'
 import { getServerSession } from 'next-auth'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,7 +16,8 @@ import { AiOutlineUser } from 'react-icons/ai'
 async function page({ params: { id } }) {
   const session = await getServerSession(authOptions)
   const review = await getSingleReview(id)
-  // console.log(review)
+  const user = await getSingleUser(session.user.id)
+
   return (
     <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
       <div className='container px-6 py-5 mx-auto'>
@@ -103,9 +108,15 @@ async function page({ params: { id } }) {
                 Watch Trailer
               </Link>
             )}
-            <button className='inline-block text-white w-full text-center mt-5 py-2 px-5 rounded-full border text-lg bg-purple-500 dark:bg-purple-400 hover:text-purple-400 hover:border-purple-400 hover:bg-transparent dark:hover:bg-transparent  font-medium'>
-              Add to watchlist
-            </button>
+            {!!session?.user?.id &&
+              (user.watchlist.indexOf(review._id) >= 0 ? (
+                <RemoveFromWatchListBtn
+                  uid={session.user.id}
+                  rid={review._id}
+                />
+              ) : (
+                <WatchListBtn uid={session.user.id} rid={review._id} />
+              ))}
           </div>
         </div>
         <div className='flex justify-between flex-wrap mt-5 '>
