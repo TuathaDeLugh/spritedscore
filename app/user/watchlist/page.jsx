@@ -1,11 +1,14 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import UserWatchlist from '@/components/pages/UserWatchlist'
 import getSingleUser from '@/controller/singleuser'
+import { getReviews } from '@/controller/watchlist'
 import { getServerSession } from 'next-auth'
 import { getSession } from 'next-auth/react'
 
 const Watchlist = async () => {
   const session = await getServerSession(authOptions)
-  const user = await getSingleUser(session.user.id)
+  // const user = await getSingleUser(session.user.id)
+  const user = await getReviews(session.user.id)
 
   return (
     <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
@@ -15,7 +18,9 @@ const Watchlist = async () => {
         </h2>
         <ul>
           {user.watchlist.map(review => (
-            <li key={review}>{review}</li>
+            <li key={review._id}>
+              <UserWatchlist review={review} />
+            </li>
           ))}
         </ul>
       </div>

@@ -39,3 +39,23 @@ export async function removeWatchlist(uid, rid) {
     console.log(error)
   }
 }
+
+export async function getReviews(uid) {
+  try {
+    const api = process.env.API_URL
+
+    const response = await fetch(`${api}/api/user/${uid}/watchlist`, {
+      method: 'GET',
+      cache: 'no-store',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+
+    const reviews = await response.json()
+
+    return reviews.data
+  } catch (error) {
+    console.log(error)
+  }
+}
