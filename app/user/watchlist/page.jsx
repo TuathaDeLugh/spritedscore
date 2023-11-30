@@ -19,7 +19,7 @@ const Watchlist = async () => {
         <ul>
           {user.watchlist.map(review => (
             <li key={review._id}>
-              <UserWatchlist review={review} />
+              <UserWatchlist review={review} session={session} />
             </li>
           ))}
         </ul>
