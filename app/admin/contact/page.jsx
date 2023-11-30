@@ -94,7 +94,7 @@ export default async function AdminContact() {
                         "table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
-                      {(email.subject).substring(0,15)}
+                      {(email.Subject).substring(0,15)}
                     </td><td
                       className={
                         "hidden sm:table-cell pl-6 pr-1 align-middle   py-3 text-xs md:text-sm    text-left "
