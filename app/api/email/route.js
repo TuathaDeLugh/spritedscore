@@ -32,14 +32,14 @@ export async function POST(request)
     }
 }
 
-
 export async function GET(req,res) {
     try {
         await connectdb();
-
         const page = req.nextUrl.searchParams.get('page') || 1;
-        const skip = (page - 1) * 10;
-        const emails = await Email.find().skip(skip).limit(parseInt(10));
+        const pageSize = 15;
+        const skip = (page - 1) * pageSize;
+
+        const emails = await Email.find().skip(skip).limit(parseInt(pageSize));
 
         const totalDocuments = await Email.countDocuments();
 
@@ -48,7 +48,7 @@ export async function GET(req,res) {
                 data: emails,
                 meta: {
                     totalDocuments,
-                    totalPages: Math.ceil(totalDocuments / 10),
+                    totalPages: Math.ceil(totalDocuments / pageSize),
                     currentPage: parseInt(page),
                 },
             },
@@ -59,7 +59,7 @@ export async function GET(req,res) {
         return NextResponse.json(
             {
                 message: 'Failed to load mail',
-                error: error.message,
+                error: error.message, // Include the error message in the response for debugging
             },
             { status: 500 }
         );

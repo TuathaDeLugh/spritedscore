@@ -1,15 +1,27 @@
 import getAllReview from '@/controller/allreview';
 import getAllUsers from '@/controller/alluser';
-import getEmails from '@/controller/email';
 import React from 'react'
 
+async function getEmailsmeta() {
+  try {
+    const api = process.env.API_URL;
+    const response = await fetch(`${api}/api/email`, {
+      cache: "no-store",
+    });
+    const email = await response.json();
+    return email.meta;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 export async function EmailCount() {
-    const emails = await getEmails();
+  const emails = await getEmailsmeta();
   return (
     <>
     {
         emails ? (
-            <>{(emails).length}</>
+            <>{emails.totalDocuments}</>
             ) : null
 }
 </> 

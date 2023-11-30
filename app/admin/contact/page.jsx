@@ -5,8 +5,8 @@ import Link from 'next/link';
 import React, { Suspense } from 'react'
 import { AiOutlineEye } from 'react-icons/ai';
 
-export default async function AdminContact() {
-  const emails = await getEmails();
+export default async function AdminContact(context) {
+  const emails = await getEmails(parseInt(context.searchParams.page));
   let i = 1;
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
