@@ -3,8 +3,8 @@ import React, { Suspense} from 'react';
 import ReviewDropDown from '@/components/ReviewDropDown';
 import SkelReview from '@/components/layout/SkelReview';
 
-export default function AllReviews() {
-
+export default function AllReviews(context) {
+        
     
     return (
         <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
@@ -28,7 +28,7 @@ export default function AllReviews() {
             
 
             <Suspense fallback={<SkelReview/>}>
-                   <FatchAllreview/>
+                   <FatchAllreview context={context}/>
             </Suspense>
             </div>
         </section>

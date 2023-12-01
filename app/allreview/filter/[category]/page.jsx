@@ -4,8 +4,7 @@ import FatchReviewCat from '@/components/pages/FatchReviewCat';
 import SkelReview from '@/components/layout/SkelReview';
 
 
-export default function FilteredReviews({ params: { category } }) {
-    
+export default function FilteredReviews(context) {
     return (
         <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
             <div className="container px-6 py-5 mx-auto">
@@ -15,7 +14,7 @@ export default function FilteredReviews({ params: { category } }) {
         <div className="flex items-center justify-between">
 
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] ">
-        Category : {category}
+        Category : {context.params.category}
         </h2>
 
                     <ReviewDropDown/>
@@ -26,7 +25,7 @@ export default function FilteredReviews({ params: { category } }) {
         
             </div>
             <Suspense fallback={<SkelReview/>}>
-                   <FatchReviewCat category={category}/>
+                   <FatchReviewCat category={context.params.category} page={parseInt(context.searchParams.page) || 1}/>
             </Suspense>
             </div>
         </section>

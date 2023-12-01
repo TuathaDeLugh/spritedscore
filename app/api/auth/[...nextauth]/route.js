@@ -46,6 +46,7 @@ export const authOptions = {
               return true
             } 
             // This data push to token it must be same ad db other wise not work
+            user.name = dbuser.name
             user.username = dbuser.username 
             user.avatar = dbuser.avatar
             user.role = dbuser.role

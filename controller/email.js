@@ -5,7 +5,7 @@ export default async function getEmails(page) {
         cache: "no-store",
       });
       const email = await response.json();
-      return email.data;
+      return email;
     } catch (error) {
       console.log(error);
     }

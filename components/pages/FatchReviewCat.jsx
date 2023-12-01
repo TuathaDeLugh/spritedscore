@@ -1,17 +1,19 @@
 import getFilteredReview from '@/controller/filteredreview';
 import Link from 'next/link';
 import React from 'react'
+import Pagination from '../Pagination';
 
-export default async function FatchReviewCat({category}) {
-    const reviews = await getFilteredReview(category);
+export default async function FatchReviewCat({category,page}) {
+    const reviews = await getFilteredReview(category,page);
+    console.log(reviews.meta)
   return (
     <>
       {
-          (reviews.length>0) ? (<>
+          (reviews.data.length>0) ? (<>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
           {
-              reviews.map((review) => {
+              reviews.data.map((review) => {
                   return (
                     <Link
                         href={`/allreview/${review._id}`}
@@ -32,6 +34,8 @@ export default async function FatchReviewCat({category}) {
             })
         }
         </div>
+        <Pagination pagedata={reviews.meta}/>
+
         </>) : (
             <h5 className="capitalize font-semibold text-lg w-full text-center ">
         No data avaliable for : <span className='text-purple-500'>{category}</span>

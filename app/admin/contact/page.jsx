@@ -1,5 +1,5 @@
 import DelmailBtn from '@/components/Delmail';
-import { EmailCount } from '@/components/logic/AdminCount'
+import Pagination from '@/components/Pagination';
 import getEmails from '@/controller/email';
 import Link from 'next/link';
 import React, { Suspense } from 'react'
@@ -13,12 +13,12 @@ export default async function AdminContact(context) {
     Contact Request
   </span>
   <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
-    Total Request : <EmailCount/>
+    Total Request : {emails.meta.totalDocuments}
   </h2>
   <div className="block mt-10 w-full overflow-x-auto rounded">
         {
       emails ? (
-          <table className="items-center w-full bg-transparent -collapse">
+          <><table className="items-center w-full bg-transparent -collapse">
             <thead>
               <tr className=' bg-slate-200 dark:bg-slate-600'>
                 <th
@@ -66,7 +66,7 @@ export default async function AdminContact(context) {
               </tr>
             </thead>
             <tbody>
-              {emails?.map((email) => {
+              {emails.data?.map((email) => {
                 return (
                   <tr key={email._id} className='border-y dark:border-slate-500'>
                     <Suspense fallback={<p>Loading</p>}>
@@ -94,7 +94,7 @@ export default async function AdminContact(context) {
                         "table-cell pl-6 pr-1    py-3 text-xs md:text-sm    text-left "
                       }
                     >
-                      {(email.Subject).substring(0,15)}
+                      {(email.subject).substring(0,15)}
                     </td><td
                       className={
                         "hidden sm:table-cell pl-6 pr-1 align-middle   py-3 text-xs md:text-sm    text-left "
@@ -122,6 +122,7 @@ export default async function AdminContact(context) {
               })}
             </tbody>
           </table>
+          <Pagination pagedata={emails.meta}/></>
       ) : null
             }
         </div>

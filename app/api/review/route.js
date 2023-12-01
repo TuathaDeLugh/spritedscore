@@ -14,12 +14,44 @@ export async function POST(request)
     catch(error){
         return NextResponse.json({message: `${error}`,},{status:500});
     }
+
 }
 
-export async function GET (){
-    await connectdb();
-    const reviews  = await Review.find().sort({ title: 1 }).select("_id title category rating image");
-    return NextResponse.json({data:reviews});
+export async function GET(req,res) {
+    try {
+        await connectdb();
+        const page = req.nextUrl.searchParams.get('page') || 1;
+        const pageSize = 12;
+        const skip = (page - 1) * pageSize;
+
+        const emails = await Review.find().sort({ title: 1 }).select("_id title category rating image").skip(skip).limit(parseInt(pageSize));
+
+        const totalDocuments = await Review.countDocuments();
+
+        const hasNextPage = skip + pageSize < totalDocuments;
+
+        return NextResponse.json(
+            {
+                data: emails,
+                meta: {
+                    totalDocuments,
+                    totalPages: Math.ceil(totalDocuments / pageSize),
+                    currentPage: parseInt(page),
+                    hasNextPage,
+                },
+            },
+            { status: 200 }
+        );
+    } catch (error) {
+        console.error('Error in GET handler:', error.message);
+        return NextResponse.json(
+            {
+                message: 'Failed to load mail',
+                error: error.message, 
+            },
+            { status: 500 }
+        );
+    }
 }
 
 export async function DELETE(request){

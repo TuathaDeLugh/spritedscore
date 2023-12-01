@@ -1,15 +1,18 @@
-import getAllReviews from '@/controller/allreview';
 import Link from 'next/link';
 import React from 'react'
+import Pagination from '../Pagination';
+import getAllReview from '@/controller/allreview';
 
-export default async function FatchAllreview() {
-    const reviews = await getAllReviews();
+export default async function FatchAllreview({context}) {
+    const reviews = await getAllReview(parseInt(context.searchParams.page));
   return (
+    <>
+    
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
     {
         
 
-            reviews?.map((review) => {
+            reviews.data?.map((review) => {
                 return (
                     <Link
                         href={`/allreview/${review._id}`}
@@ -30,5 +33,8 @@ export default async function FatchAllreview() {
             })
         }
 </div>
+<Pagination pagedata={reviews.meta}/>
+
+</>
   )
 }

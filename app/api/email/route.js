@@ -43,6 +43,8 @@ export async function GET(req,res) {
 
         const totalDocuments = await Email.countDocuments();
 
+        const hasNextPage = skip + pageSize < totalDocuments;
+
         return NextResponse.json(
             {
                 data: emails,
@@ -50,6 +52,7 @@ export async function GET(req,res) {
                     totalDocuments,
                     totalPages: Math.ceil(totalDocuments / pageSize),
                     currentPage: parseInt(page),
+                    hasNextPage,
                 },
             },
             { status: 200 }
