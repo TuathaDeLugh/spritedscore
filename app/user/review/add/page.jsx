@@ -4,7 +4,7 @@ import ReviewForm from '@/components/pages/CreateReview'
 import { getServerSession } from 'next-auth'
 import React from 'react'
 
-export default async function page() {
+export default async function NewReview() {
   const session = await getServerSession(authOptions)
     const name = session.user.username;
     const avatar = session.user.avatar;

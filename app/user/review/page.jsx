@@ -6,11 +6,12 @@ import getUserReview from '@/controller/userreview';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import DelReviewBtn from '@/components/Deletereview';
+import Pagination from '@/components/Pagination';
 
-export default async function page() {
+export default async function UserReview(context) {
   const session = await getServerSession(authOptions)
-  const reviews = await getUserReview(session.user.id);
-  // console.log(reviews);
+  const page = parseInt(context.searchParams.page) || 1 ;
+  const reviews = await getUserReview(session.user.id,page);
   let i = 1;
   return (
     <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
@@ -19,7 +20,7 @@ export default async function page() {
           My reviews
         </span>
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
-          Reviews created : {reviews.length}
+          Reviews created : {reviews.meta.totalDocuments}
         </h2>
         <div className='flex gap-2 w-full mx-2'>
       <Link href={"/user/review/add"} className='bg-purple-600 hover:opacity-80 my-5 font-bold text-white py-3 px-6 rounded'>Add review</Link>
@@ -64,7 +65,8 @@ export default async function page() {
               </tr>
             </thead>
             <tbody>
-              {reviews?.map((review) => {
+              {
+              reviews.data?.map((review) => {
                 return (
                   <tr key={review._id} className='border-b dark:border-slate-500'>
                     <Suspense fallback={<p>Loading</p>}>
@@ -98,9 +100,6 @@ export default async function page() {
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
                         <p className='px-2'></p>
-                      {/* <Link href={`/admin/review/${review._id}`} title="View " >
-                        <AiOutlineEye className='text-green-600' size={25} />
-                      </Link> */}
                       <DelReviewBtn id={review._id} name={review.image.name}/>
                       </div>
                     </td>
@@ -108,11 +107,13 @@ export default async function page() {
                   </tr>
 
                  )
-              })} 
+              })
+              } 
             </tbody>
           </table>
       </div>
       </div>
+      <Pagination pagedata={reviews.meta}/>
       </div>
     </section>
   )
