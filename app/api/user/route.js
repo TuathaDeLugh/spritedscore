@@ -6,10 +6,10 @@ export async function POST(request)
 {
     
     try{
-       const{name,username,email,avatar,password} = await request.json();
+       const{name,username,email,avatar,password,provider} = await request.json();
         await connectdb();
         const role = 'user';
-        await User.create({name,username,email,avatar,password,role});
+        await User.create({name,username,email,avatar,password,provider,role});
         
 
         return NextResponse.json(

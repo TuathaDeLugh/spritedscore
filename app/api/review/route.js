@@ -21,7 +21,7 @@ export async function GET(req,res) {
     try {
         await connectdb();
         const page = req.nextUrl.searchParams.get('page') || 1;
-        const pageSize = 12;
+        const pageSize = 15;
         const skip = (page - 1) * pageSize;
 
         const emails = await Review.find().sort({ title: 1 }).select("_id title category rating image").skip(skip).limit(parseInt(pageSize));
