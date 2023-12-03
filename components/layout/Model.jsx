@@ -10,26 +10,34 @@ export default function Dmodal ({btn,header,children,submit}) {
   useEffect(() => {
     const clickHandler = ({ target }) => {
       if (!modal.current) return;
-      if (
-        !modalOpen ||
-        modal.current.contains(target) ||
-        trigger.current.contains(target)
-      )
-        return;
+      if (!modalOpen || modal.current.contains(target) || trigger.current.contains(target)) return;
       setModalOpen(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  });
 
-  useEffect(() => {
     const keyHandler = ({ keyCode }) => {
-      if (!modalOpen || keyCode !== 27) return;
-      setModalOpen(false);
+      if (modalOpen && keyCode === 27) {
+        setModalOpen(false);
+      }
     };
-    document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
-  });
+
+    const handleScroll = () => {
+      if (modalOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    };
+
+    document.addEventListener('click', clickHandler);
+    document.addEventListener('keydown', keyHandler);
+    handleScroll();
+
+    return () => {
+      document.removeEventListener('click', clickHandler);
+      document.removeEventListener('keydown', keyHandler);
+      document.body.style.overflow = '';
+    };
+  }, [modalOpen]);
 
   return (
     <>
@@ -56,9 +64,9 @@ export default function Dmodal ({btn,header,children,submit}) {
             <span
               className={`mx-auto mb-6 inline-block h-1 w-[90px] rounded bg-primary`}
             ></span>
-            <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
+            <div className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
               {children}
-            </p>
+            </div>
             <div className="-mx-3 flex flex-wrap">
               <div className="w-1/2 px-3">
                 <button

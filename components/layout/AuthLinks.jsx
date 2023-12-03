@@ -33,7 +33,7 @@ function AuthLinks({ navinfo }) {
     }
     return (
         <div className="relative">
-            <button onClick={() => setOpen(!open)} className='border border-gray-300 dark:border-gray-500 rounded-full p-1'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={21} width={21} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={20}/>)}</button>
+            <button onClick={() => setOpen(!open)} className='border border-gray-300 dark:border-gray-500 rounded-full p-[1px]'>{session && session.user && session.user.avatar ? (<Image src={session.user.avatar} height={25} width={25} alt='Img' className='rounded-full'/>):(<AiOutlineUser size={24}/>)}</button>
             {open ? (
                 <ul className="mt-6 relative md:absolute md:-right-7 list-none m-1 border dark:border-slate-700 w-full md:w-40 rounded bg-white/70 dark:bg-slate-900/70">
                     {session && session.user && session.user.username ?(

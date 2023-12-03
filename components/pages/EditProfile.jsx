@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { MdOutlineModeEditOutline } from "react-icons/md";
 import Dmodal from '../layout/Model';
+import AvatarModel from '../AvatarChangeModel';
 
 export default function EditProfile({ userdata }) {
 
@@ -58,7 +59,11 @@ export default function EditProfile({ userdata }) {
           <div className=' p-1 bg-purple-500 rounded-full'>
           <MdOutlineModeEditOutline className='rounded-full text-white' size={18} />
           </div>
-          }></Dmodal>
+          }
+          header={"Select New Avatar"}
+          submit={"Update"}>
+            <AvatarModel userId={userdata._id}/>
+          </Dmodal>
           </div>
         {
           userdata.avatar ? (<Image width={100} height={100} src={userdata.avatar} alt={userdata.uername} className='mx-auto rounded-full  border dark:border-slate-500' />) : null
