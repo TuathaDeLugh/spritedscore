@@ -12,11 +12,11 @@ export async function GET(request, { params }) {
 }
 export async function PUT(request, { params }) {
   const { id } = params
-  const { name, username, email } = await request.json()
+  const { name, username, email , avatar } = await request.json()
   await connectdb()
   const updatedUser = await User.findByIdAndUpdate(
     id,
-    { name, username, email },
+    { name, username, email , avatar },
     { new: true }
   )
   await Review.updateMany(

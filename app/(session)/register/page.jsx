@@ -13,7 +13,6 @@ import { SignupSchema } from '@/yupschema';
 let initialValues = {
   name: "",
   username: "",
-  avatar: "",
   email: "",
   pass: "",
   confirmpassword: ""
@@ -28,6 +27,7 @@ export default function Register() {
     const data = {
       name: ogvalues.name,
       username: ogvalues.username,
+      avatar:"",
       email: ogvalues.email,
       password: hashedpassword,
       provider:"email"
@@ -66,13 +66,12 @@ export default function Register() {
           <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white dark:bg-slate-800 border shadow-lg dark:border-slate-600 dark:shadow-gray-900 px-10 py-10 sm:px-12 md:px-[60px]">
 
               <div className="mb-2 md:mb-3">
-                <a
-                  href="/#"
+                <Link
+                  href="/"
                   className="mx-auto flex"
                 >
-                  {/* <Image src="/logo.png" height={30} width={40}/> */}
                   <h2 className="text-2xl text-purple-700 font-bold dark:text-purple-400 m-auto">SPIRITED SCORE</h2>
-                </a>
+                </Link>
               </div>
               <h2 className="text-center text-2xl font-semibold dark:text-purple-400 m-auto mb-6">Create An Account</h2>
               <form className=' overflow-y-auto' onSubmit={handleSubmit} autoComplete="off">

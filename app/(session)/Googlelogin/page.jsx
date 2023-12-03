@@ -7,12 +7,12 @@ export default async function GoogleLogin() {
   const session = await getServerSession(authOptions)
   console.log(session)
 	if (!session) return redirect('/login')
-	if (session.user.avatar) {
+	if (session.user.username) {
     redirect('/')
     } 
 
 	if (session)
         return <>
       <Gusername/></>;
-    }    
+    }
     
