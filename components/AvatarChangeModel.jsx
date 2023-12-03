@@ -28,8 +28,8 @@ for (let i = 1; i <= 37; i++) {
                   }`}
                 onClick={() => handleAvatarClick("")}
               />
-              {/* {
-                session.user && session.user.image ? (
+              {
+                session && session.user && session.user.image ? (
                   <Image 
                   key={'google'}
                   src={session.user.image}
@@ -41,7 +41,7 @@ for (let i = 1; i <= 37; i++) {
                   onClick={() => handleAvatarClick(session.user.image)}
                 />
                 ) : null
-              } */}
+              }
             {avatars.map((avatar, index) => (
               <Image 
                 key={index}
