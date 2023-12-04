@@ -21,7 +21,7 @@ export async function GET(req,res) {
     try {
         await connectdb();
         const sort = 1;
-        const page = 1;
+        const page = req.nextUrl.searchParams.get('sort') || -1;;
         const pageSize = 15;
         const skip = (page - 1) * pageSize;
 
