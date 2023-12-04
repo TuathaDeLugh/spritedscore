@@ -54,15 +54,20 @@ export const authOptions = {
       
             return true
           },
-          async jwt({ token, user}) {
+          async jwt({ token, user , trigger ,session }) {
               if (user){
+                
                 // if user login using with db then user obj get data from database  
                 token.username = user.username
                 token.avatar = user.avatar
                 token.role = user.role
                 token.userid = user._id
+
               }
-              
+              if (trigger ===  "update")
+                {
+                  return {...token , ...session.user}
+                }
   
               return token
           },

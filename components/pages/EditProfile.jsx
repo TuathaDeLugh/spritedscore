@@ -1,33 +1,51 @@
 "use client"
 import { ProfileSchema } from '@/yupschema';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
-import { MdOutlineModeEditOutline } from "react-icons/md";
-import Dmodal from '../layout/Model';
 import AvatarModel from '../AvatarChangeModel';
+import { useSession } from 'next-auth/react';
+import { AiOutlineUser } from 'react-icons/ai';
 
 export default function EditProfile({ userdata }) {
 
+  const { data: session, update } = useSession();
   const [disabled, setDisabled] = useState(true);
   const router = useRouter();
   const handleOpen = () => {
     setDisabled(!disabled);
   };
   const postapi = async (ogvalues) => {
-    await fetch(`/api/user/${userdata._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(ogvalues),
-    });
-    router.refresh();
-    router.push("/");
+    try {
+      const response = await fetch(`/api/user/${userdata._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(ogvalues),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update profile');
+      }
+      const { updatedUser } = await response.json();
 
+      await update({
+        ...session,
+        user:{
+          username:updatedUser.username,
+          name:updatedUser.name,
+          email:updatedUser.email
+        }
+      })
+
+    } catch (error) {
+      console.error('Error updating profile:', error.message);
+      toast.error('Failed to update profile');
+    }
+    router.refresh();
   }
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
@@ -55,18 +73,10 @@ export default function EditProfile({ userdata }) {
     <div className='flex items-center w-full mb-5'>
       <div className="mx-auto relative ">
         <div className='absolute right-5 top-0 w-1 h-1' >
-        <Dmodal btn={
-          <div className=' p-1 bg-purple-500 rounded-full'>
-          <MdOutlineModeEditOutline className='rounded-full text-white' size={18} />
-          </div>
-          }
-          header={"Select New Avatar"}
-          submit={"Update"}>
             <AvatarModel userId={userdata._id}/>
-          </Dmodal>
           </div>
         {
-          userdata.avatar ? (<Image width={100} height={100} src={userdata.avatar} alt={userdata.uername} className='mx-auto rounded-full  border dark:border-slate-500' />) : null
+          userdata.avatar ? (<Image width={100} height={100} src={userdata.avatar} alt={userdata.uername} className='mx-auto rounded-full  border dark:border-slate-500' />) : (<AiOutlineUser size={100} className='mx-auto rounded-full text-slate-600 dark:text-slate-500  border dark:border-slate-500'/>)
         }
 
       </div>

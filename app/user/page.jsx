@@ -16,7 +16,7 @@ export default async function Profile() {
           Profile
         </span>
         <h2 className="mb-6 text-[32px] font-bold text-dark lg:text-[4xl]">
-          {userdata.username}
+          {session.user.username} 
         </h2>
         <EditProfile userdata={userdata}/>
     </div>
