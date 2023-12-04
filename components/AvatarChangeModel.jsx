@@ -61,6 +61,7 @@ for (let i = 1; i <= 37; i++) {
 
   const handleSubmit = async () => {
     try {
+      setModalOpen(false)
       let choosenavatar = selectedAvatar;
     if (avatars.includes(selectedAvatar)) {
       choosenavatar = `/avatar/${selectedAvatar}`;
@@ -83,7 +84,7 @@ for (let i = 1; i <= 37; i++) {
       if (!response.ok) {
         throw new Error('Avatar update failed');
       }
-      setModalOpen(false)
+      
       router.refresh();
       toast.success('Avatar Updated Succesfully.');
     } catch (error) {
@@ -166,7 +167,7 @@ for (let i = 1; i <= 37; i++) {
               <div className="w-1/2 px-3">
                 <button className="block w-full rounded-md border dark:border-slate-600 bg-purple-500/70 p-3 text-center text-base font-medium text-white transition hover:bg-blue-dark"
                 onClick={handleSubmit}>
-                 submit
+                 Update
                 </button>
               </div>
             </div>
