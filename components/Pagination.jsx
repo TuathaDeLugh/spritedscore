@@ -3,7 +3,6 @@ import React from 'react'
 import { GrLinkNext,GrLinkPrevious } from "react-icons/gr";
 
 export default function Pagination({pagedata}) {
-	console.log(pagedata)
 const currentPage =  pagedata.currentPage;
 const totalPages = pagedata.totalPages;
 const hasNextPage = pagedata.hasNextPage;
