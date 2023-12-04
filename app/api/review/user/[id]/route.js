@@ -5,12 +5,13 @@ import { NextResponse } from "next/server";
 export async function GET(req, { params },res) {
     try {
         await connectdb();
+        const sort = 1;
         const { id } = params;
         const page = req.nextUrl.searchParams.get('page') || 1;
         const pageSize = 10;
         const skip = (page - 1) * pageSize;
 
-        const emails = await Review.find({ "creator.userid": id }).sort({ title: 1 }).select("_id title rating image").skip(skip).limit(parseInt(pageSize));
+        const emails = await Review.find({ "creator.userid": id }).sort({ title: sort }).select("_id title rating image").skip(skip).limit(parseInt(pageSize));
 
         const totalDocuments = await Review.countDocuments({ "creator.userid": id });
 

@@ -34,7 +34,7 @@ export default function LoadingReview() {
                 {
                   review.category?.map((category) => {
                     return (
-                      <div key={category} className='bg-slate-300 dark:bg-slate-600 rounded-full mt-2 w-16 p-3 mx-2'/>
+                      <div key={category.split('_').join(' ')} className='bg-slate-300 dark:bg-slate-600 rounded-full mt-2 w-16 p-3 mx-2'/>
 
                     );
                   })

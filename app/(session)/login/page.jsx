@@ -28,7 +28,7 @@ export default function Login() {
             email: values.email,
             password: values.password,
           })
-          console.log(result)
+          // console.log(result)
           if (
             result &&
             (result).status == 200 &&

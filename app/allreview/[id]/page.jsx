@@ -56,7 +56,7 @@ async function page({ params: { id } }) {
                 {review.category?.map(category => {
                   return (
                     <span key={category} className='px-2'>
-                      {category}
+                      {category.split('_').join(' ')}
                     </span>
                   )
                 })}
@@ -147,7 +147,7 @@ async function page({ params: { id } }) {
                         <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                           <div className='flex items-center'>
                             {comment.useravatar ? (
-                              <img
+                              <Image width={50} height={50}
                                 src={comment.useravatar}
                                 alt={comment.createdby}
                                 className='border dark:border-slate-400 mr-1 w-7 h-7 rounded-full'
@@ -186,7 +186,7 @@ async function page({ params: { id } }) {
         <span className='mt-4 flex items-center text-base font-semibold  text-purple-700 dark:text-purple-400 '>
           Review Posted by :{' '}
           {review.creator.avatar ? (
-            <img
+            <Image width={50} height={50}
               src={review.creator.avatar}
               alt={review.creator.createdby}
               className='ml-3 mr-1 w-7 h-7 rounded-full'

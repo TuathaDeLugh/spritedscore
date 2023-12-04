@@ -34,7 +34,7 @@ export default async function HomeLetestReview() {
                 {
                   review.category?.map((category) => {
                     return (
-                      <span key={category} className='block px-2 text-lg'>{category}</span>
+                      <span key={category} className='block px-2 text-lg'>{category.split('_').join(' ')}</span>
 
                     );
                   })

@@ -35,11 +35,12 @@ export async function POST(request)
 export async function GET(req,res) {
     try {
         await connectdb();
+        const sort = -1;
         const page = req.nextUrl.searchParams.get('page') || 1;
         const pageSize = 15;
         const skip = (page - 1) * pageSize;
 
-        const emails = await Email.find().skip(skip).limit(parseInt(pageSize));
+        const emails = await Email.find().sort({ createdAt: sort }).skip(skip).limit(parseInt(pageSize));
 
         const totalDocuments = await Email.countDocuments();
 

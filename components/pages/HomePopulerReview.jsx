@@ -1,4 +1,5 @@
 import getPopularReview from '@/controller/popularreview'
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -17,14 +18,14 @@ export default async function HomePopulerReview() {
   class="inline-block mb-3 grow w-40 rounded-lg bg-slate-50 shadow hover:border-purple-500 dark:hover:border-purple-400 hover:text-purple-500 dark:hover:text-purple-400 dark:shadow-gray-600 dark:bg-slate-800 border dark:border-gray-600">
  
 <div className="relative rounded-t-lg">
-  <img
+  <Image width={200} height={200}
      className="w-full rounded-t-lg h-24 object-cover object-center"
     src={review.image.link}
     alt={`Category: ${review.image.name}`}
   />
   <div className="absolute inset-0 rounded-t-lg bg-black opacity-50"></div>
-  <div className="absolute inset-0 text-white flex items-center justify-center">
-    <h2 className="text-xl font-bold">{review.categoryName}</h2>
+  <div className="absolute capitalize inset-0 text-white flex items-center justify-center">
+    <h2 className="text-xl font-bold">{review.categoryName.split('_').join(' ')}</h2>
   </div>
 </div>
 <div className="px-4 py-2 bg-slate-50 dark:bg-slate-800 rounded-b-lg">

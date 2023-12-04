@@ -2,7 +2,8 @@ import Review from "@/models/review";
 import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
-export async function GET(request) {
+export async function GET() {
+  const sort =-1;
     await connectdb();
     const distinctCategories = await Review.distinct("category");
 
@@ -10,7 +11,7 @@ export async function GET(request) {
 
     for (const category of distinctCategories) {
       const highestRatedReview = await Review.findOne({ category })
-        .sort({ rating: -1, createdAt: -1, _id: -1 })
+        .sort({ rating: sort, createdAt: sort, _id: sort })
         .select("_id title category image rating")
         .exec();
 

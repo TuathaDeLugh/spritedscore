@@ -5,7 +5,7 @@ import Pagination from '../Pagination';
 
 export default async function FatchReviewCat({category,page}) {
     const reviews = await getFilteredReview(category,page);
-    console.log(reviews.meta)
+    // console.log(reviews.meta)
   return (
     <>
       {
