@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 
 export async function GET (){
     const sort = -1;
+    const limit = 6;
     await connectdb();
-    const reviews  = await Review.find().sort({ createdAt: sort }).select("_id title category rating image episodes").limit(6).exec();
+    const reviews  = await Review.find().sort({ createdAt: sort }).select("_id title category rating image episodes").limit(limit).exec();
     return NextResponse.json({data:reviews});
 }
