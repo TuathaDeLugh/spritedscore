@@ -100,7 +100,7 @@ export default async function UserReview(context) {
                         <HiPencilAlt className='text-blue-600' size={25} />
                       </Link>
                         <p className='px-2'></p>
-                      <DelReviewBtn id={review._id} name={review.image.name}/>
+                      <DelReviewBtn id={review._id} name={review.image.name} title={review.title}/>
                       </div>
                     </td>
                     </Suspense>

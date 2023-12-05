@@ -16,8 +16,8 @@ export default function Progress() {
     return (
         
     <>
-    <div className='loadingContainer fixed top-[63px] md:top-[70px] bg-transparent h-1 w-full z-50'>
-        <div className='loadingBar h-full bg-purple-600 ease-in-out duration-500' style={{width:`${progress}%`}}></div>
+    <div className=' fixed top-[63px] md:top-[70px] bg-transparent h-1 w-full z-50'>
+        <div className=' h-full bg-purple-600 ease-in-out duration-500' style={{width:`${progress}%`}}></div>
     </div>
     <div className='flex space-x-2 justify-center items-center h-screen animate-pulse'>
  	<span className='sr-only'>Loading...</span>

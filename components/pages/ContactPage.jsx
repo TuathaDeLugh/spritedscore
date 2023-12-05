@@ -28,8 +28,8 @@ function ContactPage({name,email}) {
       },
       body: JSON.stringify(ogvalues),
     });
-    router.refresh();
     router.push("/");
+    router.refresh();
 
   }
 

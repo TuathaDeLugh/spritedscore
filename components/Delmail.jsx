@@ -3,24 +3,26 @@ import React from 'react'
 import { useRouter } from "next/navigation";
 import { MdOutlineDelete } from "react-icons/md";
 import { toast } from 'react-toastify';
+import Dmodal from './layout/Model';
 
-function DelmailBtn({ id }) {
+function DelmailBtn({ id,subject }) {
     const router = useRouter();
     
   async function handleDelete() {
-      const confirmed = confirm("Are you sure?");
-      if (confirmed) {
+    router.push('/admin/contact');
+      
         await fetch(`/api/email?id=${id}`, {
           method: "DELETE",
         });
       toast.success('Contact request Deleted');
-        router.refresh();
+      router.refresh();
       }
-    }
     return (
-      <button onClick={handleDelete}>
-        <MdOutlineDelete size={25} className='text-red-600' />
-      </button>
+      
+        
+        <Dmodal btn={<MdOutlineDelete size={25} className='text-red-600 ' />} header={'Are You Sure ?'} submit={<button className='w-full h-full' onClick={handleDelete}>Delete</button>}>
+          You want to delete this contact request ? : {subject}
+        </Dmodal>
     );
   }
 

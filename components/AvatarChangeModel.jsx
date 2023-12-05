@@ -123,7 +123,7 @@ for (let i = 1; i <= 37; i++) {
                 key={'clear'}
                 width={100}
                 height={100}
-                className={`w-20 h-20 rounded-full text-gray-400 cursor-pointer border-2  transition duration-300 ${selectedAvatar === "" ? 'border-2 border-purple-600 ' : 'dark:border-gray-500'
+                className={`w-20 h-20 p-2 rounded-full text-gray-400 cursor-pointer border-2  transition duration-300 ${selectedAvatar === "" ? 'border-2 border-purple-600 ' : 'dark:border-gray-500'
                   }`}
                 onClick={() => handleAvatarClick("")}
               />

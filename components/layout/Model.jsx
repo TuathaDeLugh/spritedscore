@@ -58,7 +58,7 @@ export default function Dmodal ({btn,header,children,submit}) {
             onBlur={() => setModalOpen(false)}
             className="w-full max-w-[570px] rounded-[20px] bg-white dark:bg-gray-800 border dark:border-slate-600 px-8 py-12 text-center dark:bg-dark-2 md:px-[70px] md:py-[60px]"
           >
-            <h3 className="pb-[18px] text-xl font-semibold sm:text-2xl">
+            <h3 className="pb-[18px] text-xl font-semibold sm:text-2xl text-purple-500 dark:text-purple-400">
               {header}
             </h3>
             <span
@@ -77,7 +77,7 @@ export default function Dmodal ({btn,header,children,submit}) {
                 </button>
               </div>
               <div className="w-1/2 px-3">
-                <div className="block w-full rounded-md border dark:border-slate-600 bg-purple-500/70 p-3 text-center text-base font-medium text-white transition hover:bg-blue-dark">
+                <div className="block w-full rounded-md border dark:border-slate-600 bg-purple-500/70 p-3 text-center text-base font-medium text-white transition hover:opacity-60">
                  {submit}
                 </div>
               </div>

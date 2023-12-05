@@ -76,7 +76,7 @@ export default function EditProfile({ userdata }) {
             <AvatarModel userId={userdata._id}/>
           </div>
         {
-          userdata.avatar ? (<Image width={100} height={100} src={userdata.avatar} alt={userdata.uername} className='mx-auto rounded-full  border dark:border-slate-500' />) : (<AiOutlineUser size={100} className='mx-auto rounded-full text-slate-600 dark:text-slate-500  border dark:border-slate-500'/>)
+          userdata.avatar ? (<Image width={100} height={100} src={userdata.avatar} alt={userdata.uername} className='mx-auto rounded-full  border dark:border-slate-500' />) : (<AiOutlineUser size={100} className=' p-2 mx-auto rounded-full text-slate-600 dark:text-slate-500  border dark:border-slate-500'/>)
         }
 
       </div>

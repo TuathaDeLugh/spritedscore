@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import {toast } from 'react-toastify';
 import { MdOutlineDelete } from "react-icons/md";
+import Dmodal from "./layout/Model";
 
 
 export default function DelCommentBtn({ revid , commid }) {
@@ -16,18 +17,18 @@ export default function DelCommentBtn({ revid , commid }) {
     });
     router.refresh();
   }
-  const confirmed = confirm("Are you sure?");
-  if (confirmed) {
+  
     toast.promise(delapi(), {
       pending: "Deleting Comment",
       success: "Comment Deleted Successfully",
       error: "Failed To Delete"
     });
-    }
+    
   }
   return (
-    <button onClick={handleDelete} className="bg-red-400 text-white p-1 rounded-lg">
-      <MdOutlineDelete size={20} title="delete"/>
-    </button>
+    <Dmodal btn={<MdOutlineDelete size={25} className='bg-red-400 text-white p-1 rounded-lg ' />} header={'Are You Sure ?'} submit={<button className='w-full h-full' onClick={handleDelete}>Delete</button>}>
+          You want to delete this Comment ?
+        </Dmodal>
+
   );
 }

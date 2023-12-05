@@ -112,7 +112,7 @@ export default async function AdminContact(context) {
                       <Link href={`/admin/contact/${email._id}`} title="View " >
                         <AiOutlineEye className='text-green-600 md:mr-3' size={25} />
                       </Link>
-                      <DelmailBtn id={email._id} />
+                      <DelmailBtn id={email._id} subject={email.subject} />
                       </div>
                     </td>
                     </Suspense>
