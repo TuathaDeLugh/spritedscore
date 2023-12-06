@@ -1,6 +1,21 @@
 import React from 'react'
 
-export default function Admin() {
+
+async function getStats() {
+  try {
+    const api = process.env.API_URL;
+    const response = await fetch(`${api}/api/admindashbord`, {
+      cache: "no-store",
+    });
+    const stats = await response.json();
+    return stats;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export  default async function Admin() {
+  const stats = await getStats()
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
     Admin Panal
@@ -9,9 +24,6 @@ export default function Admin() {
     Dashbord
   </h2>
   <div className="text-justify">
-
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex debitis, ullam nobis earum itaque natus unde harum tempora nihil. Harum, quaerat recusandae. Obcaecati ipsum esse sint, deleniti nesciunt possimus maiores.
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur voluptate vel quibusdam voluptatem laboriosam optio, cupiditate exercitationem fuga maiores culpa commodi quidem natus sapiente, aliquam reprehenderit quisquam minus dicta tempora!
 </div>
   </>
   )

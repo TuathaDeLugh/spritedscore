@@ -28,20 +28,17 @@ export default function Login() {
             email: values.email,
             password: values.password,
           })
-          // console.log(result)
           if (
             result &&
             (result).status == 200 &&
             (result).error == undefined
           ) {
-            // toast.success('loged in successful');
             router.refresh();
             router.push('/')
           } else {
             toast.error('incorrect username or password')
           }
         } catch (error) {
-        //   alert('failed to login')
           console.log('Login Failed:', error)
         }
 

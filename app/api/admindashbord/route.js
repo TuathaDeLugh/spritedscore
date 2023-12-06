@@ -11,8 +11,25 @@ export async function GET(req,res) {
         const totalReviews = await Review.countDocuments();
         const totalEmails = await Email.countDocuments();
         const totalUsers = await User.countDocuments();
-        const mostReviewsUser = await User.findOne().sort({ 'watchlist.length': sort });
-        const mostCommentedReview = await Review.aggregate([
+        const mostReview = await Review.aggregate([
+          {
+            $group: {
+              _id: '$creator.userid',
+              username: { $first: '$creator.createdby' }, // Assuming this field represents the creator's username in the review document
+              reviewCount: { $sum: 1 },
+            },
+          },
+          {
+            $sort: {
+              reviewCount: -1,
+            },
+          },
+          {
+            $limit: 1,
+          },
+        ]);
+        const mostReviewsUser = mostReview[0] || null
+        const mostCommented= await Review.aggregate([
           {
             $project: {
               _id: 1,
@@ -29,19 +46,12 @@ export async function GET(req,res) {
             $limit: 1,
           },
         ]);
+        const mostCommentedReview = mostCommented[0] || null
 
     
       
-          const totalComments = await Review.aggregate([
-            {
-              $group: {
-                _id: null,
-                totalComments: { $sum: { $size: '$comments' } },
-              },
-            },
-          ]);
-        // Find user with the most comments
-         const mostCommentedUser = await Review.aggregate([
+          
+         const mostComUser = await Review.aggregate([
       {
         $unwind: '$comments',
       },
@@ -66,8 +76,36 @@ export async function GET(req,res) {
         },
       },
     ]);
-    const latestReviews = await Review.find().sort({ createdAt: sort }).limit(5);
-    const mostWatchlistUsers = await User.find().sort({ 'watchlist.length': sort }).limit(5);
+    const mostCommentedUser = mostComUser[0] || null
+
+    const mostWatchlistedUsers = await User.aggregate([
+      {
+        $lookup: {
+          from: 'reviews',
+          localField: 'watchlist',
+          foreignField: '_id',
+          as: 'watchlistReviews',
+        },
+      },
+      {
+        $project: {
+          username: 1,
+          watchlistCount: { $size: '$watchlistReviews' },
+        },
+      },
+      {
+        $sort: {
+          watchlistCount: -1,
+        },
+      },
+      {
+        $limit: 6,
+      },
+    ]);
+
+
+    const latestReviews = await Review.find().select("_id title category rating image episodes").sort({ createdAt: sort }).limit(5);
+    
 
     
         return NextResponse.json({
@@ -77,13 +115,11 @@ export async function GET(req,res) {
           mostReviewsUser,
           mostCommentedReview,
           mostCommentedUser,
-          totalComments,
-          mostWatchlistUsers,
+          mostWatchlistedUsers,
           latestReviews
 
         });
       } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
       }
 }
