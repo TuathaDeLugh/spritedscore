@@ -15,13 +15,13 @@ export async function GET(req,res) {
           {
             $group: {
               _id: '$creator.userid',
-              username: { $first: '$creator.createdby' }, // Assuming this field represents the creator's username in the review document
+              username: { $first: '$creator.createdby' },
               reviewCount: { $sum: 1 },
             },
           },
           {
             $sort: {
-              reviewCount: -1,
+              reviewCount: sort,
             },
           },
           {
