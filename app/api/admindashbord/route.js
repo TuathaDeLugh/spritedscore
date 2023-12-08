@@ -4,9 +4,9 @@ import User from "@/models/user";
 import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
-export async function GET(req,res) {
-  const sort = req.nextUrl.searchParams.get('sort');
-    try {
+export async function GET(req) {
+  const sortDirection = req.nextUrl.searchParams.get('sort') === '1' ? 1 : -1;
+  try {
         await connectdb();
         const totalReviews = await Review.countDocuments();
         const totalEmails = await Email.countDocuments();
@@ -21,7 +21,7 @@ export async function GET(req,res) {
           },
           {
             $sort: {
-              reviewCount: sort,
+              reviewCount: sortDirection,
             },
           },
           {
@@ -39,7 +39,7 @@ export async function GET(req,res) {
           },
           {
             $sort: {
-              numComments: sort,
+              numComments: sortDirection,
             },
           },
           {
@@ -63,7 +63,7 @@ export async function GET(req,res) {
       },
       {
         $sort: {
-          count: sort,
+          count: 1,
         },
       },
       {
@@ -104,7 +104,7 @@ export async function GET(req,res) {
     ]);
 
 
-    const latestReviews = await Review.find().select("_id title category rating image episodes").sort({ createdAt: sort }).limit(5);
+    const latestReviews = await Review.find().select("_id title category rating image episodes").sort({ createdAt: sortDirection }).limit(5);
     
 
     
@@ -117,9 +117,9 @@ export async function GET(req,res) {
           mostCommentedUser,
           mostWatchlistedUsers,
           latestReviews
-
         });
-      } catch (error) {
+      }  catch (error) {
         console.error(error);
+        return NextResponse.json({ error: "An error occurred while fetching data." }, 500);
       }
 }

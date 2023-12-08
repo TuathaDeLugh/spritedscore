@@ -15,7 +15,7 @@ export default function AdminNav()
  {
   const menus = [
     { name: "dashboard", link: "/admin", icon: MdOutlineDashboard },
-    { name: "Content", link: "/admin", icon: TbId},
+    // { name: "Content", link: "/admin", icon: TbId},
     { name: "Reviews", link: "/admin/review", icon: TbReportAnalytics},
     { name: "Users", link: "/admin/users", icon: FaRegUserCircle },
     { name: "contact", link: "/admin/contact", icon: FiMessageSquare },
