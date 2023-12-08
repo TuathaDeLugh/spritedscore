@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function SkelReview() {
-    const reviews = [1,2,3,4,5,6]
+    const reviews = [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5]
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 xl:mt-12 xl:gap-12 lg:grid-cols-3">
     {

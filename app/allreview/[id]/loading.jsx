@@ -56,7 +56,9 @@ export default function LoadingReview() {
 
             </div>
             
-                <div className="w-full mt-5 py-5 px-5 rounded-full bg-slate-400 dark:bg-slate-700 hover:text-purple-400 "/>
+                <div className="w-full mt-5 py-5 px-5 rounded-full bg-slate-400 dark:bg-slate-700 "/>
+                <div className="w-full mt-5 py-5 px-5 rounded-full bg-slate-400 dark:bg-slate-700  "/>
+
              
           </div>
         </div>
