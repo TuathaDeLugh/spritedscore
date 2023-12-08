@@ -1,5 +1,4 @@
-import LatestReviwewsSkel from '@/components/layout/LatestReviwewsSkel'
-import PopulerReviewSel from '@/components/layout/PopulerReviewSel'
+import HomePageskel from '@/components/layout/HomePageskel'
 import HomeLetestReview from '@/components/pages/HomeLetestReview'
 import HomePopulerReview from '@/components/pages/HomePopulerReview'
 import Image from 'next/image'
@@ -98,19 +97,18 @@ export default async function Home() {
 					)
 				})}
 			</div>
+			<Suspense fallback={<HomePageskel/>}>
 			<div className='container px-6 md:px-0 py-3 mx-auto flex flex-wrap max-h-min'>
 				<div className='w-full md:w-2/3 md:pr-5'>
-					<Suspense fallback={<LatestReviwewsSkel/>}>
+					
 					<HomeLetestReview />
-					</Suspense>
 					
 				</div>
 				<div className='md:border-l dark:border-gray-500 md:pl-5 w-full md:w-1/3'>
-				<Suspense fallback={<PopulerReviewSel/>}>
       				<HomePopulerReview />
-					</Suspense>
 				</div>
 			</div>
+			</Suspense>
 		</div>
 	)
 }
