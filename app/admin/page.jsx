@@ -8,14 +8,21 @@ async function getStats() {
       cache: "no-store",
     });
     const stats = await response.json();
-    return stats;
+    return {
+      props: {
+        stats,
+      },
+      revalidate: 10,
+    }
   } catch (error) {
     console.log(error);
   }
 }
 
+
 export  default async function Admin() {
   const stats = await getStats()
+  console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
     Admin Panal
@@ -27,4 +34,5 @@ export  default async function Admin() {
 </div>
   </>
   )
+  
 }
