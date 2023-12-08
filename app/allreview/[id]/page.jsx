@@ -15,8 +15,11 @@ import { AiOutlineUser } from 'react-icons/ai'
 async function page({ params: { id } }) {
   const session = await getServerSession(authOptions)
   const review = await getSingleReview(id)
-  const user = await getSingleUser(session.user.id)
-
+  let user ;
+  if (session)
+   {
+  user =  await getSingleUser(session.user.id)
+  }
   return (
     <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
       <div className='container px-6 py-5 mx-auto'>

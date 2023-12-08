@@ -15,7 +15,7 @@ export default async function HomePopulerReview() {
 				return (
 
 			<Link href={`/allreview/${review._id}`} key={review._id}
-  class="inline-block mb-3 grow w-40 rounded-lg bg-slate-50 shadow hover:border-purple-500 dark:hover:border-purple-400 hover:text-purple-500 dark:hover:text-purple-400 dark:shadow-gray-600 dark:bg-slate-800 border dark:border-gray-600">
+  className="inline-block mb-3 grow w-40 rounded-lg bg-slate-50 shadow hover:border-purple-500 dark:hover:border-purple-400 hover:text-purple-500 dark:hover:text-purple-400 dark:shadow-gray-600 dark:bg-slate-800 border dark:border-gray-600">
  
 <div className="relative rounded-t-lg">
   <Image width={200} height={200}
