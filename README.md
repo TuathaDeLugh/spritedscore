@@ -16,13 +16,17 @@
 Here're some of the project's best features:
 
 * Compatable for all screen size
-* Sorting by category
-* Dark & light mode
-* Loader(spinner + skeleton loader for review data & all review )
 * User login by email & google
 * User can add review
+* User profile customization. 
 * User can Comment on any review
 * about page & contact page
+* Dark & light mode
+* Sorting by category
+* Loader(spinner + skeleton loader )
+* Pagination
+* Dynamic home page that changes automatically.
+* Admin can control whole site.
 
 <h2>🛠️ Installation Steps:</h2>
 
@@ -33,6 +37,16 @@ npm i
 ```
 
 <p>2. add .env file</p>
+```
+#Example 
+MONGO_URI = 'MongoDB URL'
+NEXTAUTH_SECRET = 'ThisIsTopSecret'
+GOOGLE_ID = 'PROJECT ID That provided by cloud.google '
+GOOGLE_SECRET = 'PROJECT Secret That provided by cloud.google '
+API_URL = 'http://localhost:3000/'
+FIREBASE_API_KEY = 'firebase Project storage key'
+FIREBASE_AUTH_DOMAIN = 'firebase project auth domain'
+```
 
 <p>3. start dev server</p>
 
@@ -43,7 +57,6 @@ npm run dev
 <h2>💻 Built with</h2>
 
 Technologies used in the project:
-
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" width="52" alt="nextjs logo"  />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg" height="40" width="52" alt="tailwindcss logo"  />
