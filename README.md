@@ -38,6 +38,7 @@ npm i
 
 <p>2. add .env file</p>
 #Example 
+
 ```
 MONGO_URI = 'MongoDB URL'
 NEXTAUTH_SECRET = 'ThisIsTopSecret'
