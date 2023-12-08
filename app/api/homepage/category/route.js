@@ -3,9 +3,7 @@ import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
-  const sort =-1;
-  const timestamp = req.nextUrl.searchParams.get('timestamp');
-  console.log(timestamp);
+  const sort = req.nextUrl.searchParams.get('sort');
     await connectdb();
     const distinctCategories = await Review.distinct("category");
 

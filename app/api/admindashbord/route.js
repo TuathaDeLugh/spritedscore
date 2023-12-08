@@ -5,8 +5,8 @@ import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET(req,res) {
+  const sort = req.nextUrl.searchParams.get('sort');
     try {
-        const sort = -1;
         await connectdb();
         const totalReviews = await Review.countDocuments();
         const totalEmails = await Email.countDocuments();

@@ -1,8 +1,7 @@
 export default async function getLetestReview() {
     try {
       const api = process.env.API_URL;
-      const timestamp = new Date().getTime();
-      const response = await fetch(`${api}/api/homepage?timestamp=${timestamp}`,      
+      const response = await fetch(`${api}/api/homepage?sort=-1`,      
       {
         cache: "no-store",
       });
