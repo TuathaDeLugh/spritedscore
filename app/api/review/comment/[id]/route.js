@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(request, { params }) {
         try {
                 const { id } = params;
-                const { _id, useravatar, username, comment } = await request.json();
+                const { _id, userid , useravatar, username, comment } = await request.json();
                 await connectdb();
                 const foundReview = await Review.findById(id).exec();
                 if (!foundReview) {
@@ -14,6 +14,7 @@ export async function POST(request, { params }) {
                 }
                 foundReview.comments.push({
                         _id,
+                        userid,
                         useravatar,
                         username,
                         comment,

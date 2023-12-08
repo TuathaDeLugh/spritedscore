@@ -1,9 +1,10 @@
 import { getStats } from '@/controller/adminstats'
 import React from 'react'
+import { TbReportAnalytics } from 'react-icons/tb'
 
 export  default async function Admin() {
   const stats = await getStats()
-  console.log(stats)
+  // console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
     Admin Panal
@@ -12,7 +13,14 @@ export  default async function Admin() {
     Dashbord
   </h2>
   <div className="text-justify">
-</div>
+  
+
+
+    Total Reviews : 
+    Total Email : {stats.totalEmails}
+    Total Users : {stats.totalUsers}
+    mostReviewsUser : {stats.mostReviewsUser.username}
+  </div>
   </>
   )
   

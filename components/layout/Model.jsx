@@ -77,7 +77,7 @@ export default function Dmodal ({btn,header,children,submit}) {
                 </button>
               </div>
               <div className="w-1/2 px-3">
-                <div className="block w-full rounded-md border dark:border-slate-600 bg-purple-500/70 p-3 text-center text-base font-medium text-white transition hover:opacity-60">
+                <div onClick={() => setModalOpen(false)} className="block w-full rounded-md border dark:border-slate-600 bg-purple-500/70 p-3 text-center text-base font-medium text-white transition hover:opacity-60">
                  {submit}
                 </div>
               </div>

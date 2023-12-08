@@ -51,31 +51,27 @@ export async function GET(req) {
     
       
           
-         const mostComUser = await Review.aggregate([
-      {
-        $unwind: '$comments',
-      },
-      {
-        $group: {
-          _id: '$comments.username',
-          count: { $sum: 1 },
-        },
-      },
-      {
-        $sort: {
-          count: 1,
-        },
-      },
-      {
-        $limit: 1,
-      },
-      {
-        $project: {
-          username: '$_id',
-          count: 1,
-        },
-      },
-    ]);
+        const mostComUser = await Review.aggregate([
+          {
+            $unwind: '$comments',
+          },
+          {
+            $group: {
+              _id: '$comments.userid',
+              username: { $first: '$comments.username' },
+              useravatar: { $first: '$comments.useravatar' },
+              count: { $sum: 1 },
+            },
+          },
+          {
+            $sort: {
+              count: -1,
+            },
+          },
+          {
+            $limit: 1,
+          },
+        ]);
     const mostCommentedUser = mostComUser[0] || null
 
     const mostWatchlistedUsers = await User.aggregate([

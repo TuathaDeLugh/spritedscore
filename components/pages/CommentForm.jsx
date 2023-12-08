@@ -32,7 +32,8 @@ export default function CommentForm({ reviewid }) {
     initialValues,
     onSubmit: (async (values, action) => {
       const data =  {
-        _id:session.user.id,
+        _id: Math.floor(Math.random() * 1000000),
+        userid:session.user.id,
         username:session.user.username,
         useravatar:session.user.avatar,
         comment:values.comment

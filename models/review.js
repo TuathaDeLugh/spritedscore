@@ -72,6 +72,11 @@ const reviewSchema = new Schema({
         required: true,
         unique: true
       },
+      userid: {
+        type: String,
+        required: true,
+        unique: true
+      },
       useravatar: {
         type: String,
       },

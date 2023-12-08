@@ -133,11 +133,12 @@ async function page({ params: { id } }) {
               Review :
             </p>
             <textarea
-              className='bg-transparent w-full  resize-none h-screen text-justify mt-5 pr-2'
+              className='bg-transparent w-full  resize-none h-screen text-justify mt-5 pr-3'
               value={review.detail}
               disabled
             ></textarea>
           </div>
+          {/* comment */}
           <div className='w-full lg:w-[25%] xl:w-[20%]'>
             <p className='mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium'>
               comments:
@@ -149,8 +150,8 @@ async function page({ params: { id } }) {
                   {review.comments?.map(comment => {
                     return (
                       <div
-                        key={comment.name}
-                        className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3'
+                        key={comment._id}
+                        className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3 w-[98%]'
                       >
                         <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                           <div className='flex items-center'>
@@ -170,7 +171,7 @@ async function page({ params: { id } }) {
                           </div>
                           {session &&
                           (review.creator.userid == session.user?.id ||
-                            comment._id == session.user?.id ||
+                            comment.userid == session.user?.id ||
                             session.user.role == 'admin') ? (
                             <div>
                               <DelCommentBtn
@@ -180,7 +181,7 @@ async function page({ params: { id } }) {
                             </div>
                           ) : null}
                         </div>
-                        <div className='py-1 px-2'>{comment.comment}</div>
+                        <div className='py-1 px-2 overflow-x-scroll'>{comment.comment}</div>
                       </div>
                     )
                   })}
