@@ -1,4 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import Error from '@/app/not-found'
 import DelCommentBtn from '@/components/DelCommentBtn'
 import Goback from '@/components/Goback'
 import RemoveFromWatchListBtn from '@/components/RemoveFromWatchListBtn'
@@ -21,7 +22,10 @@ async function page({ params: { id } }) {
   user =  await getSingleUser(session.user.id)
   }
   return (
-    <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
+    <>
+    {
+      review ? ( 
+        <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
       <div className='container px-6 py-5 mx-auto'>
         <div className='mb-4 flex items-center'>
           <Goback />
@@ -205,6 +209,10 @@ async function page({ params: { id } }) {
         </span>
       </div>
     </section>
+      ) : (<Error/>)
+    }
+    
+    </>
   )
 }
 
