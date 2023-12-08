@@ -24,7 +24,7 @@ export default function LoadingReview() {
           
         <div className='flex justify-between flex-wrap lg:border-b dark:border-slate-400 pb-10'>
 
-          <div className='mx-2 rounded-lg h-[40rem] bg-slate-200 dark:bg-slate-700 w-full lg:w-[70%] xl:w-[77%]' />
+          <div className='mx-2 rounded-lg h-48 md:h-[40rem] bg-slate-200 dark:bg-slate-700 w-full lg:w-[70%] xl:w-[77%]' />
           <div className=' text-lg w-full lg:w-[25%] xl:w-[20%]'>
             <div className="mt-2 w-60  bg-slate-300 dark:bg-slate-600 rounded-full p-3 "/>
             <div className='mt-5'>
@@ -88,7 +88,7 @@ export default function LoadingReview() {
             <div>
 
               
-                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh]'>
+                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh] overflow-hidden'>
 
                     {
                       review.comments?.map((comment) => {
