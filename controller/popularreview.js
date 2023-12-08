@@ -1,7 +1,8 @@
 export default async function getPopularReview() {
     try {
       const api = process.env.API_URL;
-      const response = await fetch(`${api}/api/homepage/category`,      
+      const timestamp = new Date().getTime();
+      const response = await fetch(`${api}/api/homepage/category?timestamp=${timestamp}`,      
       {
         cache: "no-store",
       });

@@ -2,8 +2,10 @@ import Review from "@/models/review";
 import connectdb from "@/util/mongodb";
 import { NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(req) {
   const sort =-1;
+  const timestamp = req.nextUrl.searchParams.get('timestamp');
+  console.log(timestamp);
     await connectdb();
     const distinctCategories = await Review.distinct("category");
 
