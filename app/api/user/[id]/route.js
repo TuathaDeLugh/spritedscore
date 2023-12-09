@@ -37,11 +37,24 @@ export async function PUT(request, { params }) {
     }
   );
 
+  await Review.updateMany(
+    { 'comments.userid': id },
+    {
+      $set: {
+        'comments.$.username': updatedUser.username,
+        'comments.$.useravatar': updatedUser.avatar,
+      },
+    }
+  );
+
   return NextResponse.json(
     { message: 'Profile and associated reviews updated', updatedUser },
     { status: 200 }
   );
 }
+
+
+
 export async function PATCH(request, { params }) {
   const { id } = params
   const { type, id: rid } = await request.json()
