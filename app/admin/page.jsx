@@ -4,7 +4,7 @@ import { TbReportAnalytics } from 'react-icons/tb'
 
 export  default async function Admin() {
   const stats = await getStats()
-  // console.log(stats)
+  console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
     Admin Panal
@@ -16,10 +16,10 @@ export  default async function Admin() {
   
 
 
-    Total Reviews : 
-    Total Email : {stats.totalEmails}
-    Total Users : {stats.totalUsers}
-    mostReviewsUser : {stats.mostReviewsUser.username}
+    Total Reviews : {stats.reviews}<br/>
+    Total Email : {stats.totalEmails}<br/>
+    Total Users : {stats.totalUsers}<br/>
+    mostReviewsUser : {stats.mostReviewsUser.username}<br/>
   </div>
   </>
   )
