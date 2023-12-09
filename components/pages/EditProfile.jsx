@@ -58,14 +58,36 @@ export default function EditProfile({ userdata }) {
       },
       validationSchema: ProfileSchema,
       onSubmit: (async (values, action) => {
-        setDisabled(true);
+        if (values.username == userdata.username)
+        {
+          setDisabled(true);
+          toast.promise((postapi(values)), {
+          pending: "updating Profile",
+          success: "Profile Updated Successfully",
+          error: " Failed To Update"
+        });
+        action.resetForm();
+        }
+        else{
+        try {
+          const response = await fetch(`/api/validateusername?username=${values.username}`);
+          const { isUsernameTaken } = await response.json();
+  
+          if (isUsernameTaken) {
+            toast.error('Username is already taken.');
+          } else {
+            setDisabled(true);
         toast.promise((postapi(values)), {
           pending: "updating Profile",
           success: "Profile Updated Successfully",
           error: " Failed To Update"
         });
         action.resetForm();
-
+          }
+        } catch (error) {
+          console.error('Error validating username:', error);
+        }
+      } 
       }
       ),
     });

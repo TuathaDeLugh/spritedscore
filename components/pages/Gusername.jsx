@@ -34,21 +34,34 @@ export default function Gusername() {
         body: JSON.stringify(data),
     });
     signOut({ callbackUrl: '/login' })
-      // router.refresh();
-      // router.push("/login");
     }
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
       initialValues,
       validationSchema: UsernameSchema,
       onSubmit: (async (values, action) => {
         
-        toast.promise((postapi(values)), {
-          pending: "Creating Account",
-          success: "Account Created Successfully now you can login",
-          error: " Failed to create Account"
-        });
-        action.resetForm();
-        setDisabled(false);
+        try {
+          const response = await fetch(`/api/validateusername?username=${values.username}`);
+          const { isUsernameTaken } = await response.json();
+  
+          if (isUsernameTaken) {
+            toast.error('Username is already taken.');
+          } else {
+            toast.promise(postapi(values), {
+              pending: 'Creating Account',
+              success: 'Account Created Successfully now you can login',
+              error: 'Failed to create Account',
+            });
+            action.resetForm();
+            setDisabled(false);
+            router.refresh();
+            
+            
+            
+          }
+        } catch (error) {
+          console.error('Error validating username:', error);
+        }
   
       }
       ),
