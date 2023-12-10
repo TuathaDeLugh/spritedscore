@@ -62,9 +62,9 @@ export  default async function Admin() {
       <div className="text-center">
         <FaComments className="text-green-500 text-3xl mb-2" />
         <p className="text-gray-700 dark:text-slate-400 font-semibold">Most Commented Review</p>
-        <Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline">
+        {/* <Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline"> */}
         {stats.mostCommentedReview.title}
-      </Link>
+      {/* </Link> */}
         <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedReview.numComments} Comments</p>
       </div>
       <Image
