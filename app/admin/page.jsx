@@ -17,7 +17,7 @@ export  default async function Admin() {
     Dashbord
   </h2>
   {
-   stats.mostCommentedReview.image.link  ? (
+   stats && stats.mostCommentedReview && stats.mostCommentedReview.image && stats.mostCommentedReview.image.link ? (
 
     <>
       
