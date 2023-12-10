@@ -68,6 +68,16 @@ export  default async function Admin() {
        </Link> 
         <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedReview.numComments} Comments</p>
       </div>
+     
+      // ... your existing code
+
+{
+  stats.mostCommentedReview.image && stats.mostCommentedReview.image.link ? (
+    <>
+      
+    
+
+      
       <Image
         width={200}
         height={200}
@@ -75,6 +85,11 @@ export  default async function Admin() {
         alt={stats.mostCommentedReview.image.name}
         className="mt-2 rounded-lg w-32 h-24 object-cover object-center"
       />
+</>
+  ) : null
+}
+
+      
     </div>
   </div>
 
