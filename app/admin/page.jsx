@@ -69,7 +69,7 @@ export  default async function Admin() {
         <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedReview.numComments} Comments</p>
       </div>
      
-      // ... your existing code
+
 
 {
   stats.mostCommentedReview.image && stats.mostCommentedReview.image.link ? (
