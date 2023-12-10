@@ -17,7 +17,7 @@ export  default async function Admin() {
     Dashbord
   </h2>
   {
-    stats ? (
+   stats.mostCommentedReview.image.link  ? (
 
     <>
       
@@ -71,7 +71,7 @@ export  default async function Admin() {
       <Image
         width={200}
         height={200}
-        src={stats.mostCommentedReview.image.link?}
+        src={stats.mostCommentedReview.image.link}
         alt={stats.mostCommentedReview.image.name}
         className="mt-2 rounded-lg w-32 h-24 object-cover object-center"
       />
