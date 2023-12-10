@@ -8,7 +8,7 @@ import { TbReportAnalytics } from 'react-icons/tb'
 
 export  default async function Admin() {
   const stats = await getStats()
-  console.log(stats)
+  // console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
     Admin Panal
@@ -16,6 +16,10 @@ export  default async function Admin() {
   <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
     Dashbord
   </h2>
+  {
+    stats ? (
+
+    <>
   <div className="flex justify-around gap-4 w-full border-b pb-2 md:pb-5 dark:border-slate-400">
   <div className=" relative items-center border border-blue-500 rounded-md p-4 bg-blue-50 dark:bg-blue-600/50 mb-4 sm:mb-0 w-1/3 ">
       <FaFileAlt className=" absolute text-blue-500 text-3xl mb-2 right-3 hidden sm:block" />
@@ -43,7 +47,10 @@ export  default async function Admin() {
     <FaStar className=" text-blue-500 text-3xl mb-2 right-0" />
     <p className="text-gray-700 dark:text-slate-400 font-semibold">Most Reviews</p>
     <div className="flex items-center justify-center mb-2">
-      <img src={stats.mostReviewsUser.useravatar} alt="User Avatar" className="w-8 h-8 rounded-full mr-2" />
+      <Image
+      height={100}
+      width={100}
+      src={stats.mostReviewsUser.useravatar} alt="User Avatar" className="w-8 h-8 rounded-full mr-2" />
       <span className="text-lg font-semibold ">{stats.mostReviewsUser.username}</span>
     </div>
     <p className="text-gray-700 dark:text-slate-400">{stats.mostReviewsUser.reviewCount} Reviews</p>
@@ -55,11 +62,9 @@ export  default async function Admin() {
       <div className="text-center">
         <FaComments className="text-green-500 text-3xl mb-2" />
         <p className="text-gray-700 dark:text-slate-400 font-semibold">Most Commented Review</p>
-       {
-        stats.mostCommentedReview ? (<Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline">
+        <Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline">
         {stats.mostCommentedReview.title}
-      </Link>) : null
-       } 
+      </Link>
         <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedReview.numComments} Comments</p>
       </div>
       <Image
@@ -77,13 +82,16 @@ export  default async function Admin() {
     <FaUser className="text-purple-500 text-3xl mb-2" />
     <p className="text-gray-700 dark:text-slate-400 font-semibold">Most Commented User</p>
     <div className="flex items-center justify-center mb-2">
-      <Image width={200} height={200} src={stats.mostCommentedUser.useravatar} alt="User Avatar" className="w-8 h-8 rounded-full mr-2" />
+      <Image width={100} height={100} src={stats.mostCommentedUser.useravatar} alt="User Avatar" className="w-8 h-8 rounded-full mr-2" />
       <span className="text-lg font-semibold">{stats.mostCommentedUser.username}</span>
     </div>
     <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedUser.count} Comments</p>
   </div>
 </div>
 </div>
+</>
+) : null
+}
   </>
   )
   
