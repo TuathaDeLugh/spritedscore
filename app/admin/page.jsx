@@ -20,6 +20,7 @@ export  default async function Admin() {
     stats ? (
 
     <>
+      
   <div className="flex justify-around gap-4 w-full border-b pb-2 md:pb-5 dark:border-slate-400">
   <div className=" relative items-center border border-blue-500 rounded-md p-4 bg-blue-50 dark:bg-blue-600/50 mb-4 sm:mb-0 w-1/3 ">
       <FaFileAlt className=" absolute text-blue-500 text-3xl mb-2 right-3 hidden sm:block" />
@@ -62,15 +63,15 @@ export  default async function Admin() {
       <div className="text-center">
         <FaComments className="text-green-500 text-3xl mb-2" />
         <p className="text-gray-700 dark:text-slate-400 font-semibold">Most Commented Review</p>
-        {/* <Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline"> */}
+         <Link href={`/allreview/${stats.mostCommentedReview._id}`} className="text-blue-500 text-lg font-semibold hover:underline"> 
         {stats.mostCommentedReview.title}
-      {/* </Link> */}
+       </Link> 
         <p className="text-gray-700 dark:text-slate-400">{stats.mostCommentedReview.numComments} Comments</p>
       </div>
       <Image
         width={200}
         height={200}
-        src={stats.mostCommentedReview.image.link}
+        src={stats.mostCommentedReview.image.link?}
         alt={stats.mostCommentedReview.image.name}
         className="mt-2 rounded-lg w-32 h-24 object-cover object-center"
       />
