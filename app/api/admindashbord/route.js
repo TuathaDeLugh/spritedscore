@@ -16,6 +16,7 @@ export async function GET(req) {
             $group: {
               _id: '$creator.userid',
               username: { $first: '$creator.createdby' },
+              useravatar: { $first: '$creator.avatar' },
               reviewCount: { $sum: 1 },
             },
           },
@@ -34,6 +35,7 @@ export async function GET(req) {
             $project: {
               _id: 1,
               title: 1,
+              image:1,
               numComments: { $size: '$comments' },
             },
           },
