@@ -9,7 +9,7 @@ export default function HomePageskel() {
                 <span className='mb-4 block text-base font-semibold text-purple-700 dark:text-purple-400 overflow-hidden'>
 				Latest Reviwews
 			</span>
-        <div className='max-[90vh]  overflow-hidden md:pr-2 '>
+        <div className='overflow-hidden max-h-[80vh] md:pr-2 '>
 			{reviews?.map(review => {
 				return (
 					<div
