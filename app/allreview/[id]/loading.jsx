@@ -88,7 +88,7 @@ export default function LoadingReview() {
             <div>
 
               
-                  <div className='mt-5 max-h-[50vh] lg:max-h-[90vh] overflow-hidden'>
+                  <div className='mt-5 max-h-[50vh] lg:max-h-[75vh] overflow-hidden'>
 
                     {
                       review.comments?.map((comment) => {

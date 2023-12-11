@@ -34,7 +34,7 @@ export default async function Cdatapage({ params: { id } }) {
 
     <p className='mb-3'>
     <sapn className='text-purple-500 dark:text-purple-400 font-semibold'>Details :</sapn>
-     <textarea className='h-screen w-full bg-transparent resize-none' value={email.details} disabled></textarea>
+     <textarea className='h-[80vh] w-full bg-transparent resize-none' value={email.details} disabled></textarea>
      </p>
   </div>
     </>

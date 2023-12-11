@@ -82,14 +82,15 @@ async function page({ params: { id } }) {
                 Charectors :{' '}
               </span>
               {review.characters.length > 0 ? (
-                <table className='w-full rounded-lg mt-3 '>
+                <div className="max-h-[30vh] overflow-y-scroll pr-2">
+                <table className='w-full mt-3'>
                   <thead>
                     <tr className='text-purple-500 dark:text-purple-400 bg-slate-300 dark:bg-slate-600 border-b dark:border-slate-500'>
                       <td className='py-1 px-2'>Name</td>
                       <td className='py-1 px-2'>Status</td>
                     </tr>
                   </thead>
-                  <tbody className='md:max-h-[50vh] md:overflow-y-scroll'>
+                  <tbody className=''>
                     {review.characters?.map(character => {
                       return (
                         <tr
@@ -103,6 +104,7 @@ async function page({ params: { id } }) {
                     })}
                   </tbody>
                 </table>
+                </div>
               ) : (
                 <p>Charectors not provided by creator</p>
               )}
@@ -133,7 +135,7 @@ async function page({ params: { id } }) {
               Review :
             </p>
             <textarea
-              className='bg-transparent w-full  resize-none h-screen text-justify mt-5 pr-3'
+              className='bg-transparent w-full  resize-none h-[80vh] text-justify mt-5 pr-3'
               value={review.detail}
               disabled
             ></textarea>
@@ -146,7 +148,7 @@ async function page({ params: { id } }) {
             <CommentForm reviewid={review._id} />
             <div>
               {review.comments.length > 0 ? (
-                <div className='mt-5 max-h-[50vh] lg:max-h-[90vh] overflow-y-auto'>
+                <div className='mt-5 max-h-[50vh] lg:max-h-[75vh] overflow-y-auto'>
                   {review.comments?.map(comment => {
                     return (
                       <div

@@ -9,7 +9,7 @@ export default function HomePageskel() {
                 <span className='mb-4 block text-base font-semibold text-purple-700 dark:text-purple-400 overflow-hidden'>
 				Latest Reviwews
 			</span>
-        <div className='max-h-screen  overflow-hidden md:pr-2 '>
+        <div className='max-[90vh]  overflow-hidden md:pr-2 '>
 			{reviews?.map(review => {
 				return (
 					<div
@@ -48,7 +48,7 @@ export default function HomePageskel() {
                 <span className='mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400'>
 				Popular reviews by category
 			</span>
-			<div className="overflow-hidden max-h-screen gap-5 md:pr-5 flex flex-wrap justify-between animate-pulse duration-300">
+			<div className="overflow-hidden max-h-[80vh] gap-5 md:pr-5 flex flex-wrap justify-between animate-pulse duration-300">
 			{reviews?.map(review => {
 				return (
 

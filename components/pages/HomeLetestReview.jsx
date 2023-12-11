@@ -9,7 +9,7 @@ export default async function HomeLetestReview() {
 			<span className='mb-4 block text-base font-semibold text-purple-700 dark:text-purple-400'>
 				Latest Reviwews
 			</span>
-        <div className='md:max-h-screen overflow-y-auto md:pr-2'>
+        <div className='md:max-h-[80vh] overflow-y-auto md:pr-2'>
 			{reviews?.map(review => {
 				return (
 					<div
