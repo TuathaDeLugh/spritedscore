@@ -89,7 +89,7 @@ async function page({ params: { id } }) {
                       <td className='py-1 px-2'>Status</td>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody className='md:max-h-[50vh] md:overflow-y-scroll'>
                     {review.characters?.map(character => {
                       return (
                         <tr
