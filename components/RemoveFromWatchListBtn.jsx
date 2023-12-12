@@ -2,6 +2,7 @@
 
 import { removeWatchlist } from '@/controller/watchlist'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 const RemoveFromWatchListBtn = ({ uid, rid, page = 'read_review' }) => {
   const router = useRouter()
@@ -15,6 +16,7 @@ const RemoveFromWatchListBtn = ({ uid, rid, page = 'read_review' }) => {
 
   const handleWatchlist = async () => {
     await removeWatchlist(uid, rid)
+    toast.success('Removed from the Watchlist')
     router.refresh()
   }
   return (

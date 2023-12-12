@@ -1,9 +1,16 @@
 import AdminNav from '@/components/layout/AdminSlider'
 import React from 'react'
+import { authOptions } from '../api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 
-export default function layout({ children }) {
-  return (<>
-  <section className='mt-[63px] md:mt-[70px]'>
+export default async function layout({ children }) {
+  const session = await getServerSession(authOptions)
+    
+    if (session && session.user && session.user.role=='admin'){
+
+        return (<>
+        <section className='mt-[63px] md:mt-[70px]'>
       <AdminNav/>
   </section>
     <section className="mx-auto max-w-[1500px]">
@@ -14,4 +21,8 @@ export default function layout({ children }) {
       </section>
   </>
   )
+}
+    else{
+        redirect('/login');
+    }
 }

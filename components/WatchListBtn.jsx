@@ -2,12 +2,14 @@
 
 import { addToWatchlist } from '@/controller/watchlist'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 const WatchListBtn = ({ uid, rid }) => {
   const router = useRouter()
 
   const handleWatchlist = async () => {
     await addToWatchlist(uid, rid)
+    toast.success('Added to the Watchlist')
     router.refresh()
   }
   return (
