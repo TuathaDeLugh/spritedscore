@@ -73,7 +73,7 @@ export default async function Home() {
 					</div>
 				</div>
 
-				<div className='flex items-center justify-between lg:justify-end flex-1 h-96 '>
+				<div className='flex items-center lg:justify-end flex-1 h-96 grow justify-center '>
 					<Image
 						height={400}
 						width={400}
