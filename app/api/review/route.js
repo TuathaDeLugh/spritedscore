@@ -21,7 +21,7 @@ export async function GET(req,res) {
     try {
         await connectdb();
         const sort = 1;
-        const page = req.nextUrl.searchParams.get('page') || 1;;
+        const page = req.nextUrl.searchParams.get('page') || 1
         const pageSize = 15;
         const skip = (page - 1) * pageSize;
 
@@ -47,7 +47,7 @@ export async function GET(req,res) {
         console.error('Error in GET handler:', error.message);
         return NextResponse.json(
             {
-                message: 'Failed to load mail',
+                message: 'Failed to load review',
                 error: error.message, 
             },
             { status: 500 }

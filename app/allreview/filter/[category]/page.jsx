@@ -14,7 +14,7 @@ export default function FilteredReviews(context) {
         <div className="flex items-center justify-between">
 
         <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl] ">
-        Category : {context.params.category}
+        Category : {context.params.category.split('_').join(' ')}
         </h2>
 
                     <ReviewDropDown/>

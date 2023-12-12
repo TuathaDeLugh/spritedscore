@@ -29,8 +29,8 @@ export default function ReviewDropDown() {
                             <li key={link}
                             className="text-l rounded-lg text-slate-800 dark:text-slate-300 p-1 m-2 text-center md:text-left hover:bg-purple-400    hover:text-slate-50 md:dark:hover:text-slate-200">
 
-                                <Link onClick={() => setOpen(!open)} href={`/allreview/filter/${link}`} className='inline-block px-1 w-full'>
-                                    {link}</Link>
+                                <Link onClick={() => setOpen(!open)} href={`/allreview/filter/${link}`} className='inline-block px-1 w-full capitalize'>
+                                    {link.split('_').join(' ')}</Link>
                             </li>
 
 )

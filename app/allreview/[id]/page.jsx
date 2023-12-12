@@ -56,15 +56,15 @@ async function page({ params: { id } }) {
               </span>{' '}
               &#9733; {review.rating}/10
             </p>
-            <div className='mt-5'>
+            <div className='mt-5 flex'>
               <span className=' text-purple-500 dark:text-purple-400  font-medium'>
-                Category :{' '}
+                Category:{' '}
               </span>
-              <div className='flex flex-wrap'>
+              <div className='flex flex-wrap capitalize'>
                 {review.category?.map(category => {
                   return (
                     <span key={category} className='px-2'>
-                      {category.split('_').join(' ')}
+                      {category.split('_').join(' ')},
                     </span>
                   )
                 })}

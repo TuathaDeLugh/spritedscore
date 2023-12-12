@@ -95,6 +95,8 @@ const reviewSchema = new Schema({
 {
   timestamps:true
 });
+reviewSchema.index({ title: 'text' });
+
 
 const Review = mongoose.models.review || mongoose.model("review", reviewSchema);
 
