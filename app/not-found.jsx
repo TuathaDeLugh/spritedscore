@@ -18,7 +18,7 @@ export default function Error() {
                 </h2>
                 <a
                   href="/"
-                  className="inline-block rounded-lg border boreder-black dark:border-white  px-8 py-3 text-center text-base font-semibold text-gray-900 dark:text-white transition hover:bg-white dark:hover:bg-gray-800 hover:text-primary"
+                  className="inline-block rounded-lg border border-slate-700 dark:border-slate-400  px-8 py-3 text-center text-base font-semibold text-gray-900 dark:text-white transition hover:bg-purple-500 dark:hover:bg-purple-400 hover:text-white"
                 >
                   Go To Home
                 </a>
