@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET(req) {
     try {
         await connectdb();
-        const query = req.nextUrl.searchParams.get('query') || null
+        const query = await req.nextUrl.searchParams.get('query') || null
         const  title  = decodeURIComponent(query)
         const regex = new RegExp(`^${title}`, "i");
         const reviews = await Review.find({ title: { $regex: regex } }).select('_id title').sort({ title: 1 });
