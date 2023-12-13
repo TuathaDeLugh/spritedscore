@@ -18,7 +18,7 @@ export default function AllReviews(context) {
                     <h2 className="text-[32px] font-bold capitalize lg:text-[4xl] ">
                         Unlock The Essence Of Anime With Spirited Score&apos;s Insightful Reviews
                     </h2>
-                    <div className="w-full lg:w-80 flex gap-2 items-center">
+                    <div className="min-w-[18rem] w-full lg:w-80 flex gap-2 items-center">
                         <Search />
                         <ReviewDropDown />
                     </div>

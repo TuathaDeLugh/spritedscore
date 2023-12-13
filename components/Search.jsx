@@ -40,8 +40,8 @@ export default function Search() {
           </div>
         </div>
         {open ? (
-          <div className="relative">
-            <div className="absolute mt-3 z-10 left-0 border dark:border-slate-600 w-full rounded-lg p-3 pr-1 bg-slate-50/80  dark:bg-slate-800/80">
+          <div className="relative ">
+            <div className="absolute mt-3 z-10 left-0 border dark:border-slate-600 w-full rounded-lg p-3 pr-1 bg-slate-50/90  dark:bg-slate-800/90">
               <Suspense fallback={<div className='w-full items-center text-center'> Loading</div>}>
                 <SearchedData query={data} />
               </Suspense>

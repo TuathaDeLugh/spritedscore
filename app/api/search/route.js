@@ -8,8 +8,8 @@ export async function GET(req) {
         await connectdb();
         const query = await req.nextUrl.searchParams.get('query') || null
         const  title  = decodeURIComponent(query)
-        const regex = new RegExp(`^${title}`, "i");
-        const reviews = await Review.find({ title: { $regex: regex } }).select('_id title').sort({ title: 1 });
+        const regex = new RegExp(`^${title}`, "i");//here ^ for start with & i for case insenctive no other stuff
+        const reviews = await Review.find({ title: { $regex: regex } }).select('_id title image rating').sort({ title: 1 });
       return NextResponse.json({ data : reviews },
         {status: 200}
         );

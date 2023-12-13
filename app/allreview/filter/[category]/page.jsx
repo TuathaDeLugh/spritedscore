@@ -10,7 +10,7 @@ export default function FilteredReviews(context) {
                 <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
                     Filtered reviews
                 </span>
-                <div className="flex items-center flex-col lg:flex-row gap-5 justify-between mb-6 ">
+                <div className="flex items-center flex-row gap-5 justify-between mb-6 ">
 
                     <h2 className="text-[32px] font-bold capitalize lg:text-[4xl] ">
                     Category : {context.params.category.split('_').join(' ')}
