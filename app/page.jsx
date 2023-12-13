@@ -1,3 +1,4 @@
+import Search from '@/components/Search'
 import HomePageskel from '@/components/layout/HomePageskel'
 import HomeLetestReview from '@/components/pages/HomeLetestReview'
 import HomePopulerReview from '@/components/pages/HomePopulerReview'
@@ -50,13 +51,13 @@ export default async function Home() {
 			<div className='container flex flex-col justify-between px-6 md:px-0 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center gap-6'>
 				<div className='flex flex-col items-center flex-1 lg:flex-row'>
 					<div className='lg:mx-2 lg:order-2'>
-						<h2 className='text-3xl font-bold text-gray-800 dark:text-white lg:text-4xl'>
+						<h2 className='text-3xl font-bold text-gray-800 dark:text-white lg:text-4xl mb-5'>
 							Dive into the captivating world of anime with{' '}
 							<span className='text-purple-600 dark:text-purple-400'>
 								Spirited Score
 							</span>
 						</h2>
-
+						<Search/>
 						<p className='mt-4 text-sm text-gray-500 dark:text-gray-400 lg:text-base text-justify'>
 							Immerse yourself in the dynamic universe of anime through Spirited
 							Score, where our dedicated team of discerning critics crafts
