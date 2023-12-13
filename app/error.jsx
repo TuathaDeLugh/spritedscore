@@ -1,9 +1,7 @@
 'use client'
-import Image from "next/image";
 
 
 const ErrorComponent = ({ error, reset }) => {
-    const errorMessage = error instanceof Error ? error.message : "Something Wrong";
     return (<>
         <section className="relative z-10 bg-slate-100 dark:bg-gray-800 h-[100vh] flex items-center">
             <div className="container mx-auto">
@@ -11,8 +9,8 @@ const ErrorComponent = ({ error, reset }) => {
                     <div className="w-full px-4 my-40">
                         <div className="mx-auto text-center">
 
-                            <h2 className="mb-2 text-3xl font-bold leading-none text-purple-600 dark:text-purple-400 md:text-[40px] lg:text-[60px]">
-                                {errorMessage}
+                            <h2 className="mb-2 text-4xl font-bold leading-none text-purple-600 dark:text-purple-400 md:text-[50px] lg:text-[70px]">
+                            Something Wrong
                             </h2>
                             <h2 className="mb-3 text-xl md:text-2xl font-semibold leading-tight text-gray-900 dark:text-slate-300">
                                 Looks like you&apos;ve lost the doorway
