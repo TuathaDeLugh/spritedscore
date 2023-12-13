@@ -14,7 +14,7 @@ export default function Error() {
                   404
                 </h2>
                 <h2 className="mb-3 text-3xl font-semibold leading-tight text-gray-900 dark:text-white">
-                  Oops! Looks like you lost
+                Looks like you've found the doorway to the great nothing
                 </h2>
                 <a
                   href="/"

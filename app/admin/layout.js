@@ -23,6 +23,6 @@ export default async function layout({ children }) {
   )
 }
     else{
-        redirect('/login');
+        throw new Error("Not Authorized")
     }
 }
