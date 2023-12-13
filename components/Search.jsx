@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState , useCallback} from 'react'
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SearchedData from './logic/SearchedData';
 export default function Search() {
@@ -7,24 +7,22 @@ export default function Search() {
   const [open, setOpen] = useState(false);
   const searchRef = useRef(null);
 
-  const handleOutsideClick = (event) => {
-
+  const handleOutClick = useCallback((event) => {
     if (searchRef.current && !searchRef.current.contains(event.target) && data.trim() !== '') {
       setOpen(false);
     }
-  };
+  }, [data]);
 
   useEffect(() => {
-
-    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('mousedown', handleOutClick);
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutClick);
     };
-  }, [data]);
+  }, [handleOutClick, data]);
 
   const handleChange = (value) => {
     setData(value);
-    setOpen(value.trim() !== ''); 
+    setOpen(value.trim() !== '');
   };
 
   return (
@@ -42,13 +40,13 @@ export default function Search() {
           </div>
         </div>
         {open ? (
-            <div className="relative">
-              <div className="absolute mt-3 z-10 left-0 border dark:border-slate-600 w-full rounded-lg p-3 pr-1 bg-slate-50/80  dark:bg-slate-800/80">
-          <Suspense fallback={<div className='w-full items-center text-center'> Loading</div>}>
+          <div className="relative">
+            <div className="absolute mt-3 z-10 left-0 border dark:border-slate-600 w-full rounded-lg p-3 pr-1 bg-slate-50/80  dark:bg-slate-800/80">
+              <Suspense fallback={<div className='w-full items-center text-center'> Loading</div>}>
                 <SearchedData query={data} />
-          </Suspense>
-              </div>
+              </Suspense>
             </div>
+          </div>
         ) : null}
       </div>
     </>

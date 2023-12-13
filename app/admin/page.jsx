@@ -4,11 +4,8 @@ import Link from 'next/link'
 import React from 'react'
 import { FaComments, FaEnvelope, FaFileAlt, FaStar, FaUser, FaUsers } from 'react-icons/fa'
 
-import { TbReportAnalytics } from 'react-icons/tb'
-
 export default async function Admin() {
   const stats = await getStats()
-  // console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
       Admin Panal
