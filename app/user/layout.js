@@ -15,6 +15,6 @@ export  default async function layout({ children }) {
   )
 }
     else{
-        throw new Error("Not Authorized")
+        throw new Error("Login Is Required For This Page")
     }
 }

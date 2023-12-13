@@ -10,18 +10,26 @@ const ErrorComponent = ({ error, reset }) => {
                 <div className=" flex">
                     <div className="w-full px-4 my-40">
                         <div className="mx-auto text-center">
-                            
-                            <h2 className="mb-2 text-6xl font-bold leading-none text-purple-600 dark:text-purple-400 sm:text-[60px] md:text-[80px]">
-                            {errorMessage}
-                </h2>
-                <h2 className="mb-3 text-2xl font-semibold leading-tight text-gray-900 dark:text-slate-300">
-                Looks like you've lost the doorway
-                </h2>
-                <div className="flex items-center justify-center gap-2">
 
-                                        <button onClick={reset} className=" border rounded-lg md py-3 px-8 text-center bg-purple-600 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-opacity-50" >Try Again</button>
-                                        <a href={'/'} class="border rounded-lg md py-3 px-4 text-center bg-purple-600 text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-opacity-50">Take me home!</a>
-                                    </div>
+                            <h2 className="mb-2 text-3xl font-bold leading-none text-purple-600 dark:text-purple-400 md:text-[40px] lg:text-[60px]">
+                                {errorMessage}
+                            </h2>
+                            <h2 className="mb-3 text-xl md:text-2xl font-semibold leading-tight text-gray-900 dark:text-slate-300">
+                                Looks like you&apos;ve lost the doorway
+                            </h2>
+                            <div className="flex items-center justify-center gap-2">
+
+                                <button onClick={reset}
+                                    className="inline-block rounded-lg border border-slate-700 dark:border-slate-400  px-8 py-3 text-center text-base font-semibold text-gray-900 dark:text-white transition hover:bg-purple-500 dark:hover:bg-purple-400 hover:text-white"
+
+                                >Try Again</button>
+                                <a
+                                    href="/"
+                                    className="inline-block rounded-lg border border-slate-700 dark:border-slate-400  px-8 py-3 text-center text-base font-semibold text-gray-900 dark:text-white transition hover:bg-purple-500 dark:hover:bg-purple-400 hover:text-white"
+                                >
+                                    Go To Home
+                                </a>
+                            </div>
 
                         </div>
                     </div>
