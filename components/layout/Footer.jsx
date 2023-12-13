@@ -12,6 +12,7 @@ function Footer ({children})  {
               <div className="mb-10 w-full">
                 <Link href="/" className="mb-6 max-w-[300px] flex items-center gap-2">
                   <Image
+                    className=" w-auto"
                     src="/logo.png"
                     width={60}
                     height={55}

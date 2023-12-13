@@ -3,18 +3,13 @@ import Review from "@/models/review";
 import { NextResponse } from "next/server";
 
 
-export async function GET(req,res) {
+export async function GET(req) {
     try {
         await connectdb();
-        const  title  = req.nextUrl.searchParams.get('query') || ''
-        const regex = new RegExp(title, "i");
-        const reviews = await Review.find({ title: { $regex: regex } }).sort({ title: 1 });
-
-      if (!reviews || reviews.length === 0) {
-        return res.status(404).json({ message: "No matching reviews found" });
-      }
-
-      return NextResponse.json({ reviews },
+        const  title  = decodeURIComponent(req.nextUrl.searchParams.get('query')) || null
+        const regex = new RegExp(`^${title}`, "i");
+        const reviews = await Review.find({ title: { $regex: regex } }).select('_id title').sort({ title: 1 });
+      return NextResponse.json({ data : reviews },
         {status: 200}
         );
     }
