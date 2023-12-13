@@ -2,7 +2,7 @@
 import React, { Suspense, useEffect, useRef, useState , useCallback} from 'react'
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SearchedData from './logic/SearchedData';
-export default function Search() {
+export default async function Search() {
   const [data, setData] = useState('');
   const [open, setOpen] = useState(false);
   const searchRef = useRef(null);
