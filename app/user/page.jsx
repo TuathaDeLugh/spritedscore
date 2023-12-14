@@ -10,8 +10,8 @@ export default async function Profile() {
   const session = await getServerSession(authOptions)
   const userdata = await getSingleUser(session.user.id)
   return (
-    <div className='px-2 mx-auto max-w-[1500px] pt-20 min-h-screen'>
-      <div className="max-w-md mx-auto p-6 bg-white dark:bg-slate-700 border dark:border-slate-500 rounded-md shadow-md">
+    <div className='px-2 mx-auto max-w-[1500px] pt-20 min-h-screen flex items-center'>
+      <div className=" w-auto lg:w-[25rem] mx-auto p-6 mt-0 m-3 bg-white dark:bg-slate-700 border dark:border-slate-500 rounded-md shadow-md">
       <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
           Profile
         </span>
