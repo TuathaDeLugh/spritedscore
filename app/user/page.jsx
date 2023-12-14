@@ -1,7 +1,5 @@
 import getSingleUser from '@/controller/singleuser';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { use } from 'react'
+import React from 'react'
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
 import EditProfile from '@/components/pages/EditProfile';
