@@ -1,10 +1,33 @@
 'use client'
+import { useFormik } from 'formik';
 import { useSession } from 'next-auth/react'
 import React from 'react'
 
 export default function Passwordchange() {
     const { data: session } = useSession()
-    console.log(session)
+        const userid = session?.user?.id
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
+    useFormik({
+      initialValues: {
+        userid: userid,
+        oldpassword: '',
+        newpassword: '',
+        confirmpassword: ''
+      },
+    //   validationSchema: 
+      onSubmit: (async (values, action) => {
+        
+          toast.promise((postapi(values)), {
+            pending: "updating Profile",
+            success: "Profile Updated Successfully",
+            error: " Failed To Update"
+          });
+          action.resetForm();
+      }
+      ),
+    });
+
+    
     return (
         <div className='px-2 mx-auto max-w-[1500px] pt-20 min-h-screen flex items-center'>
             <div className=" w-auto lg:w-[25rem] mx-auto p-6 mt-0 m-3 bg-white dark:bg-slate-700 border dark:border-slate-500 rounded-md shadow-md">
@@ -18,62 +41,61 @@ export default function Passwordchange() {
                                 {session.user.username}
                             </h2>
 
-                            <form onSubmit={''} autoComplete="off">
+                            <form onSubmit={handleSubmit} autoComplete="off">
+                            <div className='mb-6'>
+                              
+
+                              <input
+                                  className={`border ${errors.oldpassword && touched.oldpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} px-[14px] py-3 border-stroke bg-white dark:bg-slate-800 flex items-center rounded focus:ring-0 focus:outline-0 w-full `}
+                                  placeholder={'Old Password'}
+                                  name='newpassword'
+                                  value={values.oldpassword}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                              />
+                          
+
+
+                          {errors.oldpassword && touched.oldpassword ? (
+                              <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.oldpassword}</p>
+                          ) : null}
+                      </div>
+
                                 <div className='mb-6'>
-                                    <div className={`border ${errors.username && touched.username ? "border-red-400 dark:border-red-600" : "dark:border-gray-600"} border-stroke bg-white dark:bg-slate-800 flex items-center rounded`}>
-                                        <p className="px-3 text-gray-600 dark:text-gray-300 text-base w-2/6">username</p>
+                              
+
                                         <input
-                                            className={`w-4/6 rounded px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none disabled:opacity-50`}
-                                            placeholder={userdata.username}
-                                            name='username'
-                                            value={values.username}
+                                            className={`border ${errors.newpassword && touched.newpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} px-[14px] py-3 border-stroke bg-white dark:bg-slate-800 flex items-center rounded focus:ring-0 focus:outline-0 w-full `}
+                                            placeholder={'New Password'}
+                                            name='newpassword'
+                                            value={values.newpassword}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                         />
-                                    </div>
+                                    
 
 
-                                    {errors.username && touched.username ? (
-                                        <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.username}</p>
-                                    ) : null}
-                                </div>
-
-                                <div className='mb-6'>
-                                    <div className={`border ${errors.name && touched.name ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} border-stroke bg-white dark:bg-slate-800 flex items-center rounded `}>
-
-                                        <p className="px-3 text-gray-600 dark:text-gray-300 text-base w-2/6">Name</p>
-                                        <input
-                                            className={` w-4/6 rounded  px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none disabled:opacity-50`}
-                                            placeholder={userdata.name}
-                                            name='name'
-                                            value={values.name}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            disabled={disabled}
-                                        />
-                                    </ div>
-
-
-                                    {errors.name && touched.name ? (
+                                    {errors.newpassword && touched.newpassword ? (
                                         <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.name}</p>
                                     ) : null}
                                 </div>
 
                                 <div className='mb-6'>
-                                    <div className={`border ${errors.email && touched.email ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} border-stroke bg-white dark:bg-slate-800 flex items-center rounded `}>
+                              
 
-                                        <p className="px-3 text-gray-600 dark:text-gray-300 text-base w-2/6">Email</p>
                                         <input
-                                            className={` w-4/6 rounded  px-[14px] py-3 text-base bg-white dark:bg-slate-800 focus:outline-none disabled:opacity-50`}
-                                            placeholder={userdata.email}
-                                            name='email'
-                                            value={values.email}
+                                            className={`border ${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} px-[14px] py-3 border-stroke bg-white dark:bg-slate-800 flex items-center rounded focus:ring-0 focus:outline-0 w-full `}
+                                            placeholder={'Confirm Password'}
+                                            name='newpassword'
+                                            value={values.confirmpassword}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                         />
-                                    </ div>
-                                    {errors.email && touched.email ? (
-                                        <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.email}</p>
+                                    
+
+
+                                    {errors.confirmpassword && touched.confirmpassword ? (
+                                        <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.confirmpassword}</p>
                                     ) : null}
                                 </div>
                                 
