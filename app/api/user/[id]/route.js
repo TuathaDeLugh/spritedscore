@@ -2,7 +2,6 @@ import Review from '@/models/review'
 import User from '@/models/user'
 import connectdb from '@/util/mongodb'
 import { NextResponse } from 'next/server'
-import { getSession } from 'next-auth/react';
 
 export async function GET(request, { params }) {
 

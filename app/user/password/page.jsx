@@ -1,15 +1,38 @@
 'use client'
 import { useFormik } from 'formik';
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import { toast } from 'react-toastify';
 
 export default function Passwordchange() {
     const { data: session } = useSession()
+    const router = useRouter()
         const userid = session?.user?.id
+
+        const postapi = async (ogvalues) => {
+            
+              const response = await fetch(`/api/user/password/${userid}`, {
+                method: 'PATCH',
+                headers: {
+                  'Content-type': 'application/json',
+                },
+                body: JSON.stringify(ogvalues),
+              });
+          
+              if (response.status === 400) {
+                const data = await response.json();
+                toast.error(data.message);
+                throw new Error(data.message);
+              }
+          
+            router.refresh();
+          };
+
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: {
-        userid: userid,
         oldpassword: '',
         newpassword: '',
         confirmpassword: ''
@@ -20,7 +43,7 @@ export default function Passwordchange() {
           toast.promise((postapi(values)), {
             pending: "updating Profile",
             success: "Profile Updated Successfully",
-            error: " Failed To Update"
+            error: "Failed To Update Profile"
           });
           action.resetForm();
       }
@@ -48,7 +71,7 @@ export default function Passwordchange() {
                               <input
                                   className={`border ${errors.oldpassword && touched.oldpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} px-[14px] py-3 border-stroke bg-white dark:bg-slate-800 flex items-center rounded focus:ring-0 focus:outline-0 w-full `}
                                   placeholder={'Old Password'}
-                                  name='newpassword'
+                                  name='oldpassword'
                                   value={values.oldpassword}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
@@ -86,7 +109,7 @@ export default function Passwordchange() {
                                         <input
                                             className={`border ${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : " dark:border-gray-600"} px-[14px] py-3 border-stroke bg-white dark:bg-slate-800 flex items-center rounded focus:ring-0 focus:outline-0 w-full `}
                                             placeholder={'Confirm Password'}
-                                            name='newpassword'
+                                            name='confirmpassword'
                                             value={values.confirmpassword}
                                             onChange={handleChange}
                                             onBlur={handleBlur}

@@ -6,7 +6,6 @@ import { signIn, useSession } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import bcrypt from "bcryptjs";
 import { SignupSchema } from '@/yupschema';
 
 let initialValues = {
@@ -14,7 +13,9 @@ let initialValues = {
   username: "",
   email: "",
   pass: "",
-  confirmpassword: ""
+  avatar: "",
+  confirmpassword: "",
+  provider: "email"
 };
 
 export default function Register() {
@@ -22,21 +23,12 @@ export default function Register() {
   const router = useRouter();
 
   const postapi = async (ogvalues) => {
-    const hashedpassword = await bcrypt.hash(values.pass, 10);
-    const data = {
-      name: ogvalues.name,
-      username: ogvalues.username,
-      avatar: "",
-      email: ogvalues.email,
-      password: hashedpassword,
-      provider: "email"
-    }
     await fetch(`/api/user`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(ogvalues),
     });
     router.refresh();
     router.push("/login");
