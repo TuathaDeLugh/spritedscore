@@ -61,6 +61,6 @@ export default function CommentForm({ reviewid }) {
   )
 }
 else{
-  return(<div className=' mt-5'>Please <Link href="/login" className='text-purple-500'>Login</Link> for comment</div>)
+  return(<div className=' mt-5'>Please <Link href="/login" className='text-purple-500 hover:underline'>Login</Link> for comment</div>)
 }
 }
