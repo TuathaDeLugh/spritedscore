@@ -151,7 +151,7 @@ export default async function Admin() {
               <td className="py-2 px-4 text-center ">{review.rating}</td>
               <td className="py-2 px-4 hidden md:table-cell ">{review.episodes}</td>
               <td className="py-2 px-4 ">
-                <img src={review.image.link} alt={review.title} className="h-12 w-12 rounded" />
+                <Image width={100} height={70} src={review.image.link} alt={review.title} className="h-12 w-12 rounded object-cover" />
               </td>
             </tr>
           ))}
