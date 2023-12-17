@@ -6,6 +6,9 @@ import { FaComments, FaEnvelope, FaFileAlt, FaStar, FaUser, FaUsers } from 'reac
 
 export default async function Admin() {
   const stats = await getStats()
+  let wno=1 ,rno = 1
+
+  console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
       Admin Panal
@@ -13,7 +16,7 @@ export default async function Admin() {
       <h2 className="mb-6 text-[32px] font-bold capitalize text-dark lg:text-[4xl]">
         Dashbord
       </h2>
-      {
+      { 
         stats && stats.mostCommentedReview && stats.mostCommentedReview.image && stats.mostCommentedReview.image.link ? (
 
           <>
@@ -38,7 +41,7 @@ export default async function Admin() {
             <div>
               <h2 className="text-xl font-semibold my-4">Top Performers</h2>
 
-              <div className="flex gap-4 flex-col md:flex-row">
+              <div className="flex gap-4 flex-col md:flex-row border-b pb-4">
 
                   {/* Most reviews by user */}
                 <div className="border border-blue-500 dark:bg-blue-900/50 rounded-md p-4 bg-blue-50 mb-4 sm:mb-0 md:w-1/3">
@@ -101,6 +104,61 @@ export default async function Admin() {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="flex gap-3 mt-4 w-full flex-wrap">
+
+            <div className='grow lg:w-[33%] lg:border-r dark:border-gray-400/80 pr-3'>
+      <h2 className="text-xl font-semibold mb-4">Most Watchlisted Users</h2>
+      <div className='block w-full overflow-x-auto rounded'>
+      <table className="min-w-full ">
+        <thead>
+          <tr className=' bg-slate-200/50 dark:bg-slate-700 '>
+            <th className="py-2 px-4  w-5 ">#</th>
+            <th className="py-2 px-4 ">Username</th>
+            <th className="py-2 px-4  w-10">Watchlist Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stats.mostWatchlistedUsers.map((user) => (
+            <tr key={user._id} className='border-b dark:border-gray-600'>
+              <td className="py-3 px-4 ">{wno++}</td>
+              <td className="py-3 px-4 ">{user.username}</td>
+              <td className="py-3 px-4  text-center">{user.watchlistCount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      </div>
+      <div className=' lg:w-[65%] grow'>
+      <h2 className="text-xl font-semibold mb-4">Latest Reviews</h2>
+      <div className='block w-full overflow-x-auto rounded'>
+      <table className="min-w-full border-gray-300">
+        <thead>
+          <tr className='bg-slate-200/50 dark:bg-slate-700'>
+            <th className="py-2 px-4  w-5">#</th>
+            <th className="py-2 px-4 ">Title</th>
+            <th className="py-2 px-4 ">Rating</th>
+            <th className="py-2 px-4 hidden md:table-cell ">Episodes</th>
+            <th className="py-2 px-4  w-20">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {stats.latestReviews.map((review) => (
+            <tr key={review._id} className='border-b dark:border-gray-600'>
+              <td className="py-2 px-4  ">{rno++}</td>
+              <td className="py-2 px-4 "><Link className='text-blue-500 hover:underline' href={`/allreview/${review._id}`}>{review.title}</Link></td>
+              <td className="py-2 px-4 text-center ">{review.rating}</td>
+              <td className="py-2 px-4 hidden md:table-cell ">{review.episodes}</td>
+              <td className="py-2 px-4 ">
+                <img src={review.image.link} alt={review.title} className="h-12 w-12 rounded" />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    </div>
             </div>
           </>
         ) : null
