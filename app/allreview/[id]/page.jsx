@@ -118,7 +118,8 @@ async function page({ params: { id } }) {
                 Watch Trailer
               </Link>
             )}
-            {!!session?.user?.id &&
+            { session ? (
+            session?.user?.id &&
               (user.watchlist.indexOf(review._id) >= 0 ? (
                 <RemoveFromWatchListBtn
                   uid={session.user.id}
@@ -126,7 +127,9 @@ async function page({ params: { id } }) {
                 />
               ) : (
                 <WatchListBtn uid={session.user.id} rid={review._id} />
-              ))}
+              ))
+            ) : (<p className=' text-base p-3' >Please <Link href={'/login'} className='text-purple-500 hover:underline' >Login</Link> For add to watchlist</p>)
+            }
           </div>
         </div>
         <div className='flex justify-between flex-wrap mt-5 '>
