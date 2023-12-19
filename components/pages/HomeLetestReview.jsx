@@ -17,7 +17,7 @@ export default async function HomeLetestReview() {
 						className='flex flex-wrap  overflow-auto bg-white rounded-lg shadow-lg dark:shadow-gray-700/50 dark:bg-slate-800 mb-5 border dark:border-slate-600'
 					>
 						<div
-							className='h-60 md:h-auto w-full md:w-1/2 bg-cover'
+							className='h-60 md:h-auto w-full md:w-1/2 bg-cover bg-slate-200 dark:bg-slate-700'
 							style={{
 								backgroundImage: `url(${review.image.link})`,
 								backgroundPosition: 'center center',

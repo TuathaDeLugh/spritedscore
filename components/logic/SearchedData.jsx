@@ -19,7 +19,7 @@ export default async function SearchedData({query}) {
                 {
                     reviews?.map((review) =>
                     (
-                        <Link href={`/allreview/${review._id}`} key={review._id} className=" flex w-full items-center p-2 border border-slate-300 dark:border-slate-500 hover:border-purple-500 dark:hover:border-purple-400 hover:bg-purple-200 dark:hover:bg-purple-800/50  rounded-md mb-2 ">
+                        <Link href={`/allreview/${review._id}`} key={review._id} className=" flex w-full items-center p-2 border border-slate-300 dark:border-slate-500 hover:border-purple-500 dark:hover:border-purple-400 hover:text-purple-500 dark:hover:text-purple-400 hover:bg-purple-200/50 dark:hover:bg-purple-800/10  rounded-md mb-2 ">
                         <Image width={200} height={200} className="w-20 h-20 mr-2 object-cover rounded " src={review.image.link} alt={review.title} />
                         <div>
                           <h2 className="font-semibold">{review.title}</h2>
