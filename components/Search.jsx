@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect, useRef, useState , useCallback} from 'react'
+import React, { Suspense, useEffect, useRef, useState, useCallback } from 'react'
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import SearchedData from './logic/SearchedData';
 export default function Search() {
@@ -30,7 +30,7 @@ export default function Search() {
       setOpen(true);
     }
   };
-  
+
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function Search() {
             className="relative inline-block rounded-full bg-transparent border border-stroke border-slate-400/50 pr-3 pl-11 py-2 w-full  focus:border-purple-500 focus:outline-none ease-in-out"
             onChange={(e) => handleChange(e.target.value)}
             onClick={handleInputClick}
-            
+
           />
           <div type="submit" className="rounded-full bg-purple-500 p-2 absolute m-1 text-white">
             <FaMagnifyingGlass size={20} />
@@ -51,7 +51,25 @@ export default function Search() {
         {open ? (
           <div className="relative ">
             <div className="absolute mt-3 z-10 left-0 border dark:border-slate-600 w-full rounded-lg p-3 pr-1 bg-slate-50/90  dark:bg-slate-800/90">
-              <Suspense fallback={<div className='w-full items-center text-center'> Loading</div>}>
+              <Suspense fallback={
+                <div className="flex overflow-y-auto pr-2">
+                  <div className="flex gap-2 flex-wrap w-full">
+                    {
+                      Array.from({ length: 3 }).map((_, i) => (
+                        <div key={i} className="flex w-full items-center p-2 border border-slate-300 dark:border-slate-500 rounded-md animate-pulse duration-300">
+                          <div className="w-20 h-20 mr-2 object-cover border dark:border-slate-500 bg-slate-200 dark:bg-slate-700 rounded" />
+                          <div className='grow'>
+                            <h2 className="font-semibold p-3 mb-2 w-[95%] rounded-full bg-slate-300 dark:bg-slate-600"></h2>
+                            <p className="text-gray-400 p-2 w-16 rounded-full bg-slate-300 dark:bg-slate-600"></p>
+                          </div>
+                        </div>
+                      ))
+                    }
+
+
+                  </div>
+                </div>
+              }>
                 <SearchedData query={data} />
               </Suspense>
             </div>
