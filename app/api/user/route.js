@@ -42,7 +42,7 @@ export async function GET(req,res) {
         const pageSize = 15;
         const skip = (page - 1) * pageSize;
         const usernameFilter = { username: { $ne: 'admin' } };
-        const users = await User.find(usernameFilter).select("_id username name email role").skip(skip).limit(parseInt(pageSize));
+        const users = await User.find(usernameFilter).sort({role:1}).select("_id username name email role").skip(skip).limit(parseInt(pageSize));
 
         const totalDocuments = await User.countDocuments(usernameFilter);
 
