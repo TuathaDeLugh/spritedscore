@@ -25,6 +25,13 @@ export default function Search() {
     setOpen(value.trim() !== '');
   };
 
+  const handleInputClick = () => {
+    if (data.trim() !== '') {
+      setOpen(true);
+    }
+  };
+  
+
   return (
     <>
       <div className="w-full" ref={searchRef}>
@@ -34,6 +41,8 @@ export default function Search() {
             placeholder="Search"
             className="relative inline-block rounded-full bg-transparent border border-stroke border-slate-400/50 pr-3 pl-11 py-2 w-full  focus:border-purple-500 focus:outline-none ease-in-out"
             onChange={(e) => handleChange(e.target.value)}
+            onClick={handleInputClick}
+            
           />
           <div type="submit" className="rounded-full bg-purple-500 p-2 absolute m-1 text-white">
             <FaMagnifyingGlass size={20} />
