@@ -9,7 +9,7 @@ function Footer ({children})  {
         <div className="container max-w-[1500px] mx-auto">
           <div className=" flex flex-wrap justify-around">
             <div className="w-full px-4 sm:w-10/ lg:w-4/12">
-              <div className="mb-10 w-full">
+              <div className="mb-10 lg:mb-5 w-full">
                 <Link href="/" className="mb-6 max-w-[300px] flex items-center gap-2">
                   <Image
                     className=" w-auto"
@@ -21,7 +21,7 @@ function Footer ({children})  {
             <h2 className="text-2xl text-purple-700 font-bold dark:text-purple-400">SPIRITED SCORE</h2>
 
                 </Link>
-                <p className="mb-7 text-base text-justify  ">
+                <p className="mb-6 text-base text-justify  ">
                 Dive into the captivating world of anime with Spirited Score, your ultimate destination for insightful and engaging anime reviews. Discover in-depth analyses of your favorite series, uncover hidden gems, and explore the vibrant realm of Japanese animation.
                 </p>
                 {children}
@@ -33,17 +33,20 @@ function Footer ({children})  {
               <NavLink link="/allreview" label="All Reviews" />
               <NavLink link="/contact" label="Contact Us" />
               <NavLink link="/about" label="About Us" />
+              <NavLink link="/login" label="Log In" />
             </LinkGroup>
             <LinkGroup header="Search by">
               <NavLink link="/allreview/filter/Action" label="Action" />
               <NavLink link="/allreview/filter/Romance" label="Romance" />
               <NavLink link="/allreview/filter/Fantasy" label="Fantacy" />
               <NavLink link="/allreview/filter/Sci-fi" label="Si-fi" />
+              <NavLink link="/allreview/filter/super_natural" label="Super Natural" />
             </LinkGroup>
             <LinkGroup header="Social">
               <NavLink link="/#" label="Discord" />
               <NavLink link="/#" label="Facebook" />
               <NavLink link="/#" label="Instagram" />
+              <NavLink link="/#" label="Reddit" />
               <NavLink link="/#" label="Twitter (X)" />
             </LinkGroup>
           </div>
