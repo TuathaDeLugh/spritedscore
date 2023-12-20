@@ -12,18 +12,28 @@ const DarkModeFooter = ({ currentMode, onChangeMode }) => {
   return (
     <div className='flex items-center text-white right-0 px-1 gap-2'>
       <p className='text-black font-semibold dark:text-white'>Mode</p>
-      <button
+      {
+        currentMode == 'dark'?(
+          <button
         onClick={() => onChangeMode('light')}
-        className={`rounded-full p-2 ${currentMode === 'light' ? 'hidden' : ' block bg-purple-500/70'}`}
+        className={`rounded-full p-2 bg-purple-500/70`}
       > 
         <FiSun size={20}/>
       </button>
-      <button
+        ) :
+        (
+          <button
         onClick={() => onChangeMode('dark')}
-        className={`rounded-full p-2 ${currentMode === 'dark' ? 'hidden' : ' block bg-purple-500/70'}`}
+        className={`rounded-full p-2 bg-purple-500/70`}
       > <FiMoon size={20}/>
         
       </button>
+        )
+      }
+      
+      
+      
+      
       <button
         onClick={() => onChangeMode('system')}
         className={`rounded-full p-2 bg-purple-500/70 `}
