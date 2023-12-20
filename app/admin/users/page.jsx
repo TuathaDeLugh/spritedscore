@@ -1,4 +1,5 @@
 import Pagination from '@/components/Pagination';
+import RoleBtn from '@/components/RoleDropdown';
 import getAllUsers from '@/controller/alluser';
 import React, { Suspense } from 'react'
 
@@ -95,7 +96,7 @@ export default async function AdminUsers(context) {
                           "table-cell px-6 align-middle   py-3 text-xs md:text-sm flex-grow   text-left "
                         }
                       >
-                        Dropdown that change role & disable on current user
+                        <RoleBtn user={user}/>
                       </td>
                     </Suspense>
                   </tr>
