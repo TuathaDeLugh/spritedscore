@@ -1,15 +1,11 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineClose } from 'react-icons/ai'
-import AuthLinks, { dropdata } from './AuthLinks'
-import { useSession } from 'next-auth/react'
+import AuthLinks from './AuthLinks'
 
 export default function Navbar() {
-	const session = useSession()
-
 	let navData = [
 		{ name: 'Home', path: '/', key: 1 },
 		{ name: 'All Review', path: '/allreview', key: 2 },
@@ -17,6 +13,7 @@ export default function Navbar() {
 		{ name: 'contact', path: '/contact', key: 4 },
 	]
 	const [navbar, setNavbar] = useState(false)
+	
 
 	return (
 		<nav className='w-full backdrop-blur bg-white/50 dark:bg-slate-800/50 dark:shadow-slate-700 fixed top-0 left-0 right-0 z-50 shadow-sm'>
@@ -25,7 +22,6 @@ export default function Navbar() {
 					<div className='flex items-center justify-between py-3 md:py-5 md:block'>
 						{/* LOGO */}
 						<Link href='/' className='flex'>
-							{/* <Image src="/logo.png" height="30" width="50" className='md:hidden rounded-full bg-white block'/> */}
 							<h2 className='text-2xl text-purple-700 font-bold dark:text-purple-400'>
 								SPIRITED SCORE
 							</h2>
@@ -70,23 +66,15 @@ export default function Navbar() {
 									</li>
 								)
 							})}
-							{/* {!session.data ? ( */}
 								<li className='text-l text-slate-800 dark:text-slate-300 py-5 px-5 text-center  border-b-2 md:border-b-0  border-slate-400'>
 									<AuthLinks navinfo={() => setNavbar(!navbar)} />
 								</li>
-							{/* ) : (
-								<Image
-									width={30}
-									height={30}
-									src={session.data.user.image}
-									alt='profile picture'
-									className='w-10 rounded-full '
-								/>
-							)} */}
+					
 						</ul>
 					</div>
 				</div>
 			</div>
 		</nav>
+		
 	)
 }
