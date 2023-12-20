@@ -7,8 +7,6 @@ import { FaComments, FaEnvelope, FaFileAlt, FaStar, FaUser, FaUsers } from 'reac
 export default async function Admin() {
   const stats = await getStats()
   let wno=1 ,rno = 1
-
-  console.log(stats)
   return (
     <><span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
       Admin Panal
