@@ -111,8 +111,8 @@ export default function EditProfile({ userdata }) {
       >
         {disabled ? "wana update?" : "cancel"}
       </button>
-      {userdata.provider === "google" ? null : (
-        <Link href={'/user/password'} className='hover:underline hover:text-purple-500'>Change Password</Link>)}
+      
+        <Link href={'/user/password'} className='hover:underline hover:text-purple-500'>Change Password</Link>
     </div>
     <form onSubmit={handleSubmit} autoComplete="off">
       <div className='mb-6'>

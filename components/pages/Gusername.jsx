@@ -10,62 +10,67 @@ import { signOut } from "next-auth/react";
 
 const initialValues = {
   username: "",
+  pass:"",
+  confirmpassword:""
 };
 export default function Gusername() {
-    const [disabled, setDisabled] = useState(false);
-    const router = useRouter();
-    const { data: session } = useSession()
+  const [disabled, setDisabled] = useState(false);
+  const router = useRouter();
+  const { data: session } = useSession()
 
-  
-    const postapi = async (ogvalues) => {
-        setDisabled(true);
-      const data = {
-        name: session.user.name,
-        username: ogvalues.username,
-        email: session.user.email,
-        provider:"google",
-        avatar: session.user.image,
-       }
-      await fetch(`/api/user`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-    });
-    signOut({ callbackUrl: '/login' })
+  const postapi = async (ogvalues) => {
+    setDisabled(true);
+    const data = {
+      name: session.user.name,
+      username: ogvalues.username,
+      email: session.user.email,
+      pass:ogvalues.pass,
+      provider: "google",
+      avatar: session.user.image,
     }
-    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
-      initialValues,
-      validationSchema: UsernameSchema,
-      onSubmit: (async (values, action) => {
-        
-        try {
-          const response = await fetch(`/api/validateusername?username=${values.username}`);
-          const { isUsernameTaken } = await response.json();
-  
-          if (isUsernameTaken) {
-            toast.error('Username is already taken.');
-          } else {
-            toast.promise(postapi(values), {
-              pending: 'Creating Account',
-              success: 'Account Created Successfully now you can login',
-              error: 'Failed to create Account',
-            });
-            action.resetForm();
-            setDisabled(false);
-            router.refresh();
-            
-            
-            
-          }
-        } catch (error) {
-          console.error('Error validating username:', error);
-        }
-  
-      }
-      ),
+    console.log(data)
+     const response = await fetch(`/api/user`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
+
+    if (!response.ok) {
+      throw new Error(`Failed to create user: ${response.statusText}`);
+    }
+    signOut({ callbackUrl: '/login' })
+  }
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+    initialValues,
+    validationSchema: UsernameSchema,
+    onSubmit: (async (values, action) => {
+
+      try {
+        const response = await fetch(`/api/validateusername?username=${values.username}`);
+        const { isUsernameTaken } = await response.json();
+
+        if (isUsernameTaken) {
+          toast.error('Username is already taken.');
+          values.username=''
+        } else {
+          toast.promise(postapi(values), {
+            pending: 'Creating Account',
+            success: 'Account Created Successfully now you can login',
+            error: 'Failed to create Account',
+          });
+          action.resetForm();
+          setDisabled(false);
+          router.refresh();
+        }
+      } catch (error) {
+        console.error('Error validating username:', error);
+      }
+
+    }
+    ),
+  });
   return (
     <section className=" bg-slate-100 dark:bg-slate-800 py-20 lg:py-[120px] h-screen flex items-center">
       <div className="container m-auto ">
@@ -77,31 +82,55 @@ export default function Gusername() {
                   href="/#"
                   className="mx-auto flex"
                 >
-                  <Image src="/logo.png" height={60} width={70} alt='logo'/>
+                  <Image src="/logo.png" height={60} width={70} alt='logo' />
                   <h2 className=" text-2xl md:text-4xl text-purple-700 font-bold dark:text-purple-400 m-auto">SPIRITED SCORE</h2>
                 </a>
               </div>
               <h2 className="p-2 border rounded-lg border-slate-400  text-sm bg-red-400/50  m-auto mb-6">No Account Found With This Email. Please Enter Unique username & login again </h2>
               <form onSubmit={handleSubmit} autoComplete="off">
-                
 
-                <input 
-            className= {`${errors.username&& touched.username ?  "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
-          type="text"
-          name="username" 
-          placeholder="Username"
-          value={values.username}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          />
+
+                <input
+                  className={`${errors.username && touched.username ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  value={values.username}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
                 {errors.username && touched.username ? (
                   <p className=" text-red-600 text-sm mb-2">* {errors.username}</p>
-                  ) : (<p className='mb-6' />)}
-                  
+                ) : (<p className='mb-6' />)}
 
+                <input
+                  className={`${errors.pass && touched.pass ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+                  type="password"
+                  name="pass"
+                  placeholder="Password"
+                  value={values.pass}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.pass && touched.pass ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.pass}</p>
+                ) : (<div className='mb-6' />)}
+                <input
+                  className={`${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+
+                  type="password"
+                  name="confirmpassword"
+                  placeholder="Confirm Password"
+                  value={values.confirmpassword}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {errors.confirmpassword && touched.confirmpassword ? (
+                  <p className=" text-red-600 text-sm mb-2">* {errors.confirmpassword}</p>
+                ) : (<div className='mb-6' />)}
                 <div className="mb-6">
                   <input
-                  disabled={disabled}
+                    disabled={disabled}
                     type="submit"
                     value="Create Account"
                     className={`w-full bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70`}

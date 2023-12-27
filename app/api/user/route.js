@@ -16,7 +16,7 @@ export async function POST(request)
 
         return NextResponse.json(
            {
-            message: "Uploded",
+            message: "Created",
            }, 
            {status:200}
 
@@ -26,7 +26,7 @@ export async function POST(request)
         console.log(error)
         return NextResponse.json(
             {
-                message: "failed to upload",
+                message: error,
             },
             {status:500}
  

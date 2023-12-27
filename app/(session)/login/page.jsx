@@ -51,8 +51,11 @@ export default function Login() {
 
 
   const { data: session } = useSession()
+  if (session && !session.role){
+    router.push('Googlelogin')
+  }
 
-  if (session) {
+  if (session && session.role ) {
     router.push("/")
   }
   else {

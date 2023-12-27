@@ -20,6 +20,7 @@ let initialValues = {
 
 export default function Register() {
   const [disabled, setDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
   const postapi = async (ogvalues) => {
@@ -66,8 +67,10 @@ export default function Register() {
   });
 
   const { data: session } = useSession()
-
-  if (session) {
+  if (session && !session.role){
+    router.push('Googlelogin')
+  }
+  if (session && session.role) {
     router.push("/")
   }
   else {
