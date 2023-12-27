@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SignupSchema } from '@/yupschema';
+import { FaCheck } from 'react-icons/fa';
 
 let initialValues = {
   name: "",
@@ -128,11 +129,13 @@ export default function Register() {
                     <p className=" text-red-600 text-sm mb-2">* {errors.email}</p>
                   ) : (<div className='mb-6' />)}
 
+
+
                   <input
                     className={`${errors.pass && touched.pass ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
 
 
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="pass"
                     placeholder="Password"
                     value={values.pass}
@@ -145,7 +148,7 @@ export default function Register() {
                   <input
                     className={`${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
 
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="confirmpassword"
                     placeholder="Confirm Password"
                     value={values.confirmpassword}
@@ -155,6 +158,20 @@ export default function Register() {
                   {errors.confirmpassword && touched.confirmpassword ? (
                     <p className=" text-red-600 text-sm mb-2">* {errors.confirmpassword}</p>
                   ) : (<div className='mb-6' />)}
+                  <label className='flex items-center float-right mb-4'>
+                                    <div
+                                        className={`${showPassword ? 'bg-purple-500' : 'bg-gray-300 dark:bg-gray-700'
+                                            } w-6 h-6 border border-gray-400 dark:border-gray-600 rounded cursor-pointer flex items-center justify-center`}
+                                        onClick={() => setShowPassword(!showPassword)}
+                                    >
+                                        {showPassword && (
+                                            <FaCheck className='text-white text-xs' />
+                                        )}
+                                    </div>
+                                    <span className='text-sm font-medium ml-2 text-gray-700 dark:text-gray-300'>
+                                        Show Password
+                                    </span>
+                                </label>
                   <div className="mb-3">
                     <input
                       disabled={disabled}
