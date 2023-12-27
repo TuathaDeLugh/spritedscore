@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { UsernameSchema } from '@/yupschema';
 import { useSession } from "next-auth/react"
 import { signOut } from "next-auth/react";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const initialValues = {
   username: "",
@@ -15,6 +16,8 @@ const initialValues = {
 };
 export default function Gusername() {
   const [disabled, setDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [coshowPassword, setcoShowPassword] = useState(false);
   const router = useRouter();
   const { data: session } = useSession()
 
@@ -103,28 +106,47 @@ export default function Gusername() {
                   <p className=" text-red-600 text-sm mb-2">* {errors.username}</p>
                 ) : (<p className='mb-6' />)}
 
-                <input
-                  className={`${errors.pass && touched.pass ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
-                  type="password"
-                  name="pass"
-                  placeholder="Password"
-                  value={values.pass}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {errors.pass && touched.pass ? (
-                  <p className=" text-red-600 text-sm mb-2">* {errors.pass}</p>
-                ) : (<div className='mb-6' />)}
-                <input
-                  className={`${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+<div className="relative">
+                    <input
+                      className={`${errors.pass && touched.pass ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
 
-                  type="password"
-                  name="confirmpassword"
-                  placeholder="Confirm Password"
-                  value={values.confirmpassword}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
+
+                      type={showPassword ? 'text' : 'password'}
+                      name="pass"
+                      placeholder="Password"
+                      value={values.pass}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <div
+                      className={` absolute top-0  right-3 h-full flex items-center text-slate-400`}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
+                    </div>
+                  </div>
+                  {errors.pass && touched.pass ? (
+                    <p className=" text-red-600 text-sm mb-2">* {errors.pass}</p>
+                  ) : (<div className='mb-6' />)}
+                  <div className="relative">
+
+                    <input
+                      className={`${errors.confirmpassword && touched.confirmpassword ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "border-stroke"} w-full rounded-md border  bg-transparent px-5 py-3 text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
+
+                      type={coshowPassword ? 'text' : 'password'}
+                      name="confirmpassword"
+                      placeholder="Confirm Password"
+                      value={values.confirmpassword}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <div
+                      className={` absolute top-0  right-3 h-full flex items-center text-slate-400`}
+                      onClick={() => setcoShowPassword(!coshowPassword)}
+                    >
+                      {coshowPassword ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
+                    </div>
+                  </div>
                 {errors.confirmpassword && touched.confirmpassword ? (
                   <p className=" text-red-600 text-sm mb-2">* {errors.confirmpassword}</p>
                 ) : (<div className='mb-6' />)}

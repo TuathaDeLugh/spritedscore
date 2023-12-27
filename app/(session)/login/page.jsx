@@ -8,8 +8,10 @@ import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { loginSchema } from '@/yupschema';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const initialValues = {
     email: "",
     password: "",
@@ -91,16 +93,24 @@ export default function Login() {
                     <p className=" text-red-600 text-sm mb-2">* {errors.email}</p>
                   ) : (<div className='mb-6' />)}
 
+<div className="relative">
 
                   <input
                     className={`${errors.password && touched.password ? "border-red-400 dark:border-red-600  placeholder-red-600/50" : "border-stroke"} w-full rounded-md border bg-transparent px-5 py-3 text-base  outline-none  focus-visible:shadow-none dark:border-gray-500 dark:text-white`}
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     name="password"
                     placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                  />
+                    />
+                    <div
+                      className={` absolute top-0  right-3 h-full flex items-center text-slate-400`}
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <FaEyeSlash size={22} /> : <FaEye size={22} />}
+                    </div>
+                    </div>
                   {errors.password && touched.password ? (
                     <p className=" text-red-600 text-sm mb-2">* {errors.password}</p>
                   ) : (<div className='mb-6' />)}
