@@ -42,7 +42,7 @@ async function page({ params: { id } }) {
           <div className="flex items-center w-full lg:w-[70%] xl:w-[77%]">
           <Image
             alt={review.image.name}
-            className='mx-2 rounded-lg border max-h-[40rem] w-full object-cover'
+            className='mx-2 rounded-lg border max-h-[40rem] w-full object-cover bg-slate-200 dark:bg-slate-700'
             src={review.image.link}
             width={900}
             height={600}
