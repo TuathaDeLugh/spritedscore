@@ -104,7 +104,7 @@ export default async function Home() {
 					<HomeLetestReview />
 					
 				</div>
-				<div className='md:border-l dark:border-gray-500 md:pl-5 w-full md:w-1/3'>
+				<div className='md:border-l dark:border-gray-500 sticky top-0 md:pl-5 w-full md:w-1/3'>
       				<HomePopulerReview />
 				</div>
 			</div>
