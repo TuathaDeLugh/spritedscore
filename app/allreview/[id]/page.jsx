@@ -137,7 +137,9 @@ async function page({ params: { id } }) {
             <p className='mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium'>
               Review :
             </p>
-            <div className="data" dangerouslySetInnerHTML={{ __html: review.detail.replace(/\n/g, '<br>') }}></div>
+            <div 
+              className='min-h-[80vh] text-justify mt-5 '
+              dangerouslySetInnerHTML={{ __html: review.detail.replace(/\n/g, '<br>') }}></div>
             {/* <textarea
               className='bg-transparent w-full  resize-none h-[80vh] text-justify mt-5 pr-3'
               value={review.detail}
