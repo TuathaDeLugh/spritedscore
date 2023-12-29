@@ -58,7 +58,7 @@ export default function Passwordchange() {
 
 
     return (
-        <div className='px-2 mx-auto max-w-[1500px] pt-20 min-h-screen flex items-center'>
+        <div className='px-2 mx-auto max-w-[1500px] min-h-[90vh] flex items-center'>
             <div className=' w-[25rem] mx-auto p-6 mt-0 m-3 bg-white dark:bg-slate-700 border dark:border-slate-500 rounded-md shadow-md'>
                 <span className='mb-4 block text-base font-semibold text-purple-700 dark:text-purple-400'>
                     Password Change
