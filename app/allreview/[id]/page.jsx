@@ -132,7 +132,7 @@ async function page({ params: { id } }) {
             }
           </div>
         </div>
-        <div className='flex justify-between flex-wrap mt-5 '>
+        <div className='flex justify-between flex-wrap mt-5 item-start'>
           <div className='w-full lg:w-[70%] xl:w-[77%]'>
             <p className='mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium'>
               Review :
@@ -147,7 +147,7 @@ async function page({ params: { id } }) {
             ></textarea> */}
           </div>
           {/* comment */}
-          <div className='w-full lg:w-[25%] xl:w-[20%]'>
+          <div className='w-full lg:w-[25%] xl:w-[20%] lg:sticky top-[70px]'>
             <p className='mt-2  tracking-wider text-lg text-purple-500 dark:text-purple-400  font-medium'>
               comments:
             </p>
