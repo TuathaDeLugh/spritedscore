@@ -10,7 +10,7 @@ export default async function layout({ children }) {
     if (session && session.user && session.user.role=='admin'){
 
         return (<>
-        <section className='mt-[63px] md:mt-[70px]'>
+        <section>
       <AdminNav/>
   </section>
     <section className="mx-auto max-w-[1500px]">

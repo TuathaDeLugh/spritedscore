@@ -17,7 +17,7 @@ export default function LoadingReview() {
   }
   return (
     <>
-    <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16 animate-pulse duration-300">
+    <section className="px-2 mx-auto max-w-[1500px] animate-pulse duration-300">
       <div className="container px-6 py-5 mx-auto">
         <div className="mb-4 w-40 text-base font-semibold p-2 bg-slate-300 dark:bg-slate-600 rounded-full"/>
           <div className="mb-6 w-2/3 p-5 bg-slate-300 dark:bg-slate-600 rounded-full"/>

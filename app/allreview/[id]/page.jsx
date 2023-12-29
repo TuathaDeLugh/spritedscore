@@ -25,7 +25,7 @@ async function page({ params: { id } }) {
     <>
     {
       review ? ( 
-        <section className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
+        <section className='px-2 mx-auto max-w-[1500px] '>
       <div className='container px-6 py-5 mx-auto'>
         <div className='mb-4 flex items-center'>
           <Goback />

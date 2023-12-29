@@ -46,7 +46,7 @@ const categorylink = [
 ]
 export default async function Home() {
 	return (
-		<div className='px-2 mx-auto max-w-[1500px] md:pt-20 pt-16'>
+		<div className='px-2 mx-auto max-w-[1500px]'>
 			<div className='container flex flex-col justify-between px-6 md:px-0 py-4 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center gap-6'>
 				<div className='flex flex-col items-center flex-1 lg:flex-row'>
 					<div className='lg:mx-2 lg:order-2'>

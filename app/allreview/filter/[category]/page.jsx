@@ -5,7 +5,7 @@ import SkelReview from '@/components/layout/SkelReview';
 
 export default function FilteredReviews(context) {
     return (
-        <section className="px-2 mx-auto max-w-[1500px] md:pt-20 pt-16">
+        <section className="px-2 mx-auto max-w-[1500px]">
             <div className="container px-6 py-5 mx-auto">
                 <span className="mb-4 block text-base font-semibold  text-purple-700 dark:text-purple-400">
                     Filtered reviews

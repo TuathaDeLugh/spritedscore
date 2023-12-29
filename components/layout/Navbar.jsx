@@ -16,7 +16,7 @@ export default function Navbar() {
 	
 
 	return (
-		<nav className='w-full backdrop-blur bg-white/50 dark:bg-slate-800/50 dark:shadow-slate-700 fixed top-0 left-0 right-0 z-50 shadow-sm'>
+		<nav className='w-full backdrop-blur bg-white/50 dark:bg-slate-800/50 dark:shadow-slate-700 sticky top-0 left-0 right-0 z-50 shadow-sm'>
 			<div className='justify-between px-4 mx-auto lg:max-w-screen-2xl md:items-center md:flex md:px-8'>
 				<div>
 					<div className='flex items-center justify-between py-3 md:py-5 md:block'>
