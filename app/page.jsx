@@ -98,8 +98,8 @@ export default async function Home() {
 				})}
 			</div>
 			<Suspense fallback={<HomePageskel/>}>
-			<div className='container px-6 md:px-0 py-3 mx-auto flex flex-wrap max-h-min'>
-				<div className='w-full md:w-2/3 md:pr-5'>
+			<div className='container px-6 md:px-0 py-3 mx-auto flex flex-wrap items-start'>
+				<div className='w-full md:w-2/3 md:pr-5 sticky top-5'>
 					
 					<HomeLetestReview />
 					
