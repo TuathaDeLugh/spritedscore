@@ -154,12 +154,12 @@ async function page({ params: { id } }) {
             <CommentForm reviewid={review._id} />
             <div>
               {review.comments.length > 0 ? (
-                <div className='mt-5 max-h-[50vh] lg:max-h-[75vh] overflow-y-auto'>
+                <div className='mt-3 max-h-[50vh] lg:max-h-[75vh] overflow-y-auto flex flex-col gap-4'>
                   {review.comments?.map(comment => {
                     return (
                       <div
                         key={comment._id}
-                        className=' mt-4 rounded-lg bg-slate-100 dark:bg-gray-700 p-3 w-[98%]'
+                        className=' rounded-lg bg-slate-100 dark:bg-gray-700 p-3 mr-3 w-[98%]'
                       >
                         <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                           <div className='flex items-center'>
