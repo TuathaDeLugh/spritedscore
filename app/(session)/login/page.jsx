@@ -64,7 +64,7 @@ export default function Login() {
 
 
     return (
-      <section className=" bg-slate-100 dark:bg-gray-800 min-h-[90vh] flex items-center">
+      <section className=" bg-slate-100 py-5 dark:bg-gray-800 min-h-[90vh] flex items-center">
         <div className="container m-auto ">
           <div className="flex flex-wrap">
             <div className="w-full px-4">

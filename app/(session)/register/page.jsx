@@ -79,7 +79,7 @@ export default function Register() {
     return (
 
 
-      <section className=" bg-slate-100 dark:bg-gray-800  min-h-[90vh] flex items-center">
+      <section className=" bg-slate-100 dark:bg-gray-800 py-5  min-h-[90vh] flex items-center">
         <div className="container m-auto ">
           <div className="flex flex-wrap">
             <div className="w-full px-4">
