@@ -159,7 +159,7 @@ async function page({ params: { id } }) {
                     return (
                       <div
                         key={comment._id}
-                        className=' rounded-lg bg-slate-100 dark:bg-gray-700 p-3 mr-3 w-[98%]'
+                        className=' rounded-lg bg-slate-100 dark:bg-gray-700 p-3 w-[98%]'
                       >
                         <div className='py-1 px-2 flex border-b dark:border-gray-500 justify-between'>
                           <div className='flex items-center'>
