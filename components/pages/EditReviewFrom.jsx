@@ -1,12 +1,13 @@
 "use client"
 import React from 'react';
 import { useFormik } from 'formik';
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiOutlineUser } from "react-icons/ai";
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
 import { storage } from '@/util/firebase';
 import { EditReviewSchema } from '@/yupschema';
+import Image from 'next/image';
 
 function EditReviewForm ({review}) {
   const router = useRouter();
@@ -316,6 +317,23 @@ function EditReviewForm ({review}) {
             ) : null}
           </div>
 
+
+          <span className='flex items-center text-base font-semibold  text-purple-700 dark:text-purple-400 '>
+          Review Posted by :{' '}
+          {review.creator.avatar ? (
+            <Image width={50} height={50}
+              src={review.creator.avatar}
+              alt={review.creator.createdby}
+              className='ml-3 mr-1 w-7 h-7 rounded-full'
+            />
+          ) : (
+            <AiOutlineUser
+              size={20}
+              className='ml-3 mr-1 w-7 h-7 rounded-full'
+            />
+          )}{' '}
+          {review.creator.createdby}
+        </span>
 
 
 
