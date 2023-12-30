@@ -228,11 +228,11 @@ const ReviewForm = (creatordata) => {
             </div>
           </div>
           {/* Characters */}
-          <div className='mb-6'>
+          <div className='mb-6 '>
 
             {values.characters.map((character, index) => (
-              <div key={index} className="mb-4 md:flex gap-4">
-                <div className='md:flex mb-6 md:mb-0 md:w-1/2'>
+              <div key={index} className="mb-4 md:flex gap-4 p-1 border border-slate-200 dark:border-slate-700 rounded">
+                <div className='md:flex mb-2 md:mb-0 md:w-1/2'>
 
                   <input
                     type="hidden"

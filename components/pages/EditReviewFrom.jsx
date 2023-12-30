@@ -250,8 +250,8 @@ function EditReviewForm ({review}) {
           <div className='mb-6'>
 
             {values.characters.map((character, index) => (
-              <div key={index} className="mb-4 md:flex gap-4">
-                <div className='md:flex mb-6 md:mb-0 md:w-1/2'>
+              <div key={index} className="mb-4 md:flex gap-4 p-1 border border-slate-200 dark:border-slate-700 rounded">
+              <div className='md:flex mb-2 md:mb-0 md:w-1/2'>
 
                   <input
                     type="hidden"
@@ -270,7 +270,7 @@ function EditReviewForm ({review}) {
                     />
                   </div>
                 </div>
-                <div className='flex  md:w-1/2'>
+                <div className='flex gap-2  md:w-1/2'>
 
                   <input
                     type="text"
@@ -283,7 +283,7 @@ function EditReviewForm ({review}) {
                   <button
                     type="button"
                     onClick={() => deleteCharacter(index)}
-                    className="bg-red-500 text-white  p-2 rounded ml-4 my-1 hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
+                    className="bg-red-500 text-white  p-2 rounded my-1 hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
                   >
                     <AiFillDelete size={20} />
                   </button>
