@@ -17,7 +17,7 @@ export default async function NewReview() {
         <span className="mb-4 flex items-center text-base font-semibold  text-purple-700 dark:text-purple-400">
          <Goback/> New Review
         </span>
-        <h2 className="mb-6 text-[32px] font-bold text-dark lg:text-[4xl] flex gap-2 items-center">
+        <h2 className="mb-6 text-[22px] font-bold text-dark lg:text-4xl flex gap-2 items-center">
           Will Create By : 
           {session.user.username ? (
             <Image width={50} height={50}
