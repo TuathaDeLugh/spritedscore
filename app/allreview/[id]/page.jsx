@@ -138,7 +138,7 @@ async function page({ params: { id } }) {
               Review :
             </p>
             <div 
-              className='min-h-[80vh] text-justify mt-5 '
+              className='data min-h-[80vh] text-justify mt-5 '
               dangerouslySetInnerHTML={{ __html: review.detail.replace(/\n/g, '<br>') }}></div>
           </div>
           {/* comment */}
