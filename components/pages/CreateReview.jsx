@@ -288,7 +288,7 @@ const ReviewForm = (creatordata) => {
 
             <RichTextEditor
               className={`${errors.detail && touched.detail ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full resize-none rounded border border-stroke px-[14px] py-3 text-base  outline-none bg-white dark:bg-slate-800 `}
-              value={values.detail}
+              value={values.detail} theme={'snow'}
             onChange={(value) => setFieldValue('detail', value)}
           />
             {errors.detail && touched.detail ? (

@@ -23,8 +23,9 @@
   }
   .ql-editor{
     font-size: 1rem;
+    border: 0;
   }
-  .ql-toolbar{
+  .ql-toolbar.ql-snow {
     background-color: rgb(224, 224, 224);
   }
   .data h3{
