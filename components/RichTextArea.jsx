@@ -11,8 +11,8 @@ const RichTextEditor = ({ value, onChange,className,theme }) => {
   const toolbarOptions = [
     ['bold', 'italic', 'underline'],          
     [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    [{ 'script': 'sub' }, { 'script': 'super' }],
     [{ 'header': [ 2, 3, false] }],
-    [{ 'script': 'sub' }, { 'script': 'super' }],     
     [{ 'align': [] }],
 
     ['clean']                                        
