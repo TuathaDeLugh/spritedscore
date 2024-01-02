@@ -8,6 +8,7 @@ import {ref,deleteObject,uploadBytes,getDownloadURL} from "firebase/storage";
 import { storage } from '@/util/firebase';
 import { EditReviewSchema } from '@/yupschema';
 import Image from 'next/image';
+import RichTextEditor from '../RichTextArea';
 
 function EditReviewForm ({review}) {
   const router = useRouter();
@@ -303,15 +304,11 @@ function EditReviewForm ({review}) {
 
           <div className='mb-6'>
 
-            <textarea
+          <RichTextEditor
               className={`${errors.detail && touched.detail ? "border-red-400 dark:border-red-600 placeholder-red-600/50" : "dark:border-gray-600"} w-full resize-none rounded border border-stroke px-[14px] py-3 text-base  outline-none bg-white dark:bg-slate-800 `}
-              rows="18"
-              name='detail'
               value={values.detail}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder='Details'
-            ></textarea>
+            onChange={(value) => setFieldValue('detail', value)}
+          />
             {errors.detail && touched.detail ? (
               <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.detail}</p>
             ) : null}

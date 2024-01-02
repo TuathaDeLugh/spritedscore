@@ -139,12 +139,7 @@ async function page({ params: { id } }) {
             </p>
             <div 
               className='min-h-[80vh] text-justify mt-5 '
-              dangerouslySetInnerHTML={{ __html: review.detail.replace(/\n/g, '<br>') }}></div>
-            {/* <textarea
-              className='bg-transparent w-full  resize-none h-[80vh] text-justify mt-5 pr-3'
-              value={review.detail}
-              disabled
-            ></textarea> */}
+              dangerouslySetInnerHTML={{ __html: review.detail }}></div>
           </div>
           {/* comment */}
           <div className='w-full lg:w-[25%] xl:w-[20%] lg:sticky top-[70px]'>
