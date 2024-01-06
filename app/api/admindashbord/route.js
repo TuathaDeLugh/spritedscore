@@ -6,11 +6,13 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   const sortDirection = req.nextUrl.searchParams.get('sort') === '1' ? 1 : -1;
+  const usernameFilter = { username: { $ne: 'admin' } };
+  
   try {
         await connectdb();
         const totalReviews = await Review.countDocuments();
         const totalEmails = await Email.countDocuments();
-        const totalUsers = await User.countDocuments();
+        const totalUsers = await User.countDocuments(usernameFilter);
         const mostReview = await Review.aggregate([
           {
             $group: {
@@ -84,6 +86,9 @@ export async function GET(req) {
           foreignField: '_id',
           as: 'watchlistReviews',
         },
+      },
+      {
+        $match: usernameFilter,
       },
       {
         $project: {
