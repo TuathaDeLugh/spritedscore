@@ -55,7 +55,7 @@ FIREBASE_AUTH_DOMAIN = 'firebase project auth domain'
 ```
 npm run dev
 ```
-<p>*. For first time access Admin Dashbord create account & change role in database to 'admin'. after that ypu can pramote & revoke admin rights from dashboard  </p>
+<p>*. For first time access Admin Dashbord create account & change role in database to 'admin'. after that you can pramote & revoke admin rights from dashboard  </p>
 
 
 
