@@ -4,7 +4,6 @@ import NextAuth from 'next-auth'
 import bcrypt from "bcryptjs";
 import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
-import GitHubProvider from "next-auth/providers/github";
 
 export const authOptions = {
 	providers: [
@@ -12,10 +11,6 @@ export const authOptions = {
 			clientId: process.env.GOOGLE_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
 		}),
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
         CredentialsProvider({
             name: "credentials",      
             async authorize(credentials) {
