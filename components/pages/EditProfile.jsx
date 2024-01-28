@@ -170,7 +170,7 @@ export default function EditProfile({ userdata }) {
             onBlur={handleBlur}
           />
         </ div>
-        {userdata.provider === "google" ? (<p className=" text-red-600 dark:text-red-500 text-sm">You can&apos;t update email because you logged in using Google</p>) : null}
+        {userdata.provider === "google" ? (<p className=" text-red-600 dark:text-red-500 text-sm">You can&apos;t update email because you logged in using Auth provider</p>) : null}
 
         {errors.email && touched.email ? (
           <p className=" text-red-600 dark:text-red-500 text-sm">* {errors.email}</p>

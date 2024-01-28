@@ -160,6 +160,12 @@ export default function Gusername() {
                   />
                 </div>
               </form>
+                  <p className='text-center'>
+                    Want to use 
+                    <button className=' ml-2 text-purple-500 hover:underline ' onClick={() => signOut({ callbackUrl: '/login' })}>  
+                      diffrent account
+                      </button>  
+                    </p>
             </div>
           </div>
         </div>

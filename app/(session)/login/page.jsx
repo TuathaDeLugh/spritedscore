@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { loginSchema } from '@/yupschema';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +54,7 @@ export default function Login() {
 
   const { data: session } = useSession()
   if (session && !session.role){
-    router.push('Googlelogin')
+    router.push('Authlogin')
   }
 
   if (session && session.role ) {
@@ -126,12 +126,18 @@ export default function Login() {
                 <p className="mb-6 text-center text-base text-secondary-color dark:text-dark-7">
                   OR
                 </p>
-                <div className="mb-6">
+                <div className="mb-6 grid grid-flow-col grid-cols-2 gap-3 ">
                   <button
-                    onClick={() => signIn('google', { callbackUrl: '/Googlelogin' })}
-                    className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 hover:text-white  px-5"
+                    onClick={() => signIn('google', { callbackUrl: '/Authlogin' })}
+                    className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 hover:opacity-80 bg-slate-100 text-black shadow  px-5"
                   >
-                    <p>Continue With</p> <FcGoogle size={25} />
+                    <p>Login With</p> <FcGoogle size={25} />
+                  </button>
+                  <button
+                    onClick={() => signIn('github', { callbackUrl: '/Authlogin' })}
+                    className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 bg-slate-900 hover:opacity-80 text-white shadow  px-5"
+                  >
+                    <p>Login With</p> <FaGithub size={25} />
                   </button>
                 </div>
 
