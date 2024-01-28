@@ -51,11 +51,13 @@ FIREBASE_AUTH_DOMAIN = 'firebase project auth domain'
 
 <p>3. start dev server</p>
 
-<p>*. For first time access Admin Dashbord create account & change role in database to 'admin'. after that ypu can pramote & revoke admin rights from dashboard  </p>
 
 ```
 npm run dev
 ```
+<p>*. For first time access Admin Dashbord create account & change role in database to 'admin'. after that ypu can pramote & revoke admin rights from dashboard  </p>
+
+
 
 <h2>💻 Built with</h2>
 
