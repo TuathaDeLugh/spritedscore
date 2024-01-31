@@ -190,7 +190,7 @@ export default function Register() {
                 </p>
                 <div className="mb-3">
                   <button
-                    onClick={() => signIn('google', { callbackUrl: '/Googlelogin' })}
+                    onClick={() => signIn('google', { callbackUrl: '/Authlogin' })}
                     className="w-full flex h-11 items-center gap-2 justify-center rounded-md border dark:border-gray-500 hover:bg-slate-700 hover:text-white  px-5"
                   >
                     <p>Continue With</p> <FcGoogle size={25} />
