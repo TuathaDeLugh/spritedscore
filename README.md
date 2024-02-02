@@ -34,6 +34,10 @@ Here're some of the project's best features:
 
 ```
 npm i
+
+or 
+
+yarn install
 ```
 
 <p>2. add .env file</p>
@@ -54,6 +58,10 @@ FIREBASE_AUTH_DOMAIN = 'firebase project auth domain'
 
 ```
 npm run dev
+
+or
+
+yarn dev
 ```
 <p>*. For first time access Admin Dashbord create account & change role in database to 'admin'. after that you can pramote & revoke admin rights from dashboard  </p>
 
