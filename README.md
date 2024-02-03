@@ -73,3 +73,8 @@ Technologies used in the project:
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" height="40" width="52" alt="nextjs logo"  />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg" height="40" width="52" alt="tailwindcss logo"  />
+
+<h2>👥 Contributers </h2>
+
+Thanks to all contributers who contributed in this project:
+[![Contributors](https://contrib.rocks/image?repo=TuathaDeLugh/spritedscore)(https://github.com/TuathaDeLugh/spritedscore/graphs/contributors)]
