@@ -2,11 +2,14 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { Inter } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import { MdComputer } from "react-icons/md";
 import Footer from './Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Rubik({
+  subsets:['latin'],
+  weight:['400','300','500','700','900','600'],
+})
 
 const DarkModeFooter = ({ currentMode, onChangeMode }) => {
   return (
@@ -104,7 +107,7 @@ const Darkmode = ({ children }) => {
 
   return (
     <html lang="en" className={isDarkMode ? 'dark' : ''}>
-      <body className={inter.className && `bg-white dark:bg-gray-800 text-black dark:text-white`}>
+      <body className={`${font.className} bg-white dark:bg-gray-800 text-black dark:text-white`}>
         {children}
         <Footer>
         <DarkModeFooter currentMode={isDarkMode} onChangeMode={toggleDarkMode} />

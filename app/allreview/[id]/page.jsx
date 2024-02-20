@@ -8,12 +8,19 @@ import CommentForm from '@/components/pages/CommentForm'
 import getSingleReview from '@/controller/sainglereview'
 import getSingleUser from '@/controller/singleuser'
 import { getServerSession } from 'next-auth'
+import {Poppins} from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 
+const font = Poppins({
+  subsets:['latin'],
+  weight:['400','700','300','500','800','900'],
+})
 async function page({ params: { id } }) {
+
+
   const session = await getServerSession(authOptions)
   const review = await getSingleReview(id)
   let user ;
@@ -138,7 +145,7 @@ async function page({ params: { id } }) {
               Review :
             </p>
             <div 
-              className='data min-h-[80vh] text-justify mt-5 '
+              className={`${font.className} data min-h-[80vh] text-justify mt-5`}
               dangerouslySetInnerHTML={{ __html: review.detail.replace(/\n/g, '<br>') }}></div>
           </div>
           {/* comment */}
@@ -184,7 +191,7 @@ async function page({ params: { id } }) {
                             </div>
                           ) : null}
                         </div>
-                        <div className='py-1 px-2 overflow-x-scroll'>{comment.comment}</div>
+                        <div className={`py-1 px-2 overflow-x-scroll`}>{comment.comment}</div>
                       </div>
                     )
                   })}
