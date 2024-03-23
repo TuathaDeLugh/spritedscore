@@ -22,6 +22,16 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; 
+}
+
+.scrollbar-hidden {
+    scrollbar-width: none;
+}
+
+
   .ql-editor{
     font-size: 1rem;
     border: 0;
