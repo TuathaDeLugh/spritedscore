@@ -4,6 +4,7 @@ import Darkmode from '@/components/layout/Darkmode'
 import Navbar from '@/components/layout/Navbar'
 import SessionProvider from '@/components/logic/SessionProvider'
 import Toast from '@/components/layout/Toast'
+import SessionUpdate from '@/components/logic/SessionUpdatecheck'
 
 
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     
         <Darkmode>
         <SessionProvider>
+          <SessionUpdate/>
           <Toast/>
           <Navbar/>
         <main className='min-h-screen'>
