@@ -1,12 +1,16 @@
 
 import './globals.css'
-import Darkmode from '@/components/layout/Darkmode'
 import Navbar from '@/components/layout/Navbar'
 import SessionProvider from '@/components/logic/SessionProvider'
 import Toast from '@/components/layout/Toast'
 import SessionUpdate from '@/components/logic/SessionUpdatecheck'
+import { Rubik } from 'next/font/google'
+import Footer from '@/components/layout/Footer'
 
-
+const font = Rubik({
+  subsets:['latin'],
+  weight:['400','300','500','700','900','600'],
+})
 
 export const metadata = {
   title: 'Spirited Score',
@@ -15,8 +19,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    
-        <Darkmode>
+    <html lang="en">
+      <body className={`${font.className} bg-white dark:bg-gray-800 text-black dark:text-white`}>
         <SessionProvider>
           <SessionUpdate/>
           <Toast/>
@@ -25,6 +29,8 @@ export default function RootLayout({ children }) {
           {children}
           </main>
           </SessionProvider>
-        </Darkmode>
+        <Footer/>
+      </body>
+      </html>
   )
 }

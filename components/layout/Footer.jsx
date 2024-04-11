@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import dynamic from 'next/dynamic'
 
-function Footer ({children})  {
+const DarkmodeCSR = dynamic(() => import('./Darkmode'), { ssr: false })
+
+function Footer ()  {
   return (
     <>
       <footer className=" border-t border-slate-200 dark:border-slate-600 relative z-10 pb-10 pt-20 bg-slate-50 dark:bg-slate-800  ">
@@ -24,7 +27,7 @@ function Footer ({children})  {
                 <p className="mb-6 text-base text-justify  ">
                 Dive into the captivating world of anime with Spirited Score, your ultimate destination for insightful and engaging anime reviews. Discover in-depth analyses of your favorite series, uncover hidden gems, and explore the vibrant realm of Japanese animation.
                 </p>
-                {children}
+                <DarkmodeCSR/>
               </div>
             </div>
 

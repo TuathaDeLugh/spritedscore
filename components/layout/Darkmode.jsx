@@ -1,89 +1,65 @@
-"use client"
-import { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
+"use client";
+import React, { useEffect, useState } from 'react';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { Rubik } from 'next/font/google';
-import { MdComputer } from "react-icons/md";
-import Footer from './Footer';
+import { MdComputer } from 'react-icons/md';
 
-const font = Rubik({
-  subsets:['latin'],
-  weight:['400','300','500','700','900','600'],
-})
-
-const DarkModeFooter = ({ currentMode, onChangeMode }) => {
+const DarkmodeToggle = ({ mode, onToggle }) => {
   return (
-    <div className='flex items-center text-white right-0 px-1 gap-2'>
-      <p className='text-black font-semibold dark:text-white'>Mode</p>
-      {
-        currentMode == 'dark'?(
-          <button
-        onClick={() => onChangeMode('light')}
-        className={`rounded-full p-2 bg-purple-500/70`}
-      > 
-        <FiSun size={20}/>
-      </button>
-        ) :
-        (
-          <button
-        onClick={() => onChangeMode('dark')}
-        className={`rounded-full p-2 bg-purple-500/70`}
-      > <FiMoon size={20}/>
-        
-      </button>
-        )
-      }
-      
-      
-      
-      
-      <button
-        onClick={() => onChangeMode('system')}
-        className={`rounded-full p-2 bg-purple-500/70 `}
-      >
-        <MdComputer size={20}/>
-      </button>
-    </div>
+    <button
+      onClick={() => onToggle(mode)}
+      className={`rounded-full p-2 bg-purple-500/70`}
+    >
+      {mode === 'dark'? <FiSun size={20} /> : mode === 'system'? <MdComputer size={20} /> : <FiMoon size={20} />}
+    </button>
   );
 };
 
-const Darkmode = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(null);
+const Darkmode = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (typeof window!== 'undefined') {
+      const storedMode = localStorage.getItem('dark-mode');
+      if (storedMode === 'light' || storedMode === 'dark') {
+        return storedMode;
+      } else {
+        localStorage.setItem('dark-mode', 'system');
+        const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        return systemDarkMode? 'dark' : 'light';
+      }
+    } else {
+      return 'system'; // Fallback for non-browser environments
+    }
+  });
 
   const toggleDarkMode = (mode) => {
-    if (mode === 'system') {
-      Cookies.remove('dark-mode');
-
-      const systemDarkMode =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(systemDarkMode ? 'dark' : 'light');
-    } else {
-      setIsDarkMode(mode);
-      Cookies.set('dark-mode', mode, { expires: 365 });
+    if (typeof window!== 'undefined') {
+      if (mode === 'system') {
+        localStorage.setItem('dark-mode', 'system');
+        const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        setIsDarkMode(systemDarkMode? 'dark' : 'light');
+      } else {
+        setIsDarkMode(mode);
+        localStorage.setItem('dark-mode', mode);
+      }
     }
   };
 
   useEffect(() => {
-  
-    const cookieDarkMode = Cookies.get('dark-mode');
+    const updateDarkMode = (e) => {
+      setIsDarkMode(e.matches? 'dark' : 'light');
+    };
 
-    if (cookieDarkMode === undefined) {
-      setIsDarkMode('system');
+    if (typeof window!== 'undefined') {
+      const systemDarkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      systemDarkModeQuery.addEventListener('change', updateDarkMode);
 
-      const systemDarkMode =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (systemDarkMode) {
-        toggleDarkMode('dark');
-      } else {
-        toggleDarkMode('light');
-      }
-    } else {
-      setIsDarkMode(cookieDarkMode);
+      return () => {
+        systemDarkModeQuery.removeEventListener('change', updateDarkMode);
+      };
     }
   }, []);
 
   useEffect(() => {
-    if (isDarkMode !== null) {
+    if (typeof window!== 'undefined') {
       if (isDarkMode === 'dark') {
         document.documentElement.classList.add('dark');
       } else {
@@ -92,28 +68,18 @@ const Darkmode = ({ children }) => {
     }
   }, [isDarkMode]);
 
-  useEffect(() => {
-    const updateDarkMode = (e) => {
-      setIsDarkMode(e.matches ? 'dark' : 'light');
-    };
-
-    const systemDarkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    systemDarkModeQuery.addEventListener('change', updateDarkMode);
-
-    return () => {
-      systemDarkModeQuery.removeEventListener('change', updateDarkMode);
-    };
-  }, []);
-
   return (
-    <html lang="en" className={isDarkMode ? 'dark' : ''}>
-      <body className={`${font.className} bg-white dark:bg-gray-800 text-black dark:text-white`}>
-        {children}
-        <Footer>
-        <DarkModeFooter currentMode={isDarkMode} onChangeMode={toggleDarkMode} />
-        </Footer>
-      </body>
-    </html>
+    <>
+      <div className='flex items-center text-white right-0 px-1 gap-2'>
+        <p className='text-black font-semibold dark:text-white'>Mode</p>
+        {
+          isDarkMode === 'light' ?
+          <DarkmodeToggle mode='dark' onToggle={toggleDarkMode} /> :
+        <DarkmodeToggle mode='light' onToggle={toggleDarkMode} />
+        }
+        <DarkmodeToggle mode='system' onToggle={toggleDarkMode} />
+      </div>
+    </>
   );
 };
 
