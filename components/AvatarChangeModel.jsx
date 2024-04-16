@@ -51,7 +51,7 @@ const [modalOpen, setModalOpen] = useState(false);
   const avatars = [];
 
 for (let i = 1; i <= 37; i++) {
-  const imageName = `Avatar (${i}).png`;
+  const imageName = `https://firebasestorage.googleapis.com/v0/b/blog-forge-sailor.appspot.com/o/Avatars%2FAvatar%20(${i}).png?alt=media`;
   avatars.push(imageName);
 }
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -64,7 +64,7 @@ for (let i = 1; i <= 37; i++) {
       setModalOpen(false)
       let choosenavatar = selectedAvatar;
     if (avatars.includes(selectedAvatar)) {
-      choosenavatar = `/avatar/${selectedAvatar}`;
+      choosenavatar = `${selectedAvatar}`;
     }
       const response = await fetch(`/api/user/${userId}`, {
         method: 'PUT',
@@ -144,7 +144,7 @@ for (let i = 1; i <= 37; i++) {
             {avatars.map((avatar, index) => (
               <Image 
                 key={index}
-                src={`/avatar/${avatar}`}
+                src={avatar}
                 alt={`Avatar ${index + 1}`}
                 width={100}
                 height={100}
