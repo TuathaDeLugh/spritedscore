@@ -5,10 +5,11 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import { signIn, useSession } from 'next-auth/react'
 import { FcGoogle } from "react-icons/fc";
+import { CgSpinner } from "react-icons/cg"; 
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { loginSchema } from '@/yupschema';
-import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
+import { FaEye, FaEyeSlash} from 'react-icons/fa';
 export default function Login() {
   const [disabled, setDisabled] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -23,9 +24,8 @@ export default function Login() {
       initialValues,
       validationSchema: loginSchema,
       onSubmit: (async (values, action) => {
-
         try {
-          setDisabled == true
+          setDisabled(true)
           const result = await signIn('credentials', {
             redirect: false,
             email: values.email,
@@ -36,15 +36,16 @@ export default function Login() {
             (result).status == 200 &&
             (result).error == undefined
           ) {
+            setDisabled(false)
             router.refresh();
             router.push('/')
           } else {
             toast.error('incorrect username or password')
+            setDisabled(false)
           }
         } catch (error) {
           console.log('Login Failed:', error)
         }
-        setDisabled == false
         action.resetForm();
 
       }
@@ -115,12 +116,17 @@ export default function Login() {
                     <p className=" text-red-600 text-sm mb-2">* {errors.password}</p>
                   ) : (<div className='mb-6' />)}
                   <div className="mb-6">
-                    <input
+                    <button
                       disabled={disabled}
                       type="submit"
                       value="Sign In"
-                      className={`w-full bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70`}
-                    />
+                      className={`w-full flex items-center justify-center gap-3 bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70`}
+                    >Sign In 
+                    {
+                      disabled &&
+                    <CgSpinner className='animate-spin' size={25} />
+                    }
+                    </button>
                   </div>
                 </form>
                 <p className="mb-6 text-center text-base text-secondary-color dark:text-dark-7">

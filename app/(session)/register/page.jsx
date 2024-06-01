@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { SignupSchema } from '@/yupschema';
 import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa';
+import { CgSpinner } from 'react-icons/cg';
 
 let initialValues = {
   name: "",
@@ -42,11 +43,12 @@ export default function Register() {
     onSubmit: (async (values, action) => {
 
       try {
+        setDisabled(true);
         const response = await fetch(`/api/validateusername?username=${values.username}`);
         const { isUsernameTaken } = await response.json();
-
         if (isUsernameTaken) {
           toast.error('Username is already taken.');
+          setDisabled(false);
         } else {
           toast.promise(postapi(values), {
             pending: 'Creating Account',
@@ -177,12 +179,17 @@ export default function Register() {
                   ) : (<div className='mb-6' />)}
 
                   <div className="mb-3">
-                    <input
+                    <button
                       disabled={disabled}
                       type="submit"
                       value="Sign Up"
-                      className="w-full bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70"
-                    />
+                      className="w-full flex items-center justify-center gap-3 bg-purple-600 dark:bg-purple-400 cursor-pointer rounded-md border border-primary bg-primary px-5 py-3 text-base font-medium text-white dark:border-gray-500 transition hover:bg-opacity-90 dark:hover:bg-opacity-70"
+                    >Sign Up 
+                    {
+                      disabled &&
+                    <CgSpinner className='animate-spin' size={25} />
+                    }
+                    </button>
                   </div>
                 </form>
                 <p className="mb-3 text-center text-base text-secondary-color dark:text-dark-7">

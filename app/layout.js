@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import SessionProvider from '@/components/logic/SessionProvider'
 import Toast from '@/components/layout/Toast'
-import SessionUpdate from '@/components/logic/SessionUpdatecheck'
+// import SessionUpdate from '@/components/logic/SessionUpdatecheck'
 import { Rubik } from 'next/font/google'
 import Footer from '@/components/layout/Footer'
 
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${font.className} bg-white dark:bg-gray-800 text-black dark:text-white`}>
         <SessionProvider>
-          <SessionUpdate/>
+          {/* <SessionUpdate/> */}
           <Toast/>
           <Navbar/>
         <main className='min-h-screen'>

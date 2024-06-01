@@ -6,10 +6,10 @@ function SessionUpdate() {
     const { data: session, update } = useSession();
     const [reloadCount, setReloadCount] = useState(0);
 
-    useEffect(() => {
+    useEffect(() => {   
         const updateSession = async () => {
             try {
-                if (!session) return;
+                if (!session.user.id) return;
                 const userId = session?.user?.id || null;
                 const response = await fetch(`/api/user/${userId}`, {
                     cache: 'no-store',
